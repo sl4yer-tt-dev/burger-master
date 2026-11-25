@@ -1,5 +1,5 @@
-const CACHE = 'burgermaster-v18';
-const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon.png', './favicon.ico', './xmas/jingle-bells-calm.mp3', './xmas/sleigh-bells.wav'];
+const CACHE = 'burgermaster-v19';
+const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon.png', './favicon.ico', './Xmas/jingle-bells-calm.mp3', './Xmas/sleigh-bells.wav'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(

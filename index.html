@@ -2587,11 +2587,11 @@ html.is-standalone #bmGate{display:none!important}
   function ensureXmasAudio(){
     try{
       if(!xmasAudio.music){
-        xmasAudio.music = new Audio('./xmas/jingle-bells-calm.mp3');
+        xmasAudio.music = new Audio('./Xmas/jingle-bells-calm.mp3');
         xmasAudio.music.loop = true;
         xmasAudio.music.preload = 'auto';
       }
-      if(!xmasAudio.bell) xmasAudio.bell = new Audio('./xmas/sleigh-bells.wav');
+      if(!xmasAudio.bell) xmasAudio.bell = new Audio('./Xmas/sleigh-bells.wav');
     }catch(e){ xmasAudio.music = null; xmasAudio.bell = null; }
     return xmasAudio;
   }
