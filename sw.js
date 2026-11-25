@@ -1,4 +1,4 @@
-const CACHE = 'burgermaster-v22';
+const CACHE = 'burgermaster-v24';
 const ASSETS = ['./', './index.html', './manifest.webmanifest', './icon.png', './favicon.ico', './Xmas/jingle-bells-calm.mp3', './Xmas/sleigh-bells.wav'];
 
 self.addEventListener('install', (event) => {

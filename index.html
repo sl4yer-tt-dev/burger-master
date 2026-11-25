@@ -121,6 +121,26 @@
   @keyframes avatarIn{from{transform:translateX(-8px) scale(.9);opacity:.4}to{transform:none;opacity:1}}
   .avatar.leave{animation:avatarOut .35s ease both}
   @keyframes avatarOut{to{transform:translateX(-14px) rotate(-6deg);opacity:0}}
+  .avatar .face::before,.avatar .face::after{content:"";position:absolute;left:50%;pointer-events:none;z-index:3}
+  .avatar[data-skin="chef"] .face::before{top:3px;width:27px;height:16px;margin-left:-13.5px;background:radial-gradient(circle at 24% 44%,#fff 0 8px,transparent 9px),radial-gradient(circle at 50% 24%,#fff 0 10px,transparent 11px),radial-gradient(circle at 76% 44%,#fff 0 8px,transparent 9px);filter:drop-shadow(0 2px 1px rgba(0,0,0,.5))}
+  .avatar[data-skin="chef"] .face::after{bottom:5px;width:34px;height:20px;margin-left:-17px;border-radius:13px 13px 0 0;background:linear-gradient(90deg,transparent 46%,#c9c9c9 47% 53%,transparent 54%),radial-gradient(circle at 42% 40%,#999 2px,transparent 3px),radial-gradient(circle at 58% 62%,#999 2px,transparent 3px),linear-gradient(180deg,#fff,#dcdcdc);box-shadow:inset 0 2px 0 rgba(255,255,255,.8)}
+  .avatar[data-skin="royal"] .face::before{top:2px;width:28px;height:14px;margin-left:-14px;background:linear-gradient(180deg,#ffe274,#d99a16);clip-path:polygon(0 100%,4% 18%,26% 54%,50% 0,74% 54%,96% 18%,100% 100%);filter:drop-shadow(0 2px 1px rgba(0,0,0,.55))}
+  .avatar[data-skin="royal"] .face::after{bottom:5px;width:34px;height:20px;margin-left:-17px;border-radius:13px 13px 0 0;background:radial-gradient(circle at 50% 42%,#ffe274 0 3px,transparent 4px),linear-gradient(90deg,transparent 46%,rgba(255,226,116,.9) 47% 53%,transparent 54%),linear-gradient(180deg,#8b3ff0,#4a1391);box-shadow:inset 0 0 0 2px rgba(255,226,116,.6)}
+  .avatar[data-skin="neon"] .face::before{top:19px;width:30px;height:6px;margin-left:-15px;border-radius:4px;background:linear-gradient(90deg,#ff2fb0,#00e5ff);box-shadow:0 0 9px #00e5ff}
+  .avatar[data-skin="neon"] .face::after{bottom:5px;width:34px;height:20px;margin-left:-17px;border-radius:13px 13px 0 0;background:repeating-linear-gradient(120deg,#ff2fb0 0 5px,#00e5ff 5px 10px);opacity:.85}
+  .avatar[data-skin="gold"] .face::before{top:12px;width:27px;height:6px;margin-left:-13.5px;border-radius:99px;background:linear-gradient(180deg,#fff0a8,#d99a16);box-shadow:0 0 8px rgba(255,210,74,.8)}
+  .avatar[data-skin="gold"] .face::after{bottom:5px;width:34px;height:20px;margin-left:-17px;border-radius:13px 13px 0 0;background:radial-gradient(circle at 50% 38%,#ffd24a 0 5px,#a86c0a 6px 8px,transparent 9px),linear-gradient(180deg,#ffd24a,#8a5a08);box-shadow:inset 0 0 0 2px rgba(255,240,168,.7)}
+  .avatar[data-skin="mint"] .face::before{top:6px;width:27px;height:11px;margin-left:-13.5px;border-radius:50% 50% 0 0;background:linear-gradient(180deg,#7bffc4,#1f9d6b);transform:rotate(-9deg);box-shadow:inset 0 2px 3px rgba(255,255,255,.5)}
+  .avatar[data-skin="mint"] .face::after{bottom:5px;width:34px;height:20px;margin-left:-17px;border-radius:13px 13px 0 0;background:radial-gradient(ellipse at 50% 60%,#b9ffe0 0 6px,transparent 7px),linear-gradient(180deg,#3ddc97,#177a55)}
+  .avatar[data-skin="lava"] .face::before{top:1px;width:28px;height:15px;margin-left:-14px;background:linear-gradient(#ffcf3a,#ff4a1a 55%,transparent);clip-path:polygon(0 100%,18% 0,34% 70%,50% 0,66% 70%,82% 0,100% 100%);filter:drop-shadow(0 0 5px #ff6a1a)}
+  .avatar[data-skin="lava"] .face::after{bottom:5px;width:34px;height:20px;margin-left:-17px;border-radius:13px 13px 0 0;background:repeating-linear-gradient(72deg,rgba(255,190,40,.9) 0 3px,transparent 3px 10px),linear-gradient(180deg,#ff6a1a,#7a1204)}
+  .avatar[data-skin="midnight"] .face::before{top:0;width:24px;height:15px;margin-left:-12px;border-radius:3px;background:radial-gradient(circle at 50% 35%,#fff 0 1.5px,transparent 2px),linear-gradient(180deg,#3b4ea0,#0b1030);box-shadow:inset 0 -3px 0 #1b2456,0 2px 3px rgba(0,0,0,.6)}
+  .avatar[data-skin="midnight"] .face::after{bottom:5px;width:34px;height:20px;margin-left:-17px;border-radius:13px 13px 0 0;background:radial-gradient(circle at 25% 35%,#fff 0 1.5px,transparent 2px),radial-gradient(circle at 65% 60%,#fff 0 1.5px,transparent 2px),linear-gradient(180deg,#3b4ea0,#101740)}
+  .avatar[data-skin="cyber"] .face::before{top:0;width:28px;height:13px;margin-left:-14px;background:linear-gradient(90deg,#00ffd0 0 2px,transparent 2px 12px,#ff00a0 12px 14px,transparent 14px),linear-gradient(180deg,transparent 45%,rgba(0,255,208,.9) 46% 62%,transparent 63%)}
+  .avatar[data-skin="cyber"] .face::after{bottom:5px;width:34px;height:20px;margin-left:-17px;border-radius:13px 13px 0 0;background:repeating-linear-gradient(90deg,transparent 0 8px,#00ffd0 8px 10px,transparent 10px 16px),linear-gradient(180deg,#123c4a,#061820)}
+  .avatar[data-skin="rainbow"] .face::before{top:11px;width:28px;height:7px;margin-left:-14px;border-radius:99px;background:linear-gradient(90deg,#ff5555,#ffb347,#ffe66d,#7bd88f,#5bc0eb,#b07cf0);box-shadow:0 0 6px rgba(255,255,255,.45)}
+  .avatar[data-skin="rainbow"] .face::after{bottom:5px;width:34px;height:20px;margin-left:-17px;border-radius:13px 13px 0 0;background:linear-gradient(180deg,#ff5555 0 16%,#ffb347 16% 32%,#ffe66d 32% 48%,#7bd88f 48% 64%,#5bc0eb 64% 80%,#b07cf0 80%)}
+  html.xmas .avatar .face::before{top:1px;right:0;width:24px;height:20px;margin-left:0;transform:rotate(9deg);background:radial-gradient(circle at 84% 12%,#fff 0 4px,transparent 5px),linear-gradient(180deg,transparent 68%,#fff 69% 81%,transparent 82%),linear-gradient(135deg,#e5322d 0 58%,rgba(229,50,45,0) 59%);clip-path:polygon(82% 0,100% 18%,100% 100%,0 82%,16% 60%,38% 36%,62% 14%);filter:drop-shadow(0 2px 2px rgba(0,0,0,.55))}
 
   .orderCard{
     position:relative;flex:1;min-width:0;min-height:96px;
@@ -402,7 +422,6 @@
     display:grid;grid-template-columns:repeat(3,1fr);gap:5px;
     margin-top:7px;flex:none;
   }
-  html.xmas .palette{grid-template-columns:repeat(6,1fr)}
   .ing{
     position:relative;display:flex;align-items:center;justify-content:center;
     height:40px;padding:0;border-radius:12px;
@@ -502,6 +521,7 @@
   .jsDrips i:nth-child(6){--n:6;--h:47%}.jsDrips i:nth-child(7){--n:7;--h:28%}.jsDrips i:nth-child(8){--n:8;--h:38%}.jsDrips i:nth-child(9){--n:9;--h:51%}
   @keyframes jsDrip{0%{transform:translateY(-40%)}100%{transform:translateY(110%)}}
   .jsFace{position:relative;width:min(96vw,520px);height:min(96vw,520px);display:grid;place-items:center}
+  .jsSantaHat{position:absolute;left:50%;top:4%;width:34%;height:26%;margin-left:-17%;z-index:5;pointer-events:none;background:radial-gradient(circle at 84% 12%,#fff 0 6%,transparent 7%),linear-gradient(180deg,transparent 68%,#fff 69% 80%,transparent 81%),linear-gradient(155deg,#e5322d 0 62%,rgba(229,50,45,0) 63%);clip-path:polygon(82% 0,100% 18%,100% 100%,0 82%,18% 58%,40% 34%,62% 12%);transform:rotate(10deg);filter:drop-shadow(0 6px 6px rgba(0,0,0,.65))}
   .jumpscare.show .jsFace{animation:jsRush .26s cubic-bezier(.1,1.9,.2,1) forwards,jsShake .09s linear .26s 9}
   @keyframes jsRush{0%{transform:scale(4.4) rotate(-16deg)}100%{transform:scale(1) rotate(0)}}
   @keyframes jsShake{0%{transform:translate(0,0) rotate(0)}25%{transform:translate(-14px,9px) rotate(-3deg)}50%{transform:translate(13px,-10px) rotate(3deg)}75%{transform:translate(-9px,-6px) rotate(-2deg)}100%{transform:translate(0,0) rotate(0)}}
@@ -723,6 +743,10 @@
   }
   .pwr.empty{opacity:.38}
   .pwr.hot{border-color:rgba(120,200,255,.7);box-shadow:0 0 16px rgba(120,200,255,.5),0 8px 18px rgba(0,0,0,.45)}
+  .snowBtn{display:none;position:absolute;left:2px;top:50%;transform:translateY(-50%);z-index:6;width:42px;height:42px;padding:0;border-radius:13px;cursor:pointer;color:#eaf8ff;background:linear-gradient(180deg,rgba(36,78,110,.95),rgba(14,38,62,.95));border:1px solid rgba(170,225,255,.55);box-shadow:0 8px 18px rgba(0,0,0,.45),0 0 14px rgba(120,200,255,.3);touch-action:manipulation}
+  html.xmas .snowBtn{display:grid;place-items:center}
+  .snowBtn:active{transform:translateY(-50%) scale(.92)}
+  .snowBtn svg{width:20px;height:20px}
   .ing.hint{box-shadow:0 0 0 2px var(--gold),0 0 18px rgba(255,180,60,.55);animation:hintPulse .7s infinite}
   @keyframes hintPulse{50%{box-shadow:0 0 0 3px rgba(255,190,70,.45),0 0 24px rgba(255,180,60,.7)}}
   .chip.hint{background:#fff3d4;border-color:#ffb63d;box-shadow:0 0 0 2px rgba(255,182,61,.4)}
@@ -789,6 +813,26 @@
     color:#f4e7d5;background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.16);outline:none}
   .admNum::placeholder{color:#8d7762}
   .admNum:focus{border-color:rgba(255,190,90,.6);box-shadow:0 0 0 2px rgba(255,180,60,.18)}
+  .promoForm{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}
+  .promoForm input,.promoForm select{width:100%;min-width:0;padding:10px 11px;border-radius:12px;font-family:inherit;font-size:12px;font-weight:750;color:#f4e7d5;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.16);outline:none}
+  .promoForm input::placeholder{color:#8d7762}
+  .promoForm input:focus,.promoForm select:focus{border-color:rgba(255,190,90,.6);box-shadow:0 0 0 2px rgba(255,180,60,.18)}
+  .promoForm .wide{grid-column:1 / -1}
+  .promoAdminList{display:flex;flex-direction:column;gap:6px;margin-top:9px}
+  .promoItem{display:flex;align-items:center;gap:8px;padding:9px 10px;border-radius:11px;background:rgba(0,0,0,.22);border:1px solid rgba(255,255,255,.08)}
+  .promoItem .pt{flex:1;min-width:0}
+  .promoItem .pt b{display:block;font-size:11.5px;font-weight:850;color:#ffe0a1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .promoItem .pt span{display:block;font-size:10px;font-weight:650;color:#b7a28d;margin-top:2px}
+  .promoItem .admBtn{min-width:52px;flex:none;padding:8px;font-size:10.5px}
+  .promoCard{display:flex;gap:8px;width:100%;max-width:360px;margin:2px 0 6px}
+  .promoCard .admNum{flex:1}
+  .promoList{display:flex;flex-direction:column;gap:8px;width:100%;max-width:360px;margin:2px 0 6px}
+  .promoOverlay{position:fixed;inset:0;z-index:999;display:none;align-items:center;justify-content:center;padding:24px;background:rgba(6,4,3,.82)}
+  .promoOverlay.show{display:flex}
+  .promoOverlayCard{width:100%;max-width:340px;padding:22px 18px;border-radius:22px;text-align:center;background:linear-gradient(180deg,#2a1a10,#160d08);border:1px solid rgba(255,205,120,.45);box-shadow:0 24px 60px rgba(0,0,0,.65),0 0 30px rgba(255,180,60,.18)}
+  .promoOverlayCard b{display:block;font-size:17px;font-weight:950;color:#ffd884}
+  .promoOverlayCard span{display:block;margin:10px 0 16px;font-size:14px;font-weight:700;color:#f0e2d0;white-space:pre-wrap}
+  .promoOverlayCard button{width:100%;padding:12px;border-radius:13px;cursor:pointer;font-family:inherit;font-size:12.5px;font-weight:900;color:#2a1606;background:linear-gradient(180deg,#ffe08a,#ffb63d);border:0}
   .acInput .admBtn{flex:none;min-width:74px}
   .shopRow{display:flex;flex-direction:column;gap:7px;width:100%;max-width:330px}
   .shopBtn{
@@ -1574,6 +1618,7 @@ html.is-standalone #bmGate{display:none!important}
 
   <section class="workbench" id="workbench">
     <div class="board"></div>
+    <button class="snowBtn" id="snowBtn" type="button" aria-label="Снежок"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9M9 4.5l3 2.2 3-2.2M9 19.5l3-2.2 3 2.2"/></svg></button>
     <canvas class="burgerCanvas" id="burger"></canvas>
     <div class="combo" id="combo"><span id="comboX">×1.0</span><span id="comboTxt">серия 0</span></div>
     <div class="powers" id="powers">
@@ -1612,7 +1657,8 @@ html.is-standalone #bmGate{display:none!important}
       <button class="navBtn" id="prestigeBtnNav" type="button"><b>Перерождение</b><span id="prestigeNav">0 очк.</span></button>
       <button class="navBtn" id="wheelBtnNav" type="button"><b>Рулетка</b><span id="wheelNav">бесплатно</span><i class="dotBadge" id="wheelDot" hidden></i></button>
       <button class="navBtn" id="sandboxBtn" type="button"><b>Песочница</b><span id="sandboxCount">0 рец.</span></button>
-      <button class="navBtn" id="buildBtn" type="button"><b>Стройка</b><span id="buildNav">+0/10сек</span></button>
+      <button class="navBtn" id="buildBtn" type="button"><b>Стройка</b><span id="buildNav">+0/2мин</span></button>
+      <button class="navBtn" id="promoBtnNav" type="button"><b>Промокоды</b><span id="promoNav">0</span></button>
     </div>
     <div class="achRow" id="achRow"></div>
     <div class="achCount" id="achCount"></div>
@@ -1847,8 +1893,76 @@ html.is-standalone #bmGate{display:none!important}
           <button class="admBtn danger" id="admBonusReset" type="button">Сбросить серию</button>
         </div>
       </div>
+      <div class="adminCard">
+        <div class="acTop"><b>Промокоды</b><span id="admPromo">0</span></div>
+        <div class="promoForm">
+          <input class="wide" id="promoCode" maxlength="24" placeholder="КОД, например NEWYEAR">
+          <input id="promoTitle" maxlength="32" placeholder="Название">
+          <select id="promoAction">
+            <option value="give">Дать награду</option>
+            <option value="reset">Сбросить данные</option>
+            <option value="text">Показать текст</option>
+            <option value="toggle">Переключить</option>
+          </select>
+          <select id="promoTarget">
+            <option value="coins">Монеты</option>
+            <option value="score">Рекорд</option>
+            <option value="ach">Достижения</option>
+            <option value="campaign">Кампания</option>
+            <option value="kitchen">Кухня</option>
+            <option value="build">Стройка</option>
+            <option value="daily">Награды</option>
+            <option value="streak">Серия наград</option>
+            <option value="wheel">Рулетка</option>
+            <option value="prestige">Перерождение</option>
+            <option value="skins">Скины</option>
+            <option value="xmas">Новогодний режим</option>
+            <option value="patience">Терпение</option>
+            <option value="all">Всё</option>
+          </select>
+          <input id="promoAmount" type="number" inputmode="numeric" placeholder="Количество">
+          <input id="promoDuration" type="number" inputmode="numeric" placeholder="Секунд текста">
+          <input id="promoUses" type="number" inputmode="numeric" placeholder="Лимит uses (0=∞)">
+          <select id="promoScope">
+            <option value="overlay">Окно на экране</option>
+            <option value="toast">Плашка внизу</option>
+            <option value="float">Всплывающий текст</option>
+            <option value="silent">Без показа</option>
+          </select>
+          <select id="promoSound">
+            <option value="none">Без звука</option>
+            <option value="coin">Монеты</option>
+            <option value="bell">Колокольчик</option>
+            <option value="tone">Сигнал</option>
+          </select>
+          <input class="wide" id="promoText" maxlength="180" placeholder="Свой текст на экране">
+        </div>
+        <div class="acBtns">
+          <button class="admBtn" id="promoSaveBtn" type="button">Создать код</button>
+          <button class="admBtn danger" id="promoClearBtn" type="button">Удалить все</button>
+        </div>
+        <div class="promoAdminList" id="promoAdminList"></div>
+      </div>
     </div>
     <button class="cta ghost" id="adminCloseBtn" type="button">Закрыть</button>
+  </div>
+
+  <div class="screen hidden" id="promoScreen">
+    <div class="title">Промокоды<small>локальные коды</small></div>
+    <div class="promoCard">
+      <input class="admNum" id="promoInput" maxlength="24" placeholder="Введите промокод">
+      <button class="admBtn" id="promoApplyBtn" type="button">ОК</button>
+    </div>
+    <div class="promoList" id="promoList"></div>
+    <button class="cta ghost" id="promoBackBtn" type="button">Назад</button>
+  </div>
+
+  <div class="promoOverlay" id="promoOverlay">
+    <div class="promoOverlayCard">
+      <b id="promoOverlayTitle">Промокод</b>
+      <span id="promoOverlayText"></span>
+      <button id="promoOverlayClose" type="button">Ок</button>
+    </div>
   </div>
 
   <div class="screen hidden" id="settingsScreen">
@@ -1991,9 +2105,12 @@ html.is-standalone #bmGate{display:none!important}
   };
   function isTraining(){ return !!(MODES[S.mode] && MODES[S.mode].training); }
 
-  const BUILD_W = 8, BUILD_H = 7, BUILD_N = BUILD_W * BUILD_H, BUILD_TICK = 10000;
-  const BUILD_PAYOUT = .12, BUILD_OFFLINE = .35, BUILD_OFFLINE_MAX = 720, BUILD_FLOOR_COST = 50000;
+  const BUILD_W = 8, BUILD_H = 7, BUILD_N = BUILD_W * BUILD_H, BUILD_TICK = 120000;
+  const BUILD_PAYOUT = .12, BUILD_OFFLINE = .35, BUILD_OFFLINE_MAX = 720, BUILD_FLOOR_COST = 50000, BUILD_MAX_INCOME = 50000;
   const WHEEL_DAY_LIMIT = 50, PRESTIGE_DAY_LIMIT = 3;
+  const PROMO_ACTIONS = ['give','reset','text','toggle'];
+  const PROMO_TARGETS = ['coins','score','ach','campaign','kitchen','build','daily','streak','wheel','prestige','skins','xmas','patience','all'];
+  const PROMO_SCOPES = ['overlay','toast','float','silent'];
   const SCARE_COUNT = 25;
   const BUILD_DEFS = {
     wall:{ label:'Стена', short:'С', cost:40, inc:1 },
@@ -2326,7 +2443,7 @@ html.is-standalone #bmGate{display:none!important}
     combo:$('combo'), comboX:$('comboX'), comboTxt:$('comboTxt'),
     powers:$('powers'), freezeBtn:$('freezeBtn'), freezeCnt:$('freezeCnt'),
     hintBtn:$('hintBtn'), hintCnt:$('hintCnt'), skipBtn:$('skipBtn'), skipCnt:$('skipCnt'),
-    palette:$('palette'), toast:$('toast'),
+    palette:$('palette'), toast:$('toast'), snowBtn:$('snowBtn'),
     startScreen:$('startScreen'), overScreen:$('overScreen'), pauseScreen:$('pauseScreen'), perkScreen:$('perkScreen'),
     startBest:$('startBest'), startCoins:$('startCoins'), startScores:$('startScores'),
     modeRow:$('modeRow'), modeHint:$('modeHint'),
@@ -2340,6 +2457,8 @@ html.is-standalone #bmGate{display:none!important}
     admBestVal:$('admBestVal'), admBestBurgers:$('admBestBurgers'), admBestSet:$('admBestSet'),
     admCoinsVal:$('admCoinsVal'), admCoinsSet:$('admCoinsSet'),
     admBonus:$('admBonus'), admBonusSkip:$('admBonusSkip'), admBonusReset:$('admBonusReset'),
+    admPromo:$('admPromo'), promoCode:$('promoCode'), promoTitle:$('promoTitle'), promoAction:$('promoAction'), promoTarget:$('promoTarget'), promoAmount:$('promoAmount'), promoDuration:$('promoDuration'), promoUses:$('promoUses'), promoScope:$('promoScope'), promoSound:$('promoSound'), promoText:$('promoText'), promoSaveBtn:$('promoSaveBtn'), promoClearBtn:$('promoClearBtn'), promoAdminList:$('promoAdminList'),
+    promoScreen:$('promoScreen'), promoBtnNav:$('promoBtnNav'), promoNav:$('promoNav'), promoInput:$('promoInput'), promoApplyBtn:$('promoApplyBtn'), promoList:$('promoList'), promoBackBtn:$('promoBackBtn'), promoOverlay:$('promoOverlay'), promoOverlayTitle:$('promoOverlayTitle'), promoOverlayText:$('promoOverlayText'), promoOverlayClose:$('promoOverlayClose'),
     admCampaign:$('admCampaign'), admCampaignStars:$('admCampaignStars'), admKitchen:$('admKitchen'), admWipe:$('admWipe'),
     overScore:$('overScore'), overServed:$('overServed'), overLevel:$('overLevel'),
     overCombo:$('overCombo'), overAcc:$('overAcc'), overCoins:$('overCoins'),
@@ -2401,7 +2520,7 @@ html.is-standalone #bmGate{display:none!important}
       upg:{}, campaign:{ unlocked:1, stars:{} }, daily:null, bonusDay:'', bonusStreak:0, bonusAt:0, bonusSkip:false,
       sfxVol:1, vibro:true, music:true, opt:false, xmas:false, recipes:[], sbxAdmin:false,
       skins:{}, skin:'default', prestige:0, pp:0, prestigeBurgers:0, prestigeDay:'', prestigeToday:0, wheelDay:'', wheelSpinDay:'', wheelSpins:0, intro:false,
-      stats:{ earned:0, play:0, perfect:0, orders:0 }, hardcoreWarned:false, build:{ cells:[], floors:0 }, buildAt:0 };
+      stats:{ earned:0, play:0, perfect:0, orders:0 }, hardcoreWarned:false, build:{ cells:[], floors:0 }, buildAt:0, promos:[] };
     const p = loadJSON(KEY_PROFILE, null);
     if(p && typeof p === 'object') Object.assign(d, p);
     if(!d.ach || typeof d.ach !== 'object') d.ach = {};
@@ -2426,6 +2545,7 @@ html.is-standalone #bmGate{display:none!important}
     d.music = d.music !== false;
     d.opt = d.opt === true;
     d.xmas = d.xmas === true;
+    d.promos = Array.isArray(d.promos) ? d.promos.map(normalizePromo).filter(Boolean) : [];
     d.sbCfg = normSbCfg(d.sbCfg);
     d.sbxAdmin = !!d.sbxAdmin;
     if(!d.skins || typeof d.skins !== 'object') d.skins = {};
@@ -4604,7 +4724,7 @@ html.is-standalone #bmGate{display:none!important}
     if(need.indexOf('bun_top') < 0) need.push('bun_top');
     const ids = need.slice();
     const extras = [];
-    const target = PAL_SLOTS + (xmasOn() ? 3 : 0);
+    const target = PAL_SLOTS;
     for(let i = 0; i < SIDES.length && ids.length + extras.length < target; i++){
       if(ids.indexOf(SIDES[i]) < 0 && extras.indexOf(SIDES[i]) < 0) extras.push(SIDES[i]);
     }
@@ -4613,7 +4733,6 @@ html.is-standalone #bmGate{display:none!important}
     }
     shuffle(extras);
     for(let i = 0; i < extras.length; i++) ids.push(extras[i]);
-    if(xmasOn() && ids.indexOf(SNOW_ID) < 0) ids.push(SNOW_ID);
     ensurePalBtns(ids.length);
     for(let i = 0; i < palBtns.length; i++){
       const b = palBtns[i];
@@ -4623,7 +4742,6 @@ html.is-standalone #bmGate{display:none!important}
       b.querySelector('.ingName').textContent = ING[id].name;
       b.ariaLabel = ING[id].name;
       b.title = ING[id].name;
-      b.classList.toggle('snowBtn', id === SNOW_ID);
     }
   }
   function renderOrder(){
@@ -4864,6 +4982,8 @@ html.is-standalone #bmGate{display:none!important}
     el.admSbxToggle.textContent = profile.sbxAdmin ? 'Заблокировать' : 'Разблокировать';
     el.admLvl.textContent = (profile.campaign.unlocked || 1) + '/' + CAMPAIGN.length;
     el.admBonus.textContent = bonusAvailable() ? 'доступна' : 'через ' + fmtLeft(msToBonus());
+    if(el.admPromo) el.admPromo.textContent = String(profile.promos.length);
+    renderAdminPromos();
   }
   function openAdmin(){
     if(S.running && !S.paused) togglePause(true);
@@ -4902,6 +5022,179 @@ html.is-standalone #bmGate{display:none!important}
     const n = Math.max(0, Math.floor(Number(v)) || 0);
     profile.coins = n; saveProfile(); updateHUD(); updateMenuBadges(); refreshMenuStats(); renderAdmin();
     showToast('Админ', 'Монеты = ' + n.toLocaleString('ru-RU'));
+  }
+  function promoEsc(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+  }
+  function promoNum(v, d, max){
+    const n = Math.floor(Number(v));
+    return isFinite(n) ? Math.max(d, Math.min(max, n)) : d;
+  }
+  function normalizePromo(p){
+    if(!p || typeof p !== 'object') return null;
+    const code = String(p.code || '').toUpperCase().replace(/[^A-Z0-9_-]/g, '').slice(0, 24);
+    if(!code) return null;
+    const action = PROMO_ACTIONS.indexOf(p.action) >= 0 ? p.action : 'text';
+    const target = PROMO_TARGETS.indexOf(p.target) >= 0 ? p.target : 'coins';
+    const scope = PROMO_SCOPES.indexOf(p.scope) >= 0 ? p.scope : 'overlay';
+    const sound = ['none','coin','bell','tone'].indexOf(p.sound) >= 0 ? p.sound : 'none';
+    return {
+      code:code, title:String(p.title || code).slice(0, 32), action:action, target:target,
+      amount:promoNum(p.amount, 0, 1000000000), duration:promoNum(p.duration, 4, 60),
+      uses:promoNum(p.uses, 0, 1000000), maxUses:promoNum(p.maxUses, 0, 1000000),
+      cooldown:promoNum(p.cooldown, 0, 86400), lastUsed:Number(p.lastUsed) > 0 ? Number(p.lastUsed) : 0,
+      scope:scope, sound:sound, vibro:!!p.vibro, text:String(p.text || '').slice(0, 180),
+      enabled:p.enabled !== false
+    };
+  }
+  function promoById(code){
+    const c = String(code || '').toUpperCase().replace(/[^A-Z0-9_-]/g, '').slice(0, 24);
+    for(let i = 0; i < profile.promos.length; i++){ if(profile.promos[i].code === c) return profile.promos[i]; }
+    return null;
+  }
+  function promoLabel(p){
+    return p.action + '/' + p.target + (p.maxUses ? ' · ' + p.uses + '/' + p.maxUses : ' · ∞') + (p.enabled ? '' : ' · выкл');
+  }
+  let promoOverlayTimer = 0;
+  function showPromoMessage(p, ok){
+    const title = ok ? (p.title || 'Промокод принят') : 'Промокод не применён';
+    const text = p.text || (ok ? 'Действие выполнено' : 'Код не найден, отключён или уже использован');
+    if(p.scope === 'overlay'){
+      el.promoOverlayTitle.textContent = title;
+      el.promoOverlayText.textContent = text;
+      el.promoOverlay.classList.add('show');
+      clearTimeout(promoOverlayTimer);
+      promoOverlayTimer = setTimeout(() => el.promoOverlay.classList.remove('show'), p.duration * 1000);
+    } else if(p.scope === 'toast'){
+      showToast(title, text);
+    } else if(p.scope === 'float'){
+      showFloat(text, !ok);
+    }
+    if(ok){
+      if(p.sound === 'coin') sfxCoin();
+      else if(p.sound === 'bell') xmasBell();
+      else if(p.sound === 'tone') tone(660, .12, 'triangle', .05);
+      if(p.vibro && navigator.vibrate) navigator.vibrate(24);
+    }
+  }
+  function applyPromoEffect(p){
+    const a = p.amount;
+    if(p.action === 'text') return;
+    if(p.action === 'toggle'){
+      if(p.target === 'xmas'){ if(!xmasOn()) toggleXmas(); return; }
+      if(p.target === 'all'){ toggleXmas(); return; }
+      return;
+    }
+    if(p.action === 'give'){
+      if(p.target === 'coins' || p.target === 'all'){ profile.coins += a; updateHUD(); updateMenuBadges(); refreshMenuStats(); }
+      if(p.target === 'score' || p.target === 'all'){ pushScore({ score:a, served:0, date:Date.now(), id:'promo' + Date.now() }); refreshMenuStats(); }
+      if(p.target === 'ach' || p.target === 'all'){ if(window.__bmUnlockAch) window.__bmUnlockAch(); renderAch(); }
+      if(p.target === 'campaign' || p.target === 'all'){ profile.campaign.unlocked = CAMPAIGN.length; for(let i = 0; i < CAMPAIGN.length; i++) profile.campaign.stars[i] = 3; updateMenuBadges(); }
+      if(p.target === 'kitchen' || p.target === 'all'){ for(const k in UPGRADES) profile.upg[k] = UPGRADES[k].max; updateMenuBadges(); }
+      if(p.target === 'build' || p.target === 'all'){ profile.build.floors = Math.min(99, (profile.build.floors || 0) + a); renderBuild(); refreshMenuStats(); }
+      if(p.target === 'daily' || p.target === 'all'){ profile.bonusAt = 0; profile.bonusSkip = false; }
+      if(p.target === 'streak' || p.target === 'all'){ profile.bonusStreak += a; }
+      if(p.target === 'wheel' || p.target === 'all'){ profile.wheelSpins = Math.max(0, profile.wheelSpins - a); }
+      if(p.target === 'prestige' || p.target === 'all'){ profile.pp += a; }
+      if(p.target === 'skins' || p.target === 'all'){ for(const s of SKINS) profile.skins[s.id] = true; renderSkin(); updateMenuBadges(); }
+      if(p.target === 'xmas' || p.target === 'all'){ if(!xmasOn()) toggleXmas(); }
+      if(p.target === 'patience' || p.target === 'all'){ if(S.running){ S.patience = Math.min(1, S.patience + a / 100); updatePatience(); } }
+      return;
+    }
+    if(p.action === 'reset'){
+      if(p.target === 'coins' || p.target === 'all'){ profile.coins = 0; updateHUD(); updateMenuBadges(); refreshMenuStats(); }
+      if(p.target === 'score' || p.target === 'all'){ saveScores([]); refreshMenuStats(); }
+      if(p.target === 'ach' || p.target === 'all'){ profile.ach = {}; renderAch(); }
+      if(p.target === 'campaign' || p.target === 'all'){ profile.campaign.unlocked = 1; profile.campaign.stars = {}; updateMenuBadges(); }
+      if(p.target === 'kitchen' || p.target === 'all'){ for(const k in UPGRADES) profile.upg[k] = 0; updateMenuBadges(); }
+      if(p.target === 'build' || p.target === 'all'){ profile.build.cells = new Array(BUILD_N).fill(''); profile.build.floors = 0; profile.buildAt = Date.now(); renderBuild(); refreshMenuStats(); }
+      if(p.target === 'daily' || p.target === 'all'){ profile.daily = null; profile.bonusDay = ''; profile.bonusAt = 0; profile.bonusSkip = false; }
+      if(p.target === 'streak' || p.target === 'all'){ profile.bonusStreak = 0; }
+      if(p.target === 'wheel' || p.target === 'all'){ profile.wheelSpins = 0; }
+      if(p.target === 'prestige' || p.target === 'all'){ profile.pp = 0; }
+      if(p.target === 'skins' || p.target === 'all'){ profile.skins = {}; profile.skin = 'default'; applySkin(); renderSkin(); updateMenuBadges(); }
+      if(p.target === 'xmas' || p.target === 'all'){ if(xmasOn()) toggleXmas(); }
+      if(p.target === 'patience' || p.target === 'all'){ if(S.running){ S.patience = 1; updatePatience(); } }
+    }
+  }
+  function applyPromoCode(raw){
+    const code = String(raw || '').toUpperCase().replace(/[^A-Z0-9_-]/g, '').slice(0, 24);
+    const p = promoById(code);
+    if(!p || !p.enabled){ showPromoMessage({ title:'Промокод', text:'', scope:'toast', sound:'none' }, false); return false; }
+    const now = Date.now();
+    if((p.maxUses > 0 && p.uses >= p.maxUses) || (p.cooldown > 0 && now - p.lastUsed < p.cooldown * 1000)){
+      showPromoMessage(p, false);
+      return false;
+    }
+    applyPromoEffect(p);
+    p.uses++;
+    p.lastUsed = now;
+    saveProfile();
+    renderAdmin();
+    renderPromoScreen();
+    showPromoMessage(p, true);
+    return true;
+  }
+  function savePromoCode(){
+    const code = String(el.promoCode.value || '').toUpperCase().replace(/[^A-Z0-9_-]/g, '').slice(0, 24);
+    if(!code){ showToast('Промокод', 'Введите код'); return false; }
+    const raw = {
+      code:code, title:el.promoTitle.value, action:el.promoAction.value, target:el.promoTarget.value,
+      amount:el.promoAmount.value, duration:el.promoDuration.value, uses:0,
+      maxUses:el.promoUses.value, scope:el.promoScope.value, sound:el.promoSound.value,
+      text:el.promoText.value, enabled:true
+    };
+    const next = normalizePromo(raw);
+    if(!next) return false;
+    const old = promoById(code);
+    if(old){ next.uses = old.uses; next.lastUsed = old.lastUsed; profile.promos[profile.promos.indexOf(old)] = next; }
+    else profile.promos.push(next);
+    saveProfile();
+    renderAdmin();
+    renderPromoScreen();
+    el.promoCode.value = '';
+    el.promoTitle.value = '';
+    el.promoText.value = '';
+    showToast('Промокод', code + ' создан');
+    return true;
+  }
+  function removePromoCode(code){
+    const p = promoById(code);
+    if(!p) return false;
+    profile.promos.splice(profile.promos.indexOf(p), 1);
+    saveProfile();
+    renderAdmin();
+    renderPromoScreen();
+    return true;
+  }
+  function renderAdminPromos(){
+    if(!el.promoAdminList) return;
+    if(el.admPromo) el.admPromo.textContent = String(profile.promos.length);
+    if(!profile.promos.length){ el.promoAdminList.innerHTML = '<div class="promoItem"><div class="pt"><b>Кодов нет</b><span>Создайте первый промокод</span></div></div>'; return; }
+    let html = '';
+    for(let i = 0; i < profile.promos.length; i++){
+      const p = profile.promos[i];
+      html += '<div class="promoItem"><div class="pt"><b>' + promoEsc(p.code) + '</b><span>' + promoEsc(p.title) + ' · ' + promoEsc(promoLabel(p)) + '</span></div>' +
+        '<button class="admBtn" type="button" data-promo-use="' + promoEsc(p.code) + '">Тест</button>' +
+        '<button class="admBtn danger" type="button" data-promo-del="' + promoEsc(p.code) + '">×</button></div>';
+    }
+    el.promoAdminList.innerHTML = html;
+  }
+  function renderPromoScreen(){
+    if(el.promoNav) el.promoNav.textContent = String(profile.promos.length);
+    if(!el.promoList) return;
+    if(!profile.promos.length){ el.promoList.innerHTML = '<div class="promoItem"><div class="pt"><b>Промокодов нет</b><span>Их можно создать в админ-панели</span></div></div>'; return; }
+    let html = '';
+    for(let i = 0; i < profile.promos.length; i++){
+      const p = profile.promos[i];
+      html += '<div class="promoItem"><div class="pt"><b>' + promoEsc(p.code) + '</b><span>' + promoEsc(p.title) + ' · ' + promoEsc(promoLabel(p)) + '</span></div></div>';
+    }
+    el.promoList.innerHTML = html;
+  }
+  function openPromo(){
+    renderPromoScreen();
+    hideAllScreens();
+    el.promoScreen.classList.remove('hidden');
   }
   function clearHint(){
     if(S.hintTimer){ clearTimeout(S.hintTimer); S.hintTimer = 0; }
@@ -5065,8 +5358,9 @@ html.is-standalone #bmGate{display:none!important}
   }
   function scareMarkup(def, n){
     const style = '--skin:' + def.c[0] + ';--dark:' + def.c[1] + ';--glow:' + def.c[2];
+    const hat = xmasOn() ? '<i class="jsSantaHat"></i>' : '';
     return '<div class="jsStatic"></div>' +
-      '<div class="jsFace"><div class="jsBody s' + n + '" style="' + style + '">' + jsEyes(def.e) + jsMouth(def.m) + jsExtra(def.x) + '</div></div>' +
+      '<div class="jsFace"><div class="jsBody s' + n + '" style="' + style + '">' + jsEyes(def.e) + jsMouth(def.m) + jsExtra(def.x) + '</div>' + hat + '</div>' +
       '<div class="jsGlitch g1"></div><div class="jsGlitch g2"></div>' +
       '<div class="jsDrips">' + '<i></i>'.repeat(9) + '</div>' +
       '<div class="jsText">' + def.t + '</div>';
@@ -5150,8 +5444,8 @@ html.is-standalone #bmGate{display:none!important}
     const mult = 1 + cover * .25 + Math.min(variety, 6) * .05 + Math.min(walls, 24) * .005;
     const floors = Math.max(0, Math.floor((profile.build && profile.build.floors) || 0));
     const floorMult = 1 + Math.min(floors, 10) * .15;
-    const income = Math.min(120, Math.round(base * mult * BUILD_PAYOUT * floorMult));
-    return { base:base, walls:walls, furnished:furnished, sheltered:sheltered, cover:cover, variety:variety, level:level, mult:mult, floors:floors, floorMult:floorMult, income:income };
+    const income = Math.min(BUILD_MAX_INCOME, Math.round(base * mult * BUILD_PAYOUT * floorMult));
+    return { base:base, walls:walls, furnished:furnished, sheltered:sheltered, cover:cover, variety:variety, level:level, mult:mult, floors:floors, floorMult:floorMult, income:income, tick:BUILD_TICK };
   }
   function renderBuildTools(){
     if(!el.buildTools) return;
@@ -5174,11 +5468,11 @@ html.is-standalone #bmGate{display:none!important}
       el.buildStats.innerHTML =
         '<div><span>Уровень заведения</span><b>' + st.level + '</b></div>' +
         '<div><span>Этаж</span><b>' + st.floors + '</b></div>' +
-        '<div><span>Доход / 10 сек</span><b>+' + st.income + '</b></div>' +
+        '<div><span>Доход / 2 мин</span><b>+' + st.income + '</b></div>' +
         '<div><span>Мебель под стен</span><b>' + st.sheltered + '/' + st.furnished + '</b></div>' +
         '<div><span>Разнообразие</span><b>' + st.variety + '/' + (Object.keys(BUILD_DEFS).length - 1) + '</b></div>';
     }
-    if(el.buildNav) el.buildNav.textContent = '+' + st.income + '/10сек';
+    if(el.buildNav) el.buildNav.textContent = '+' + st.income + '/2мин';
     el.buildGrid.innerHTML = '';
     for(let i = 0; i < BUILD_N; i++){
       const t = profile.build.cells[i] || '';
@@ -5250,7 +5544,7 @@ html.is-standalone #bmGate{display:none!important}
       const cap = offline ? BUILD_OFFLINE_MAX : 360;
       const ticks = Math.min(cap, rawTicks);
       const rate = offline ? st.income * BUILD_OFFLINE : st.income;
-      const gain = Math.max(1, Math.round(rate * ticks));
+      const gain = Math.min(BUILD_MAX_INCOME, Math.max(1, Math.round(rate * ticks)));
       profile.buildAt = rawTicks > cap ? now : profile.buildAt + ticks * BUILD_TICK;
       profile.coins += gain;
       if(profile.stats && typeof profile.stats.earned === 'number') profile.stats.earned += gain;
@@ -5282,7 +5576,7 @@ html.is-standalone #bmGate{display:none!important}
 
   /* ---------------- menu screens: campaign / kitchen / daily ---------------- */
   let campIdx = 0;
-  const SCREEN_KEYS = ['startScreen','overScreen','pauseScreen','perkScreen','campaignScreen','kitchenScreen','dailyScreen','settingsScreen','achScreen','adminScreen','campResultScreen','sandboxScreen','sandboxSettingsScreen','skinScreen','prestigeScreen','wheelScreen','buildScreen'];
+  const SCREEN_KEYS = ['startScreen','overScreen','pauseScreen','perkScreen','campaignScreen','kitchenScreen','dailyScreen','settingsScreen','achScreen','adminScreen','promoScreen','campResultScreen','sandboxScreen','sandboxSettingsScreen','skinScreen','prestigeScreen','wheelScreen','buildScreen'];
 
   function hideAllScreens(){
     for(let i = 0; i < SCREEN_KEYS.length; i++) el[SCREEN_KEYS[i]].classList.add('hidden');
@@ -5958,6 +6252,7 @@ html.is-standalone #bmGate{display:none!important}
       el.skinPreview.style.setProperty('--ava1', eqSkin.bg[0]);
       el.skinPreview.style.setProperty('--ava2', eqSkin.bg[1]);
       el.skinPreview.style.setProperty('--shirt', eqSkin.shirt[0]);
+      el.skinPreview.dataset.skin = eqSkin.id;
       if(el.skinPreviewName) el.skinPreviewName.textContent = eqSkin.name;
     }
     el.skinCoins.textContent = profile.coins.toLocaleString('ru-RU');
@@ -6288,7 +6583,7 @@ html.is-standalone #bmGate{display:none!important}
   function throwSnow(){
     if(!xmasOn() || !S.running || S.paused || S.busy || S.busyPerk) return false;
     if(!isTraining()) S.patience = Math.max(.002, S.patience - .012);
-    const btn = document.querySelector('#palette .ing[data-ing="snow"]');
+    const btn = document.getElementById('snowBtn');
     const a = btn ? btn.getBoundingClientRect() : null;
     const b = el.avatar ? el.avatar.getBoundingClientRect() : null;
     const vw = window.innerWidth || document.documentElement.clientWidth || 320;
@@ -6888,6 +7183,22 @@ html.is-standalone #bmGate{display:none!important}
     renderAdmin(); renderDaily(); updateMenuBadges();
     showToast('Админ', 'Серия награды сброшена');
   });
+  el.promoSaveBtn.addEventListener('click', savePromoCode);
+  el.promoClearBtn.addEventListener('click', () => {
+    profile.promos = []; saveProfile(); renderAdmin(); renderPromoScreen();
+    showToast('Промокод', 'Все коды удалены');
+  });
+  el.promoAdminList.addEventListener('click', (e) => {
+    const del = e.target.closest('[data-promo-del]');
+    if(del){ removePromoCode(del.dataset.promoDel); return; }
+    const use = e.target.closest('[data-promo-use]');
+    if(use) applyPromoCode(use.dataset.promoUse);
+  });
+  el.promoBtnNav.addEventListener('click', openPromo);
+  el.promoBackBtn.addEventListener('click', showMenu);
+  el.promoApplyBtn.addEventListener('click', () => applyPromoCode(el.promoInput.value));
+  el.promoInput.addEventListener('keydown', (e) => { if(e.key === 'Enter'){ e.preventDefault(); applyPromoCode(el.promoInput.value); } });
+  el.promoOverlayClose.addEventListener('click', () => el.promoOverlay.classList.remove('show'));
   el.campaignBtn.addEventListener('click', openCampaign);
   el.campBackBtn.addEventListener('click', showMenu);
   el.kitchenBtn.addEventListener('click', openKitchen);
@@ -6932,9 +7243,24 @@ html.is-standalone #bmGate{display:none!important}
     wheel:() => ({ day:profile.wheelSpinDay, spins:profile.wheelSpins, left:wheelLeft() }),
     prestige:() => ({ day:profile.prestigeDay, today:profile.prestigeToday, left:prestigeLeft() }),
     build:() => ({ floors:profile.build.floors, coins:profile.coins, buildAt:profile.buildAt, stats:buildStats() }),
-    throwSnow:throwSnow, snowButton:() => Array.prototype.some.call(document.querySelectorAll('#palette .ing'), b => b.dataset.ing === SNOW_ID),
+    throwSnow:throwSnow, snowButton:() => !!document.getElementById('snowBtn') && !Array.prototype.some.call(document.querySelectorAll('#palette .ing'), b => b.dataset.ing === SNOW_ID),
     patience:() => S.patience,
     grantBuild:grantBuildIncome, buyFloor:buyBuildFloor, spin:spinWheel
+  };
+  window.__bmPromo = {
+    list:() => profile.promos.map((p) => Object.assign({}, p)),
+    create:(cfg) => {
+      const next = normalizePromo(Object.assign({ uses:0, maxUses:0, lastUsed:0, enabled:true }, cfg));
+      if(!next) return false;
+      const old = promoById(next.code);
+      if(old){ next.uses = old.uses; next.lastUsed = old.lastUsed; profile.promos[profile.promos.indexOf(old)] = next; }
+      else profile.promos.push(next);
+      saveProfile(); renderAdmin(); renderPromoScreen();
+      return next.code;
+    },
+    apply:applyPromoCode,
+    remove:removePromoCode,
+    overlay:() => el.promoOverlay.classList.contains('show') ? el.promoOverlayText.textContent : ''
   };
   if(el.sbCfgOpen) el.sbCfgOpen.addEventListener('click', openSandboxSettings);
   if(el.sbCfgBack) el.sbCfgBack.addEventListener('click', closeSandboxSettings);
@@ -6996,6 +7322,7 @@ html.is-standalone #bmGate{display:none!important}
   buildModes();
   initPalette();
   renderPalette();
+  if(el.snowBtn) el.snowBtn.addEventListener('pointerdown', (ev) => { ev.preventDefault(); throwSnow(); });
   applyOpt();
   applyXmas();
   grantBuildIncome();
@@ -7012,7 +7339,7 @@ html.is-standalone #bmGate{display:none!important}
   setTimeout(relayout, 400);
   setTimeout(openDailyOffer, 700);
   resetLayers();
-  try{ const __bt = $('buildTag'); if(__bt) __bt.textContent = 'сборка r53 · 25.11.2026'; }catch(e){}
+  try{ const __bt = $('buildTag'); if(__bt) __bt.textContent = 'сборка r55 · 25.11.2026'; }catch(e){}
 })();
 </script>
 
