@@ -479,31 +479,6 @@
   .setNote{padding:0 10px 8px;font-size:9px;font-weight:700;line-height:1.35;color:#8fb8d8}
   .setNote.hidden{display:none}
   .xmasBadge{display:inline-block;margin-left:5px;padding:1px 5px;border-radius:6px;background:rgba(80,190,120,.18);color:#a8f0c0;font-size:8px;font-weight:900}
-  .buildStats{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;width:100%;max-width:360px}
-  .buildStats>div{min-width:78px;padding:8px 9px;border-radius:11px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09)}
-  .buildStats span{display:block;font-size:9px;font-weight:800;color:#a08a74;letter-spacing:.04em}
-  .buildStats b{display:block;margin-top:2px;font-size:15px;font-weight:950;color:#ffd884;font-variant-numeric:tabular-nums}
-  .buildTools{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;width:100%;max-width:360px}
-  .buildTool{display:flex;flex-direction:column;align-items:center;gap:1px;padding:7px 3px 6px;border-radius:11px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#f7efe4;font:inherit;cursor:pointer}
-  .buildTool>span{display:grid;place-items:center;width:22px;height:22px;border-radius:6px;background:rgba(255,182,61,.18);color:#ffd884;font-size:12px;font-weight:950}
-  .buildTool b{font-size:9px;font-weight:850;white-space:nowrap}
-  .buildTool small{font-size:8px;font-weight:800;color:#cbb6a0}
-  .buildTool.on{border-color:#ffb63d;background:rgba(255,160,50,.18);box-shadow:0 0 14px rgba(255,150,50,.28)}
-  .buildTool:active{transform:scale(.96)}
-  .buildGrid{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;width:100%;max-width:346px;padding:7px;border-radius:14px;background:linear-gradient(180deg,rgba(0,0,0,.42),rgba(0,0,0,.22));border:1px solid rgba(255,255,255,.1)}
-  .buildCell{aspect-ratio:1;display:grid;place-items:center;border-radius:6px;border:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.045);color:rgba(255,255,255,.42);font-size:10px;font-weight:900;cursor:pointer;user-select:none}
-  .buildCell:active{transform:scale(.9)}
-  .buildCell[data-t="wall"]{background:linear-gradient(145deg,#9a7050,#5a3b28);border-color:#b78b64;color:#ffe0b8}
-  .buildCell[data-t="table"]{background:linear-gradient(145deg,#b7793f,#7a4a22);border-color:#d59a5b;color:#fff0d5}
-  .buildCell[data-t="grill"]{background:linear-gradient(145deg,#5d6469,#2b3034);border-color:#9aa4aa;color:#ffd08a}
-  .buildCell[data-t="sofa"]{background:linear-gradient(145deg,#a33f4a,#62232d);border-color:#d76872;color:#ffe1e3}
-  .buildCell[data-t="plant"]{background:linear-gradient(145deg,#3d8b54,#205532);border-color:#69c17f;color:#e0ffe7}
-  .buildCell[data-t="lamp"]{background:linear-gradient(145deg,#c6a34a,#7c6523);border-color:#f2d675;color:#fff9d8}
-  .buildCell[data-t="register"]{background:linear-gradient(145deg,#4f7fa6,#26445e);border-color:#82b6d9;color:#e6f6ff}
-  .buildNote{max-width:350px;font-size:10px;font-weight:700;line-height:1.35;color:#a08a74}
-  .buildLive{min-height:14px;font-size:11px;font-weight:850;color:#9bdc9b}
-  .buildLive.pop{animation:buildPop .5s ease-out}
-  @keyframes buildPop{0%{transform:scale(1.35);color:#fff}100%{transform:scale(1);color:#9bdc9b}}
   .jumpscare{position:fixed;inset:0;z-index:2147484000;display:grid;place-items:center;overflow:hidden;background:#050000;pointer-events:none}
   .jumpscare.hidden{display:none}
   .jumpscare.show{animation:jsBg 1.18s steps(1) forwards}
@@ -664,7 +639,6 @@
   .optHard .heroCanvas, .optHard .heroWrap::before, .optHard .heroWrap::after,
   .optHard .puff, .optHard .float, .optHard .scA::after,
   .optHard .scFlies, .optHard .scTrash i{will-change:transform,opacity}
-  .buildTag{font-size:9px;font-weight:700;letter-spacing:.08em;color:#6f5d4c;opacity:.7;margin-top:2px}
   .scores ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
   .scores li{
     display:flex;align-items:center;gap:8px;
@@ -1657,7 +1631,7 @@ html.is-standalone #bmGate{display:none!important}
       <button class="navBtn" id="prestigeBtnNav" type="button"><b>Перерождение</b><span id="prestigeNav">0 очк.</span></button>
       <button class="navBtn" id="wheelBtnNav" type="button"><b>Рулетка</b><span id="wheelNav">бесплатно</span><i class="dotBadge" id="wheelDot" hidden></i></button>
       <button class="navBtn" id="sandboxBtn" type="button"><b>Песочница</b><span id="sandboxCount">0 рец.</span></button>
-      <button class="navBtn" id="buildBtn" type="button"><b>Стройка</b><span id="buildNav">+0/2мин</span></button>
+      <button class="navBtn" id="petsBtnNav" type="button"><b>Питомцы</b><span id="petsNav">0/6</span><i class="dotBadge" id="petsDot" hidden></i></button>
       <button class="navBtn" id="promoBtnNav" type="button"><b>Промокоды</b><span id="promoNav">0</span></button>
     </div>
     <div class="achRow" id="achRow"></div>
@@ -1666,7 +1640,6 @@ html.is-standalone #bmGate{display:none!important}
       <div class="scoresTitle">Лучшие смены</div>
       <ol id="startScores"></ol>
     </div>
-    <div class="buildTag" id="buildTag"></div>
   </div>
 
   <div class="screen hidden" id="overScreen">
@@ -1726,16 +1699,17 @@ html.is-standalone #bmGate{display:none!important}
     <button class="cta ghost" id="kitchenBackBtn" type="button">Назад</button>
   </div>
 
-  <div class="screen hidden" id="buildScreen">
-    <div class="title">Стройка<small>свой зал · пассивный доход</small></div>
-    <div class="coinLine">Монеты: <b id="buildCoins">0</b></div>
-    <div class="buildStats" id="buildStats"></div>
-    <div class="buildTools" id="buildTools"></div>
-    <div class="buildGrid" id="buildGrid"></div>
-    <div class="buildLive" id="buildLive"></div>
-    <div class="buildNote">Стены и мебель стоят монет. Мебель под защитой стен приносит больше — доход начисляется каждые 10 секунд.</div>
-    <button class="cta ghost" id="buyFloorBtn" type="button">Новый этаж · 50 000</button>
-    <button class="cta ghost" id="buildBackBtn" type="button">Назад</button>
+  <div class="screen hidden" id="petsScreen">
+    <div class="title">Питомцы<small>бургеры и коты · баффы</small></div>
+    <div class="bestRow" id="petActive">Питомец не выбран</div>
+    <div class="bestRow" style="margin-top:-4px">Кейсы питомцев: <b id="petCaseCount">0</b></div>
+    <div class="shopRow" style="max-width:360px;margin:6px 0 8px">
+      <button class="shopBtn" type="button" id="buyPetCaseBtn"><span>Купить кейс питомцев</span><b>1500</b></button>
+      <button class="shopBtn" type="button" id="openPetCaseBtn"><span>Открыть кейс</span><b id="openPetCaseBtnB">1</b></button>
+    </div>
+    <div class="kitchenList" id="petList" style="max-width:360px"></div>
+    <div class="prNote" style="max-width:360px">Питомцев можно найти в секретных пасхалках, купить в магазине или получить из кейса. Дубликат даёт компенсацию 250 монет.</div>
+    <button class="cta ghost" id="petsBackBtn" type="button">Назад</button>
   </div>
 
   <div class="screen hidden" id="wheelScreen">
@@ -1756,7 +1730,7 @@ html.is-standalone #bmGate{display:none!important}
     <div class="title">Перерождение<small>начни заново · стань сильнее</small></div>
     <div class="prestigeCard">
       <div class="prRow"><span>Перерождений</span><b id="prestigeCur">0</b></div>
-      <div class="prRow"><span>Очки престижа</span><b id="prestigePts">0</b></div>
+      <div class="prRow"><span>Очки престижа</span><b id="prestigePts">0</b><span style="opacity:.6;font-size:12px">/500</span></div>
       <div class="prBonus">
         <div><i>Монеты</i><b id="prestigeCoin">+0%</b></div>
         <div><i>Очки</i><b id="prestigeScore">+0%</b></div>
@@ -1910,7 +1884,6 @@ html.is-standalone #bmGate{display:none!important}
             <option value="ach">Достижения</option>
             <option value="campaign">Кампания</option>
             <option value="kitchen">Кухня</option>
-            <option value="build">Стройка</option>
             <option value="daily">Награды</option>
             <option value="streak">Серия наград</option>
             <option value="wheel">Рулетка</option>
@@ -1918,6 +1891,7 @@ html.is-standalone #bmGate{display:none!important}
             <option value="skins">Скины</option>
             <option value="xmas">Новогодний режим</option>
             <option value="patience">Терпение</option>
+            <option value="petcase">Кейсы питомцев</option>
             <option value="all">Всё</option>
           </select>
           <input id="promoAmount" type="number" inputmode="numeric" placeholder="Количество">
@@ -1989,6 +1963,15 @@ html.is-standalone #bmGate{display:none!important}
         <button class="switch" id="setXmas" type="button" role="switch" aria-checked="false"><i></i></button>
       </div>
       <div class="setNote hidden" id="xmasCredit">Музыка: Jingle Bells (Calm) — Kevin MacLeod, CC BY 3.0 · колокольчики: The Midnite Wolf, CC0</div>
+      <div class="setRow">
+        <div class="setInfo"><b>Трек</b><span>Фоновая музыка</span></div>
+        <select class="sbSel" id="musicTrackSel" style="max-width:190px">
+          <option value="default">Стандартный</option>
+          <option value="newyear">NEW YEAR — nMisaki</option>
+          <option value="xmas">Jingle Bells</option>
+        </select>
+      </div>
+      <div class="setNote" id="musicTrackNote">Трек NEW YEAR играет из файла <code>Xmas/new-year.mp3</code> если он есть в игре.</div>
       <div class="setRow">
         <div class="setInfo"><b>Вибрация</b><span>Отклик на действия</span></div>
         <button class="switch on" id="setVibro" type="button" role="switch" aria-checked="true"><i></i></button>
@@ -2105,23 +2088,11 @@ html.is-standalone #bmGate{display:none!important}
   };
   function isTraining(){ return !!(MODES[S.mode] && MODES[S.mode].training); }
 
-  const BUILD_W = 8, BUILD_H = 7, BUILD_N = BUILD_W * BUILD_H, BUILD_TICK = 120000;
-  const BUILD_PAYOUT = .12, BUILD_OFFLINE = .35, BUILD_OFFLINE_MAX = 720, BUILD_FLOOR_COST = 50000, BUILD_MAX_INCOME = 50000;
   const WHEEL_DAY_LIMIT = 50, PRESTIGE_DAY_LIMIT = 3;
   const PROMO_ACTIONS = ['give','reset','text','toggle'];
-  const PROMO_TARGETS = ['coins','score','ach','campaign','kitchen','build','daily','streak','wheel','prestige','skins','xmas','patience','all'];
+  const PROMO_TARGETS = ['coins','score','ach','campaign','kitchen','daily','streak','wheel','prestige','skins','xmas','patience','petcase','all'];
   const PROMO_SCOPES = ['overlay','toast','float','silent'];
   const SCARE_COUNT = 25;
-  const BUILD_DEFS = {
-    wall:{ label:'Стена', short:'С', cost:40, inc:1 },
-    table:{ label:'Стол', short:'Т', cost:120, inc:2 },
-    grill:{ label:'Гриль', short:'Г', cost:220, inc:5 },
-    sofa:{ label:'Диван', short:'Д', cost:170, inc:3 },
-    plant:{ label:'Растение', short:'Р', cost:90, inc:1 },
-    lamp:{ label:'Лампа', short:'Л', cost:80, inc:1 },
-    register:{ label:'Касса', short:'К', cost:320, inc:7 },
-    erase:{ label:'Снести', short:'×', cost:0, inc:0 }
-  };
 
   const SIDES = ['fries', 'cola'];
   const CLIENT_TYPES = [
@@ -2494,9 +2465,7 @@ html.is-standalone #bmGate{display:none!important}
     sbName:$('sbName'), sbStack:$('sbStack'), sbPalette:$('sbPalette'), sbPreview:$('sbPreview'),
     sbUndo:$('sbUndo'), sbClear:$('sbClear'), sbSave:$('sbSave'), sbPlay:$('sbPlay'), sbFree:$('sbFree'),
     recipeList:$('recipeList'),
-    buildBtn:$('buildBtn'), buildNav:$('buildNav'), buildScreen:$('buildScreen'), buildGrid:$('buildGrid'),
-    buildTools:$('buildTools'), buildCoins:$('buildCoins'), buildStats:$('buildStats'),
-    buildLive:$('buildLive'), buildBackBtn:$('buildBackBtn'), buyFloorBtn:$('buyFloorBtn'),
+    petsScreen:$('petsScreen'), petList:$('petList'), petActive:$('petActive'), petCaseCount:$('petCaseCount'), buyPetCaseBtn:$('buyPetCaseBtn'), openPetCaseBtn:$('openPetCaseBtn'), openPetCaseBtnB:$('openPetCaseBtnB'), petsBackBtn:$('petsBackBtn'), petsBtnNav:$('petsBtnNav'), petsNav:$('petsNav'), petsDot:$('petsDot'), musicTrackSel:$('musicTrackSel'), musicTrackNote:$('musicTrackNote'),
     hardWarn:$('hardWarn'), hardWarnOk:$('hardWarnOk'), jumpscare:$('jumpscare'), scareText:$('scareText')
   };
   const gameEl = $('game');
@@ -2520,7 +2489,8 @@ html.is-standalone #bmGate{display:none!important}
       upg:{}, campaign:{ unlocked:1, stars:{} }, daily:null, bonusDay:'', bonusStreak:0, bonusAt:0, bonusSkip:false,
       sfxVol:1, vibro:true, music:true, opt:false, xmas:false, recipes:[], sbxAdmin:false,
       skins:{}, skin:'default', prestige:0, pp:0, prestigeBurgers:0, prestigeDay:'', prestigeToday:0, wheelDay:'', wheelSpinDay:'', wheelSpins:0, intro:false,
-      stats:{ earned:0, play:0, perfect:0, orders:0 }, hardcoreWarned:false, build:{ cells:[], floors:0 }, buildAt:0, promos:[] };
+      pets:{}, pet:'', petCases:0, petEggs:{}, petShopDay:'', petShopBought:{}, musicTrack:'default',
+      stats:{ earned:0, play:0, perfect:0, orders:0 }, hardcoreWarned:false, promos:[] };
     const p = loadJSON(KEY_PROFILE, null);
     if(p && typeof p === 'object') Object.assign(d, p);
     if(!d.ach || typeof d.ach !== 'object') d.ach = {};
@@ -2551,27 +2521,28 @@ html.is-standalone #bmGate{display:none!important}
     if(!d.skins || typeof d.skins !== 'object') d.skins = {};
     d.skin = (typeof d.skin === 'string' && d.skin) ? d.skin : 'default';
     d.prestige = Math.max(0, Math.floor(d.prestige || 0));
-    d.pp = Math.max(0, Math.floor(d.pp || 0));
+    d.pp = Math.max(0, Math.min(500, Math.floor(d.pp || 0)));
     d.prestigeBurgers = Math.max(0, Math.floor(d.prestigeBurgers || 0));
     d.prestigeDay = typeof d.prestigeDay === 'string' ? d.prestigeDay : '';
     d.prestigeToday = Math.max(0, Math.floor(d.prestigeToday || 0));
     if(typeof d.wheelDay !== 'string') d.wheelDay = '';
     if(typeof d.wheelSpinDay !== 'string') d.wheelSpinDay = '';
     d.wheelSpins = Math.max(0, Math.floor(d.wheelSpins || 0));
+    if(!d.pets || typeof d.pets !== 'object') d.pets = {};
+    const petIds = ['cat_burger','cat_ninja','cat_lucky','burger_dog','golden_cat','cosmo_cat'];
+    for(const pid of petIds){ if(d.pets[pid]) d.pets[pid] = 1; }
+    d.pet = (typeof d.pet === 'string' && d.pets[d.pet]) ? d.pet : '';
+    d.petCases = Math.max(0, Math.floor(d.petCases || 0));
+    if(!d.petEggs || typeof d.petEggs !== 'object') d.petEggs = {};
+    if(!d.petShopBought || typeof d.petShopBought !== 'object') d.petShopBought = {};
+    d.petShopDay = typeof d.petShopDay === 'string' ? d.petShopDay : '';
+    d.musicTrack = (typeof d.musicTrack === 'string' && d.musicTrack) ? d.musicTrack : 'default';
     const today = todayKey();
     if(d.prestigeDay !== today){ d.prestigeDay = today; d.prestigeToday = 0; }
     if(d.wheelSpinDay !== today){ d.wheelSpinDay = today; d.wheelSpins = 0; }
+    if(d.petShopDay !== today){ d.petShopDay = today; d.petShopBought = {}; }
     d.intro = !!d.intro;
     d.hardcoreWarned = d.hardcoreWarned === true;
-    const srcCells = (p && p.build && Array.isArray(p.build.cells)) ? p.build.cells : [];
-    const cells = new Array(BUILD_N);
-    for(let i = 0; i < BUILD_N; i++){
-      const t = srcCells[i];
-      cells[i] = (t && BUILD_DEFS[t] && t !== 'erase') ? t : '';
-    }
-    const floors = Math.max(0, Math.min(99, Math.floor((p && p.build && Number(p.build.floors)) || 0)));
-    d.build = { cells:cells, floors:floors };
-    d.buildAt = Number(d.buildAt) > 0 ? Number(d.buildAt) : Date.now();
     if(!d.stats || typeof d.stats !== 'object') d.stats = { earned:0, play:0, perfect:0, orders:0 };
     return d;
   })();
@@ -2754,7 +2725,7 @@ html.is-standalone #bmGate{display:none!important}
 
   const muted = { v: loadJSON(KEY_MUTED, false) === true || loadJSON(KEY_MUTED, '0') === '1' };
 
-  const xmasAudio = { music:null, bell:null };
+  const xmasAudio = { music:null, bell:null, custom:null, customSrc:'' };
   function xmasOn(){ return profile.xmas === true; }
   function ensureXmasAudio(){
     try{
@@ -2767,18 +2738,57 @@ html.is-standalone #bmGate{display:none!important}
     }catch(e){ xmasAudio.music = null; xmasAudio.bell = null; }
     return xmasAudio;
   }
+  const MUSIC_TRACKS = {
+    default:{ name:'Стандартный', type:'synth' },
+    newyear:{ name:'NEW YEAR — nMisaki', type:'file', src:'./Xmas/new-year.mp3', credit:'NEW YEAR — nMisaki (альбом: чем я занимаюсь) · добавь файл Xmas/new-year.mp3 в игру' },
+    xmas:{ name:'Jingle Bells', type:'file', src:'./Xmas/jingle-bells-calm.mp3', credit:'Jingle Bells (Calm) — Kevin MacLeod, CC BY 3.0' }
+  };
+  function currentMusicTrack(){ const k = profile.musicTrack || 'default'; return MUSIC_TRACKS[k] ? k : 'default'; }
+  function trackUsesFile(){ const t=MUSIC_TRACKS[currentMusicTrack()]; return !!(t && t.type==='file'); }
+  function ensureCustomMusic(){
+    const t=MUSIC_TRACKS[currentMusicTrack()];
+    if(!t || t.type!=='file') return null;
+    try{
+      if(!xmasAudio.custom || xmasAudio.customSrc!==t.src){
+        if(xmasAudio.custom){ try{ xmasAudio.custom.pause(); }catch(e){} }
+        xmasAudio.custom = new Audio(t.src);
+        xmasAudio.custom.loop = true;
+        xmasAudio.custom.preload = 'auto';
+        xmasAudio.customSrc = t.src;
+        xmasAudio.custom.addEventListener('error', ()=>{ if(el.musicTrackNote) el.musicTrackNote.textContent = 'Файл трека не найден: '+t.src; });
+      }
+      return xmasAudio.custom;
+    }catch(e){ return null; }
+  }
+  function stopFileMusic(){ try{ if(xmasAudio.custom) xmasAudio.custom.pause(); }catch(e){} try{ if(xmasAudio.music && !xmasOn()) xmasAudio.music.pause(); }catch(e){} }
   function xmasMusicVolume(){ return musicEnabled() ? musicLevel() : 0; }
-  function syncXmasAudio(){
+  function syncMusicTracks(){
     try{
       const a = ensureXmasAudio();
-      if(!a.music) return;
-      a.music.volume = xmasMusicVolume();
-      if(xmasOn() && musicEnabled() && !muted.v && !document.hidden){
-        if(a.music.paused){ const p = a.music.play(); if(p && p.catch) p.catch(()=>{}); }
-      } else if(!a.music.paused) a.music.pause();
+      const fileTrack = trackUsesFile() ? currentMusicTrack() : (xmasOn() ? 'xmas' : '');
+      // Xmas bell/music legacy: if xmas mode on and track not custom file different from jingle, prefer selected track; else jingle
+      const wantCustom = trackUsesFile();
+      if(wantCustom){
+        const cm = ensureCustomMusic();
+        if(a.music && !a.music.paused && xmasAudio.customSrc !== './Xmas/jingle-bells-calm.mp3') a.music.pause();
+        if(cm){
+          cm.volume = xmasMusicVolume();
+          if(musicEnabled() && !muted.v && !document.hidden){ if(cm.paused){ const p=cm.play(); if(p&&p.catch) p.catch(()=>{}); } }
+          else if(!cm.paused) cm.pause();
+        }
+      } else {
+        stopFileMusic();
+      }
+      if(!wantCustom && a.music){
+        a.music.volume = xmasMusicVolume();
+        if(xmasOn() && musicEnabled() && !muted.v && !document.hidden){
+          if(a.music.paused){ const p = a.music.play(); if(p && p.catch) p.catch(()=>{}); }
+        } else if(!a.music.paused) a.music.pause();
+      } else if(a.music && !xmasOn() && xmasAudio.customSrc !== './Xmas/jingle-bells-calm.mp3' && !a.music.paused){ a.music.pause(); }
     }catch(e){}
   }
-  function stopXmasMusic(){ try{ if(xmasAudio.music) xmasAudio.music.pause(); }catch(e){} }
+  function syncXmasAudio(){ syncMusicTracks(); }
+  function stopXmasMusic(){ try{ if(xmasAudio.music) xmasAudio.music.pause(); }catch(e){} stopFileMusic(); }
   function xmasBell(){
     if(!xmasOn() || muted.v || sfxGain() <= .0005) return;
     try{
@@ -3060,7 +3070,7 @@ html.is-standalone #bmGate{display:none!important}
   }
   function startMusic(force){
     if(!musicEnabled() || muted.v) return;
-    if(xmasOn()){ syncXmasAudio(); return; }
+    if(trackUsesFile() || xmasOn()){ stopMusic(); syncMusicTracks(); return; }
     initAudio();
     if(!ac) return;
     if(ac.state === 'suspended'){ try{ ac.resume(); }catch(e){} }
@@ -3088,7 +3098,7 @@ html.is-standalone #bmGate{display:none!important}
     }
   }
   function musicWatchdog(){
-    if(xmasOn()){ syncXmasAudio(); return; }
+    if(trackUsesFile() || xmasOn()){ syncMusicTracks(); return; }
     if(!musicEnabled() || muted.v || !ac || document.hidden) return;
     if(!musicAlive()) startMusic(true);
   }
@@ -4404,6 +4414,93 @@ html.is-standalone #bmGate{display:none!important}
   ];
   function skinById(id){ return SKINS.filter(s => s.id === id)[0] || SKINS[0]; }
   function skinOwned(id){ const s = skinById(id); return s.price === 0 || !!profile.skins[id]; }
+
+  const PETS = [
+    { id:'cat_burger', name:'Кот-Бургер', icon:'🐱🍔', rarity:'rare', desc:'+8% монет за заказ', buff:{coin:0.08} },
+    { id:'cat_ninja',  name:'Ниндзя-кот',  icon:'🐱‍👤', rarity:'epic', desc:'+10% очков и +5% комбо', buff:{score:0.10, combo:0.05} },
+    { id:'cat_lucky',  name:'Счастливый кот', icon:'🍀🐱', rarity:'rare', desc:'+6% шанс/бонус к монетам и +1 подсказка в старте', buff:{coin:0.06, starterHint:1} },
+    { id:'burger_dog', name:'Бургер-пёс',   icon:'🐶🍔', rarity:'rare', desc:'+1 жизнь к запасу', buff:{life:1} },
+    { id:'golden_cat', name:'Золотой кот',  icon:'😺✨', rarity:'legend', desc:'+15% монет и +10% очков', buff:{coin:0.15, score:0.10} },
+    { id:'cosmo_cat',  name:'Космо-кот',    icon:'🐱🚀', rarity:'epic', desc:'Медленнее терпение клиентов', buff:{patience:0.10} }
+  ];
+  function petById(id){ return PETS.filter(p=>p.id===id)[0] || null; }
+  function petOwned(id){ return !!profile.pets[id]; }
+  function activePet(){ return petById(profile.pet); }
+  function petBuff(key){ const p=activePet(); return p && p.buff && p.buff[key] ? p.buff[key] : 0; }
+  function petRarityName(r){ return ({rare:'Редкий',epic:'Эпик',legend:'Легенда'})[r] || 'Обычный'; }
+  function petRarityColor(r){ return ({rare:'#5bc0eb',epic:'#b07cf0',legend:'#ffcf5a'})[r] || '#c8b4a0'; }
+  function ensurePetShop(){
+    const k=todayKey();
+    if(profile.petShopDay!==k){ profile.petShopDay=k; profile.petShopBought={}; }
+  }
+  function rollPetCase(){
+    const pool=[];
+    for(const p of PETS){
+      let w = p.rarity==='legend'?8:p.rarity==='epic'?18:30;
+      if(petOwned(p.id)) w = Math.max(3, Math.floor(w/3));
+      for(let i=0;i<w;i++) pool.push(p.id);
+    }
+    return pool[Math.floor(Math.random()*pool.length)] || PETS[0].id;
+  }
+  function grantPet(id, src){
+    const p=petById(id); if(!p) return;
+    const was=petOwned(id);
+    profile.pets[id]=1;
+    if(!profile.pet) profile.pet=id;
+    saveProfile();
+    if(was){ profile.coins += 250; saveProfile(); showToast('Питомец уже есть', p.name+' · компенсация +250 монет'); sfxCoin(); }
+    else { showToast('Новый питомец!', p.icon+' '+p.name+(src?' · '+src:'')); tone(660,.1,'triangle',.05); tone(990,.14,'triangle',.045,.08); }
+    updateHUD(); updateMenuBadges(); renderPets();
+  }
+  function openPetCase(source){
+    if((profile.petCases||0)<=0){ showToast('Нет кейсов','Найди в пасхалках или купи в магазине'); tone(170,.14,'sawtooth',.04,0,110); return; }
+    profile.petCases--;
+    const id=rollPetCase();
+    saveProfile();
+    grantPet(id, source||'кейс питомцев');
+  }
+  function buyPetCase(){
+    const price=1500;
+    if(profile.coins<price){ showToast('Недостаточно монет','Нужно '+price); tone(170,.14,'sawtooth',.04,0,110); return; }
+    profile.coins-=price; profile.petCases=(profile.petCases||0)+1; saveProfile();
+    sfxCoin(); showToast('Кейс питомцев','+1 кейс'); updateHUD(); updateMenuBadges(); renderPets();
+  }
+  function buyPetDirect(id){
+    ensurePetShop();
+    const p=petById(id); if(!p) return;
+    if(petOwned(id)){ profile.pet=id; saveProfile(); renderPets(); showToast('Питомец выбран', p.icon+' '+p.name); return; }
+    const price=p.rarity==='legend'?5000:p.rarity==='epic'?3200:2200;
+    if(profile.petShopBought[id]){ showToast('Уже куплен сегодня','Завтра снова'); return; }
+    if(profile.coins<price){ showToast('Недостаточно монет','Нужно '+price); tone(170,.14,'sawtooth',.04,0,110); return; }
+    profile.coins-=price; profile.petShopBought[id]=1; saveProfile(); grantPet(id,'магазин');
+  }
+  function renderPets(){
+    ensurePetShop();
+    if(!el.petList) return;
+    const active=activePet();
+    if(el.petActive) el.petActive.textContent = active ? (active.icon+' '+active.name+' — '+active.desc) : 'Питомец не выбран';
+    if(el.petCaseCount) el.petCaseCount.textContent = String(profile.petCases||0);
+    if(el.openPetCaseBtnB) el.openPetCaseBtnB.textContent = String(profile.petCases||0);
+    if(el.openPetCaseBtn) el.openPetCaseBtn.classList.toggle('poor', (profile.petCases||0)<=0);
+    if(el.buyPetCaseBtn) el.buyPetCaseBtn.classList.toggle('poor', profile.coins < 1500);
+    let html='';
+    for(const p of PETS){
+      const owned=petOwned(p.id);
+      const sel=profile.pet===p.id;
+      const price=p.rarity==='legend'?5000:p.rarity==='epic'?3200:2200;
+      const boughtToday=!!profile.petShopBought[p.id];
+      html += `<div class="upCard" style="border-color:${sel?petRarityColor(p.rarity):'rgba(255,255,255,.08)'}">
+        <div class="upHead"><div class="upIcon" style="font-size:24px">${p.icon}</div><div class="upMeta"><div class="upName">${p.name} <span style="color:${petRarityColor(p.rarity)};font-size:11px">${petRarityName(p.rarity)}</span></div><div class="upDesc">${p.desc}</div></div></div>
+        <div class="upFoot"><span class="upLvl">${owned?(sel?'Активен':'В коллекции'):'Не найден'}</span>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end">
+          ${owned?`<button class="upBuy ${sel?'maxed':''}" data-pet-eq="${p.id}">${sel?'Выбран':'Выбрать'}</button>`:`<button class="upBuy" data-pet-buy="${p.id}" ${boughtToday?'disabled':''}>${boughtToday?'Завтра':price+' 💰'}</button>`}
+        </div></div></div>`;
+    }
+    el.petList.innerHTML=html;
+    el.petList.querySelectorAll('[data-pet-eq]').forEach(b=>b.addEventListener('click',()=>{ profile.pet=b.dataset.petEq; saveProfile(); renderPets(); updateMenuBadges(); showToast('Питомец выбран', petById(profile.pet).icon+' '+petById(profile.pet).name); }));
+    el.petList.querySelectorAll('[data-pet-buy]').forEach(b=>b.addEventListener('click',()=>buyPetDirect(b.dataset.petBuy)));
+  }
+  function openPets(){ if(S.running) return; hideAllScreens(); renderPets(); el.petsScreen.classList.remove('hidden'); }
   function applySkin(){
     const s = skinById(profile.skin);
     el.avatar.style.setProperty('--skin1', s.skin[0]);
@@ -4415,9 +4512,11 @@ html.is-standalone #bmGate{display:none!important}
 
   function prestigeNeed(){ return 50 * ((profile.prestige || 0) + 1); }
   function prestigeGain(){ return Math.floor(Math.sqrt(Math.max(0, (profile.burgers || 0) - (profile.prestigeBurgers || 0)) / 25)); }
-  function prestigeCoinMult(){ return 1 + (profile.pp || 0) * 0.03; }
-  function prestigeScoreMult(){ return 1 + (profile.pp || 0) * 0.02; }
-  function prestigeLifeBonus(){ return Math.floor((profile.pp || 0) / 4); }
+  function ppCap(){ return 500; }
+  function ppVal(){ return Math.max(0, Math.min(ppCap(), Math.floor(profile.pp || 0))); }
+  function prestigeCoinMult(){ return 1 + ppVal() * 0.03; }
+  function prestigeScoreMult(){ return 1 + ppVal() * 0.02; }
+  function prestigeLifeBonus(){ return Math.floor(ppVal() / 4); }
   function prestigeSpinsToday(){
     const k = todayKey();
     if(profile.prestigeDay !== k){ profile.prestigeDay = k; profile.prestigeToday = 0; }
@@ -4427,7 +4526,7 @@ html.is-standalone #bmGate{display:none!important}
   function prestigeReady(){ const have = (profile.burgers || 0) - (profile.prestigeBurgers || 0); return have >= prestigeNeed() && prestigeGain() > 0 && prestigeLeft() > 0; }
   let prestigeArm = 0;
   function renderPrestige(){
-    const pp = profile.pp || 0;
+    const pp = ppVal();
     el.prestigeCur.textContent = profile.prestige || 0;
     el.prestigePts.textContent = pp;
     el.prestigeCoin.textContent = '+' + Math.round((prestigeCoinMult() - 1) * 100) + '%';
@@ -4435,20 +4534,22 @@ html.is-standalone #bmGate{display:none!important}
     el.prestigeLife.textContent = '+' + prestigeLifeBonus();
     const need = prestigeNeed();
     const have = (profile.burgers || 0) - (profile.prestigeBurgers || 0);
-    const gain = prestigeGain();
+    const gain = Math.max(0, Math.min(ppCap() - pp, prestigeGain()));
     const left = prestigeLeft();
     el.prestigeProg.textContent = have.toLocaleString('ru-RU') + ' / ' + need.toLocaleString('ru-RU') + ' бургеров · ' + left + '/' + PRESTIGE_DAY_LIMIT;
-    const ready = have >= need && gain > 0 && left > 0;
+    const capped = pp >= ppCap();
+    const ready = have >= need && gain > 0 && left > 0 && !capped;
     el.prestigeBtn.disabled = !ready;
-    el.prestigeBtn.textContent = left <= 0 ? 'Лимит перерождений на сегодня' : (ready ? ('Переродиться · +' + gain + ' очк.') : ('Ещё ' + Math.max(0, need - have).toLocaleString('ru-RU') + ' бургеров'));
+    el.prestigeBtn.textContent = capped ? 'Максимум 500 очков престижа' : (left <= 0 ? 'Лимит перерождений на сегодня' : (ready ? ('Переродиться · +' + gain + ' очк.') : ('Ещё ' + Math.max(0, need - have).toLocaleString('ru-RU') + ' бургеров')));
   }
   function doPrestige(){
     if(!prestigeReady()) return;
     const now = Date.now();
     if(now - prestigeArm > 3500){ prestigeArm = now; el.prestigeBtn.textContent = 'Точно? Нажми ещё раз'; return; }
-    const gain = prestigeGain();
+    const gain = Math.max(0, Math.min(ppCap() - ppVal(), prestigeGain()));
+    if(gain <= 0){ showToast('Престиж','Максимум 500 очков'); return; }
     profile.prestigeToday = prestigeSpinsToday() + 1;
-    profile.pp = (profile.pp || 0) + gain;
+    profile.pp = Math.min(ppCap(), ppVal() + gain);
     profile.prestige = (profile.prestige || 0) + 1;
     profile.prestigeBurgers = profile.burgers || 0;
     profile.coins = 0;
@@ -4474,7 +4575,7 @@ html.is-standalone #bmGate{display:none!important}
     { id:'c250',  label:'250 монет',  short:'250',  w:12, kind:'coins', amount:250,  color:'#e07a2f' },
     { id:'c500',  label:'500 монет',  short:'500',  w:9,  kind:'coins', amount:500,  color:'#f2a63b' },
     { id:'c1000', label:'1000 монет', short:'1000', w:5,  kind:'coins', amount:1000, color:'#e07a2f' },
-    { id:'pp2',   label:'+2 очка',    short:'+2★',  w:12, kind:'pp',    amount:2,    color:'#8b5cf0' },
+    { id:'pp1',   label:'+1 очко престижа', short:'+1★', w:12, kind:'pp', amount:1, color:'#8b5cf0' },
     { id:'skin',  label:'Скин',       short:'Скин', w:12, kind:'skin',  amount:0,    color:'#3ddc97' }
   ];
   let wheelRot = 0, wheelSpinning = false, wheelResult = '';
@@ -4540,9 +4641,11 @@ html.is-standalone #bmGate{display:none!important}
       wheelResult = '+' + seg.amount + ' монет';
       sfxCoin(); showToast('Рулетка', '+' + seg.amount + ' монет');
     } else if(seg.kind === 'pp'){
-      profile.pp = (profile.pp || 0) + seg.amount;
-      wheelResult = '+' + seg.amount + ' очка престижа';
-      tone(660, .14, 'triangle', .05); showToast('Рулетка', '+' + seg.amount + ' очков престижа');
+      const before = ppVal();
+      profile.pp = Math.min(ppCap(), before + seg.amount);
+      const got = profile.pp - before;
+      wheelResult = '+' + got + ' очко престижа';
+      tone(660, .14, 'triangle', .05); showToast('Рулетка', got>0 ? ('+' + got + ' очко престижа') : 'Лимит 500 очков престижа');
     } else if(seg.kind === 'skin'){
       const locked = SKINS.filter(s => !skinOwned(s.id));
       if(locked.length){
@@ -4684,8 +4787,8 @@ html.is-standalone #bmGate{display:none!important}
     }
     return d;
   }
-  function comboMult(){ return 1 + Math.min(S.combo, 10) * .12 + upgLevel('combo') * .08; }
-  function lifeCap(){ return MODES[S.mode].lives + 2 + upgLevel('comfort') + prestigeLifeBonus() + (S.bonusLives || 0); }
+  function comboMult(){ return 1 + Math.min(S.combo, 10) * .12 + upgLevel('combo') * .08 + petBuff('combo'); }
+  function lifeCap(){ return MODES[S.mode].lives + 2 + upgLevel('comfort') + prestigeLifeBonus() + (S.bonusLives || 0) + petBuff('life'); }
   function pressure(){
     const lvl = 1 + Math.min(1.5, (S.level - 1) * .08);
     const low = 1 + (1 - clamp(S.patience, 0, 1)) * 1.15;
@@ -5091,11 +5194,11 @@ html.is-standalone #bmGate{display:none!important}
       if(p.target === 'ach' || p.target === 'all'){ if(window.__bmUnlockAch) window.__bmUnlockAch(); renderAch(); }
       if(p.target === 'campaign' || p.target === 'all'){ profile.campaign.unlocked = CAMPAIGN.length; for(let i = 0; i < CAMPAIGN.length; i++) profile.campaign.stars[i] = 3; updateMenuBadges(); }
       if(p.target === 'kitchen' || p.target === 'all'){ for(const k in UPGRADES) profile.upg[k] = UPGRADES[k].max; updateMenuBadges(); }
-      if(p.target === 'build' || p.target === 'all'){ profile.build.floors = Math.min(99, (profile.build.floors || 0) + a); renderBuild(); refreshMenuStats(); }
       if(p.target === 'daily' || p.target === 'all'){ profile.bonusAt = 0; profile.bonusSkip = false; }
       if(p.target === 'streak' || p.target === 'all'){ profile.bonusStreak += a; }
       if(p.target === 'wheel' || p.target === 'all'){ profile.wheelSpins = Math.max(0, profile.wheelSpins - a); }
-      if(p.target === 'prestige' || p.target === 'all'){ profile.pp += a; }
+      if(p.target === 'prestige' || p.target === 'all'){ profile.pp = Math.min(ppCap(), ppVal() + a); }
+      if(p.target === 'petcase' || p.target === 'all'){ profile.petCases = (profile.petCases||0) + a; }
       if(p.target === 'skins' || p.target === 'all'){ for(const s of SKINS) profile.skins[s.id] = true; renderSkin(); updateMenuBadges(); }
       if(p.target === 'xmas' || p.target === 'all'){ if(!xmasOn()) toggleXmas(); }
       if(p.target === 'patience' || p.target === 'all'){ if(S.running){ S.patience = Math.min(1, S.patience + a / 100); updatePatience(); } }
@@ -5107,11 +5210,11 @@ html.is-standalone #bmGate{display:none!important}
       if(p.target === 'ach' || p.target === 'all'){ profile.ach = {}; renderAch(); }
       if(p.target === 'campaign' || p.target === 'all'){ profile.campaign.unlocked = 1; profile.campaign.stars = {}; updateMenuBadges(); }
       if(p.target === 'kitchen' || p.target === 'all'){ for(const k in UPGRADES) profile.upg[k] = 0; updateMenuBadges(); }
-      if(p.target === 'build' || p.target === 'all'){ profile.build.cells = new Array(BUILD_N).fill(''); profile.build.floors = 0; profile.buildAt = Date.now(); renderBuild(); refreshMenuStats(); }
       if(p.target === 'daily' || p.target === 'all'){ profile.daily = null; profile.bonusDay = ''; profile.bonusAt = 0; profile.bonusSkip = false; }
       if(p.target === 'streak' || p.target === 'all'){ profile.bonusStreak = 0; }
       if(p.target === 'wheel' || p.target === 'all'){ profile.wheelSpins = 0; }
       if(p.target === 'prestige' || p.target === 'all'){ profile.pp = 0; }
+      if(p.target === 'petcase' || p.target === 'all'){ profile.petCases = 0; }
       if(p.target === 'skins' || p.target === 'all'){ profile.skins = {}; profile.skin = 'default'; applySkin(); renderSkin(); updateMenuBadges(); }
       if(p.target === 'xmas' || p.target === 'all'){ if(xmasOn()) toggleXmas(); }
       if(p.target === 'patience' || p.target === 'all'){ if(S.running){ S.patience = 1; updatePatience(); } }
@@ -5248,1317 +5351,6 @@ html.is-standalone #bmGate{display:none!important}
   }
 
   /* ---------------- modes ---------------- */
-  function buildModes(){
-    const ids = Object.keys(MODES);
-    for(let i = 0; i < ids.length; i++){
-      const id = ids[i];
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'modeBtn';
-      b.dataset.mode = id;
-      b.textContent = MODES[id].label;
-      b.addEventListener('click', () => selectMode(id));
-      el.modeRow.appendChild(b);
-      modeBtns.push(b);
-    }
-    applyModeUI();
-  }
-  function applyModeUI(){
-    gameEl.dataset.mode = S.mode;
-    for(let i = 0; i < modeBtns.length; i++){
-      modeBtns[i].classList.toggle('on', modeBtns[i].dataset.mode === S.mode);
-    }
-    el.modeHint.textContent = MODES[S.mode].hint;
-  }
-  let hardWarnCb = null;
-  function maybeHardcoreWarning(done){
-    if(profile.hardcoreWarned){ if(typeof done === 'function') done(); return; }
-    hardWarnCb = typeof done === 'function' ? done : null;
-    if(!el.hardWarn){ profile.hardcoreWarned = true; saveProfile(); acceptHardcoreWarning(); return; }
-    el.hardWarn.classList.remove('hidden');
-    tone(180, .18, 'sawtooth', .045);
-  }
-  function acceptHardcoreWarning(){
-    profile.hardcoreWarned = true;
-    saveProfile();
-    if(el.hardWarn) el.hardWarn.classList.add('hidden');
-    const cb = hardWarnCb; hardWarnCb = null;
-    if(typeof cb === 'function') cb();
-  }
-  const SCARES = [
-    { n:'Череп', e:'two', m:'teeth', x:'', t:'ЧЕРЕП', c:['#e8e4d8','#6a655b','#a00'] },
-    { n:'Клоун', e:'white', m:'grin', x:'hairnose', t:'СМЕЙСЯ', c:['#f5eee4','#8a0b0b','#f00'] },
-    { n:'Демон', e:'red', m:'fangs', x:'horns', t:'ГОРИ!', c:['#9b1a1a','#2b0000','#ff2a00'] },
-    { n:'Зомби', e:'black', m:'rot', x:'wounds', t:'МЯСО', c:['#9db07b','#243014','#7f00'] },
-    { n:'Глаз', e:'one', m:'none', x:'veins', t:'СМОТРИ', c:['#fff','#8a0010','#f00'] },
-    { n:'Пасть', e:'tiny', m:'giant', x:'', t:'ААА!', c:['#5a0b0b','#120000','#f00'] },
-    { n:'Призрак', e:'black', m:'scream', x:'', t:'УМРИ', c:['#e9f2f2','#5b6a70','#9ff'] },
-    { n:'Кукла', e:'button', m:'stitched', x:'cracks', t:'КУКЛА', c:['#e7c9a6','#5a3524','#c00'] },
-    { n:'Паук', e:'many', m:'fangs', x:'legs', t:'ПОЛЗИ', c:['#222','#000','#f00'] },
-    { n:'Голова', e:'two', m:'stitched', x:'plate', t:'ГОЛОВА', c:['#c9b49a','#4a2b20','#900'] },
-    { n:'Челюсть', e:'closed', m:'drop', x:'', t:'ЖУЙ', c:['#d8d0bd','#3a2a22','#a00'] },
-    { n:'Тьма', e:'white', m:'none', x:'', t:'ОН', c:['#0a0a0a','#000','#fff'] },
-    { n:'Руки', e:'many', m:'none', x:'hands', t:'ДЕРЖИ', c:['#7a5a42','#1a0c08','#900'] },
-    { n:'Иглы', e:'tiny', m:'needles', x:'spikes', t:'БОЛЬНО', c:['#8a8f99','#151820','#f00'] },
-    { n:'Силуэт', e:'tiny', m:'teeth', x:'', t:'ТЫ ЗДЕСЬ', c:['#050505','#000','#fff'] },
-    { n:'Крик', e:'closed', m:'scream', x:'hands', t:'КРИК', c:['#d9bba0','#3a0f0f','#f00'] },
-    { n:'Оборотень', e:'yellow', m:'fangs', x:'fur', t:'ВОЛК', c:['#7a5a3a','#201208','#f90'] },
-    { n:'Гниль', e:'black', m:'rot', x:'worms', t:'ГНИЙ', c:['#8a9350','#1c220c','#8f0'] },
-    { n:'Трое', e:'three', m:'teeth', x:'faces', t:'ТРОЕ', c:['#b9b0a0','#2a1a1a','#f00'] },
-    { n:'Зеркало', e:'two', m:'grin', x:'shards', t:'ОТРАЖЕНИЕ', c:['#cfd8dc','#263238','#0ff'] },
-    { n:'Красный', e:'red', m:'needles', x:'spikes', t:'КРАСНЫЙ', c:['#e02020','#4a0000','#ff0'] },
-    { n:'Лёд', e:'white', m:'teeth', x:'icicles', t:'ХОЛОД', c:['#cfefff','#123b52','#0cf'] },
-    { n:'Огонь', e:'red', m:'scream', x:'flames', t:'ОГОНЬ', c:['#ff8a00','#6a0000','#ff0'] },
-    { n:'Монстр', e:'many', m:'teeth', x:'shards', t:'ОШИБКА', c:['#7a4fa0','#1b0f2a','#f0f'] },
-    { n:'Оно', e:'many', m:'giant', x:'handshorns', t:'ОНО', c:['#a00','#100','#fff'] }
-  ];
-  function jsEyes(kind){
-    if(kind === 'many' || kind === 'three'){
-      const count = kind === 'three' ? 3 : 11;
-      let h = '';
-      for(let i = 0; i < count; i++){
-        const x = kind === 'three' ? 20 + i * 30 : 14 + (i % 4) * 20 + Math.floor(i / 4) * 4;
-        const y = kind === 'three' ? 22 + (i % 2) * 12 : 18 + Math.floor(i / 4) * 17;
-        h += '<i class="jsEye tiny" style="--x:' + x + ';--y:' + y + '"></i>';
-      }
-      return h;
-    }
-    if(kind === 'tiny') return '<i class="jsEye tiny" style="--x:32;--y:26"></i><i class="jsEye tiny" style="--x:60;--y:24"></i>';
-    if(kind === 'one') return '<i class="jsEye one"></i>';
-    if(kind === 'closed') return '<i class="jsEye closed l"></i><i class="jsEye closed r"></i>';
-    if(kind === 'button') return '<i class="jsEye button l"></i><i class="jsEye button r"></i>';
-    if(kind === 'black') return '<i class="jsEye black l"></i><i class="jsEye black r"></i>';
-    if(kind === 'white') return '<i class="jsEye white l"></i><i class="jsEye white r"></i>';
-    if(kind === 'yellow') return '<i class="jsEye yellow l"></i><i class="jsEye yellow r"></i>';
-    return '<i class="jsEye l"></i><i class="jsEye r"></i>';
-  }
-  function jsMouth(kind){
-    if(kind === 'none') return '';
-    const withTeeth = (kind === 'teeth' || kind === 'fangs' || kind === 'giant' || kind === 'grin' || kind === 'needles');
-    const inner = withTeeth ? '<i class="jsTeeth"></i>' : (kind === 'drop' || kind === 'scream' ? '<i class="jsTongue"></i>' : '');
-    return '<div class="jsMouth ' + kind + '">' + inner + '</div>';
-  }
-  function jsExtra(kind){
-    let h = '<div class="jsExtra">';
-    if(kind.indexOf('hair') >= 0) h += '<i class="hair a"></i><i class="hair b"></i><i class="hair c"></i><i class="hair d"></i>';
-    if(kind.indexOf('nose') >= 0) h += '<i class="nose"></i>';
-    if(kind.indexOf('horn') >= 0) h += '<i class="horn l"></i><i class="horn r"></i>';
-    if(kind.indexOf('wound') >= 0) h += '<i class="wound" style="--x:14%;--y:46%;--r:-24deg"></i><i class="wound" style="--x:62%;--y:60%;--r:18deg"></i>';
-    if(kind.indexOf('vein') >= 0) h += '<i class="vein" style="--x:18%;--y:44%;--r:-30deg"></i><i class="vein" style="--x:72%;--y:40%;--r:34deg"></i><i class="vein" style="--x:48%;--y:74%;--r:-8deg"></i>';
-    if(kind.indexOf('legs') >= 0) h += '<i class="leg l1"></i><i class="leg l2"></i><i class="leg l3"></i><i class="leg r1"></i><i class="leg r2"></i><i class="leg r3"></i>';
-    if(kind.indexOf('hands') >= 0) h += '<i class="hand l"></i><i class="hand r"></i>';
-    if(kind.indexOf('spike') >= 0) h += '<i class="spike a"></i><i class="spike b"></i><i class="spike c"></i><i class="spike d"></i>';
-    if(kind.indexOf('cracks') >= 0 || kind.indexOf('shards') >= 0 || kind.indexOf('faces') >= 0) h += '<i class="shard" style="--x:12%;--r:-18deg"></i><i class="shard" style="--x:38%;--r:24deg"></i><i class="shard" style="--x:66%;--r:-28deg"></i><i class="shard" style="--x:84%;--r:14deg"></i>';
-    if(kind.indexOf('plate') >= 0) h += '<i class="plate"></i>';
-    if(kind.indexOf('worms') >= 0) h += '<i class="worm" style="--x:24%;--y:52%;--r:-34deg"></i><i class="worm" style="--x:58%;--y:44%;--r:28deg"></i><i class="worm" style="--x:44%;--y:70%;--r:10deg"></i>';
-    if(kind.indexOf('icicles') >= 0) h += '<i class="icicle a"></i><i class="icicle b"></i><i class="icicle c"></i>';
-    if(kind.indexOf('flames') >= 0) h += '<i class="flame a"></i><i class="flame b"></i>';
-    if(kind.indexOf('fur') >= 0) h += '<i class="fur a"></i><i class="fur b"></i><i class="fur c"></i><i class="fur d"></i>';
-    return h + '</div>';
-  }
-  function scareMarkup(def, n){
-    const style = '--skin:' + def.c[0] + ';--dark:' + def.c[1] + ';--glow:' + def.c[2];
-    const hat = xmasOn() ? '<i class="jsSantaHat"></i>' : '';
-    return '<div class="jsStatic"></div>' +
-      '<div class="jsFace"><div class="jsBody s' + n + '" style="' + style + '">' + jsEyes(def.e) + jsMouth(def.m) + jsExtra(def.x) + '</div>' + hat + '</div>' +
-      '<div class="jsGlitch g1"></div><div class="jsGlitch g2"></div>' +
-      '<div class="jsDrips">' + '<i></i>'.repeat(9) + '</div>' +
-      '<div class="jsText">' + def.t + '</div>';
-  }
-  window.__bmScareData = () => SCARES.map(s => ({ n:s.n, e:s.e, m:s.m, x:s.x, t:s.t, c:s.c.slice() }));
-  window.__bmScareMarkup = (i) => scareMarkup(SCARES[Math.max(0, Math.min(SCARE_COUNT - 1, Number(i) || 0))], (Math.max(0, Math.min(SCARE_COUNT - 1, Number(i) || 0)) + 1));
-  function scareSound(n, kind){
-    initAudio();
-    const b = 48 + (n % 7) * 13;
-    noise(1.05, .3, 380 + n * 31);
-    noise(.55, .24, 130 + n * 19);
-    tone(b, 1.1, 'sawtooth', .24, 0, Math.max(30, b * .42));
-    tone(b * 3.05, .5, 'square', .15, .015, b * 1.1);
-    tone(b * 6.7, .32, 'square', .1, .05, b * 2.2);
-    tone(1700 + n * 41, .16, 'square', .12, .08, 320);
-    if(kind === 'time'){
-      tone(2400, .2, 'square', .14);
-      tone(120, .55, 'sawtooth', .2, .1, 48);
-    }
-    buzz([110, 50, 160, 40, 260]);
-  }
-  let scareTimer = 0;
-  function scare(kind, forceIdx){
-    try{
-      const hardcore = !!(S.running && !S.sandbox && !S.campaign && MODES[S.mode] && MODES[S.mode].hardcore && !isTraining());
-      const sandbox = !!(S.running && S.sandbox && sbCfg().scare > 0);
-      if(!hardcore && !sandbox) return;
-      if(sandbox && Math.random() * 100 > Number(sbCfg().scare)) return;
-      let idx = Math.floor(Math.random() * SCARE_COUNT);
-      if(sandbox && sbCfg().scareType >= 1) idx = sbCfg().scareType - 1;
-      if(typeof forceIdx === 'number' && forceIdx >= 0 && forceIdx < SCARE_COUNT) idx = forceIdx;
-      const def = SCARES[idx] || SCARES[0];
-      scareSound(idx + 1, kind);
-      if(!el.jumpscare) return;
-      el.jumpscare.style.setProperty('--jsGlow', def.c[2]);
-      el.jumpscare.innerHTML = scareMarkup(def, idx + 1);
-      el.jumpscare.classList.add('hidden');
-      el.jumpscare.classList.remove('show');
-      void el.jumpscare.offsetWidth;
-      el.jumpscare.classList.remove('hidden');
-      el.jumpscare.classList.add('show');
-      clearTimeout(scareTimer);
-      scareTimer = setTimeout(() => {
-        if(!el.jumpscare) return;
-        el.jumpscare.classList.remove('show');
-        el.jumpscare.classList.add('hidden');
-      }, 1180);
-    }catch(e){}
-  }
-  let buildTool = 'wall';
-  function buildStats(){
-    const cells = profile.build.cells;
-    const wallSet = {};
-    const counts = {};
-    let base = 0, walls = 0;
-    const kinds = {};
-    for(let i = 0; i < BUILD_N; i++){
-      const t = cells[i];
-      if(!t || !BUILD_DEFS[t] || t === 'erase') continue;
-      counts[t] = (counts[t] || 0) + 1;
-      base += BUILD_DEFS[t].inc / (1 + (counts[t] - 1) * .35);
-      if(t === 'wall'){ walls++; wallSet[i] = 1; }
-      else kinds[t] = 1;
-    }
-    let furnished = 0, sheltered = 0;
-    for(let i = 0; i < BUILD_N; i++){
-      const t = cells[i];
-      if(!t || t === 'wall' || !BUILD_DEFS[t] || t === 'erase') continue;
-      furnished++;
-      const x = i % BUILD_W, y = Math.floor(i / BUILD_W);
-      let near = false;
-      if(x > 0 && wallSet[i - 1]) near = true;
-      if(x < BUILD_W - 1 && wallSet[i + 1]) near = true;
-      if(y > 0 && wallSet[i - BUILD_W]) near = true;
-      if(y < BUILD_H - 1 && wallSet[i + BUILD_W]) near = true;
-      if(near) sheltered++;
-    }
-    const cover = furnished ? sheltered / furnished : 0;
-    const variety = Object.keys(kinds).length;
-    const level = Math.max(1, Math.min(10, 1 + Math.floor((base + sheltered * 2 + variety * 4) / 40)));
-    const mult = 1 + cover * .25 + Math.min(variety, 6) * .05 + Math.min(walls, 24) * .005;
-    const floors = Math.max(0, Math.floor((profile.build && profile.build.floors) || 0));
-    const floorMult = 1 + Math.min(floors, 10) * .15;
-    const income = Math.min(BUILD_MAX_INCOME, Math.round(base * mult * BUILD_PAYOUT * floorMult));
-    return { base:base, walls:walls, furnished:furnished, sheltered:sheltered, cover:cover, variety:variety, level:level, mult:mult, floors:floors, floorMult:floorMult, income:income, tick:BUILD_TICK };
-  }
-  function renderBuildTools(){
-    if(!el.buildTools) return;
-    el.buildTools.innerHTML = '';
-    for(const id in BUILD_DEFS){
-      const def = BUILD_DEFS[id];
-      const b = document.createElement('button');
-      b.type = 'button';
-      b.className = 'buildTool' + (id === buildTool ? ' on' : '');
-      b.dataset.tool = id;
-      b.innerHTML = '<span>' + def.short + '</span><b>' + def.label + '</b><small>' + (def.cost ? def.cost + ' монет' : 'бесплатно') + '</small>';
-      el.buildTools.appendChild(b);
-    }
-  }
-  function renderBuild(){
-    if(!el.buildGrid) return;
-    const st = buildStats();
-    if(el.buildCoins) el.buildCoins.textContent = profile.coins.toLocaleString('ru-RU');
-    if(el.buildStats){
-      el.buildStats.innerHTML =
-        '<div><span>Уровень заведения</span><b>' + st.level + '</b></div>' +
-        '<div><span>Этаж</span><b>' + st.floors + '</b></div>' +
-        '<div><span>Доход / 2 мин</span><b>+' + st.income + '</b></div>' +
-        '<div><span>Мебель под стен</span><b>' + st.sheltered + '/' + st.furnished + '</b></div>' +
-        '<div><span>Разнообразие</span><b>' + st.variety + '/' + (Object.keys(BUILD_DEFS).length - 1) + '</b></div>';
-    }
-    if(el.buildNav) el.buildNav.textContent = '+' + st.income + '/2мин';
-    el.buildGrid.innerHTML = '';
-    for(let i = 0; i < BUILD_N; i++){
-      const t = profile.build.cells[i] || '';
-      const def = BUILD_DEFS[t];
-      const c = document.createElement('button');
-      c.type = 'button';
-      c.className = 'buildCell';
-      c.dataset.i = String(i);
-      c.dataset.t = (def && t !== 'erase') ? t : '';
-      c.textContent = (def && t !== 'erase') ? def.short : '';
-      c.setAttribute('aria-label', (def && t !== 'erase') ? def.label : 'Пустая клетка');
-      el.buildGrid.appendChild(c);
-    }
-  }
-  function placeBuild(i){
-    const cur = profile.build.cells[i] || '';
-    if(buildTool === 'erase'){
-      if(!cur) return;
-      profile.build.cells[i] = '';
-      tone(180, .1, 'triangle', .04);
-    } else {
-      if(cur === buildTool) return;
-      const def = BUILD_DEFS[buildTool];
-      if(!def || buildTool === 'erase') return;
-      if(profile.coins < def.cost){
-        showToast('Не хватает монет', 'нужно ' + def.cost);
-        tone(120, .14, 'sawtooth', .04, 0, 80);
-        return;
-      }
-      profile.coins -= def.cost;
-      profile.build.cells[i] = buildTool;
-      tone(420, .08, 'triangle', .05);
-      tone(620, .09, 'triangle', .04, .06);
-      buzz(8);
-    }
-    saveProfile();
-    renderBuild();
-    refreshMenuStats();
-  }
-  function buyBuildFloor(){
-    if(profile.coins < BUILD_FLOOR_COST){
-      showToast('Не хватает монет', 'нужно ' + BUILD_FLOOR_COST.toLocaleString('ru-RU'));
-      tone(120, .14, 'sawtooth', .04, 0, 80);
-      return;
-    }
-    profile.coins -= BUILD_FLOOR_COST;
-    profile.build.floors = (profile.build.floors || 0) + 1;
-    saveProfile();
-    sfxCoin(); tone(880, .12, 'triangle', .05, .1);
-    showToast('Новый этаж', 'Доход стройки вырос');
-    renderBuild(); refreshMenuStats();
-  }
-  function openBuild(){
-    hideAllScreens();
-    renderBuildTools();
-    renderBuild();
-    if(el.buildScreen) el.buildScreen.classList.remove('hidden');
-    tone(520, .08, 'triangle', .04);
-  }
-  function grantBuildIncome(){
-    try{
-      const now = Date.now();
-      const st = buildStats();
-      if(st.income <= 0){ profile.buildAt = now; return; }
-      const gap = Math.max(0, now - profile.buildAt);
-      const rawTicks = Math.floor(gap / BUILD_TICK);
-      if(rawTicks <= 0) return;
-      const offline = gap > 120000;
-      const cap = offline ? BUILD_OFFLINE_MAX : 360;
-      const ticks = Math.min(cap, rawTicks);
-      const rate = offline ? st.income * BUILD_OFFLINE : st.income;
-      const gain = Math.min(BUILD_MAX_INCOME, Math.max(1, Math.round(rate * ticks)));
-      profile.buildAt = rawTicks > cap ? now : profile.buildAt + ticks * BUILD_TICK;
-      profile.coins += gain;
-      if(profile.stats && typeof profile.stats.earned === 'number') profile.stats.earned += gain;
-      saveProfile();
-      refreshMenuStats();
-      renderBuild();
-      if(el.buildLive){
-        el.buildLive.textContent = (offline ? 'Оффлайн-доход +' : 'Получено +') + gain.toLocaleString('ru-RU') + ' монет';
-        el.buildLive.classList.remove('pop');
-        void el.buildLive.offsetWidth;
-        el.buildLive.classList.add('pop');
-      }
-      if(!S.running) sfxCoin();
-    }catch(e){}
-  }
-
-  function selectMode(id){
-    if(!MODES[id] || S.running) return;
-    if(MODES[id].hardcore && !profile.hardcoreWarned){
-      maybeHardcoreWarning(() => selectMode(id));
-      return;
-    }
-    S.mode = id;
-    profile.mode = id;
-    saveProfile();
-    applyModeUI();
-    tone(520, .06, 'triangle', .04);
-  }
-
-  /* ---------------- menu screens: campaign / kitchen / daily ---------------- */
-  let campIdx = 0;
-  const SCREEN_KEYS = ['startScreen','overScreen','pauseScreen','perkScreen','campaignScreen','kitchenScreen','dailyScreen','settingsScreen','achScreen','adminScreen','promoScreen','campResultScreen','sandboxScreen','sandboxSettingsScreen','skinScreen','prestigeScreen','wheelScreen','buildScreen'];
-
-  function hideAllScreens(){
-    for(let i = 0; i < SCREEN_KEYS.length; i++) el[SCREEN_KEYS[i]].classList.add('hidden');
-    if(el.dailyOffer) el.dailyOffer.classList.add('hidden');
-    if(el.intro) el.intro.classList.add('hidden');
-    if(el.tutor) el.tutor.classList.add('hidden');
-    if(el.jumpscare){ el.jumpscare.classList.remove('show'); el.jumpscare.classList.add('hidden'); }
-  }
-  function updateMenuBadges(){
-    ensureDaily();
-    let cleared = 0;
-    for(let i = 0; i < CAMPAIGN.length; i++){ if(profile.campaign.stars[i] > 0) cleared++; }
-    el.campProg.textContent = cleared + '/' + CAMPAIGN.length;
-    let totalLv = 0;
-    for(const k in UPGRADES) totalLv += upgLevel(k);
-    el.kitchenLvl.textContent = 'ур. ' + totalLv;
-    el.dailyBadgeTxt.textContent = dailyClaimedCount() + '/' + DAILY_TASKS.length;
-    const ready = dailyReadyCount(), bonus = bonusAvailable();
-    const hot = ready > 0 || bonus;
-    el.dailyBtn.classList.toggle('ready', hot);
-    el.dailyBtn.classList.toggle('alert', hot);
-    if(el.dailyDot){
-      el.dailyDot.hidden = !hot;
-      el.dailyDot.textContent = String(ready + (bonus ? 1 : 0));
-    }
-    if(el.sandboxCount) el.sandboxCount.textContent = profile.recipes.length + ' рец.';
-    el.sandboxBtn.classList.toggle('locked', !sandboxUnlocked());
-    if(el.skinCount){
-      let ownedN = 0;
-      for(let i = 0; i < SKINS.length; i++){ if(skinOwned(SKINS[i].id)) ownedN++; }
-      el.skinCount.textContent = ownedN + '/' + SKINS.length;
-    }
-    if(el.prestigeNav) el.prestigeNav.textContent = (profile.pp || 0) + ' очк.';
-    if(el.prestigeBtn) el.prestigeBtn.classList.toggle('ready', prestigeReady());
-    if(el.wheelNav){
-      const wfree = wheelFreeAvailable();
-      const can = wfree && wheelLeft() > 0;
-      el.wheelNav.textContent = wheelLeft() <= 0 ? 'лимит' : (wfree ? 'бесплатно' : 'через ' + fmtShortLeft(msToWheel()));
-      if(el.wheelBtnNav){
-        el.wheelBtnNav.classList.toggle('ready', can);
-        el.wheelBtnNav.classList.toggle('alert', can);
-      }
-      if(el.wheelDot){ el.wheelDot.hidden = !can; el.wheelDot.textContent = '!'; }
-    }
-    try{ renderBuild(); }catch(e){}
-  }
-
-  /* -------- kitchen upgades -------- */
-  function renderKitchen(){
-    el.kitchenCoins.textContent = profile.coins.toLocaleString('ru-RU');
-    let html = '';
-    for(const k in UPGRADES){
-      const u = UPGRADES[k], lvl = upgLevel(k), maxed = lvl >= u.max, price = upgPrice(k);
-      let pips = '';
-      for(let i = 0; i < u.max; i++) pips += '<i class="pip' + (i < lvl ? ' on' : '') + '"></i>';
-      const effect = lvl > 0 ? 'Сейчас: ' + u.desc(lvl) : 'Даёт: ' + u.desc(1);
-      const poor = !maxed && profile.coins < price;
-      html += '<div class="upCard' + (maxed ? ' maxed' : '') + '">' +
-        '<div class="upTop">' +
-          '<div class="upIcon">' + u.icon + '</div>' +
-          '<div class="tt"><b>' + u.name + '</b><span>' + effect + '</span><div class="pips">' + pips + '</div></div>' +
-          '<button class="upBuy' + (maxed ? ' maxed' : (poor ? ' poor' : '')) + '" type="button" data-up="' + k + '">' +
-            (maxed ? 'MAX' : price + ' монет') + '</button>' +
-        '</div></div>';
-    }
-    el.kitchenList.innerHTML = html;
-    const btns = el.kitchenList.querySelectorAll('[data-up]');
-    for(let i = 0; i < btns.length; i++){
-      btns[i].addEventListener('click', () => buyUpgrade(btns[i].dataset.up));
-    }
-  }
-  function buyUpgrade(k){
-    const u = UPGRADES[k];
-    if(!u) return;
-    const lvl = upgLevel(k);
-    if(lvl >= u.max) return;
-    const price = upgPrice(k);
-    if(profile.coins < price){ tone(170, .14, 'sawtooth', .04, 0, 110); return; }
-    profile.coins -= price;
-    profile.upg[k] = lvl + 1;
-    saveProfile();
-    sfxCoin(); tone(720, .09, 'triangle', .05); tone(1080, .12, 'triangle', .045, .07);
-    renderKitchen(); updateHUD(); updateMenuBadges();
-    showToast('Кухня прокачана', u.name + ' — ур. ' + (lvl + 1));
-  }
-
-  /* -------- campaign -------- */
-  function renderCampaign(){
-    let html = '';
-    for(let i = 0; i < CAMPAIGN.length; i++){
-      const c = CAMPAIGN[i];
-      const unlocked = i < profile.campaign.unlocked;
-      const st = profile.campaign.stars[i] || 0;
-      let stars = '';
-      for(let n = 0; n < 3; n++) stars += '<span class="' + (n < st ? '' : 'off') + '">★</span>';
-      html += '<button class="campCard' + (unlocked ? '' : ' locked') + '" type="button" data-idx="' + i + '"' + (unlocked ? '' : ' disabled') + '>' +
-        '<span class="num">' + (i + 1) + '</span>' +
-        '<span class="info"><b>' + c.title + '</b><span>Цель: ' + c.goal + ' бургеров · ' + c.lives + ' клиента · награда ' + c.reward + '</span></span>' +
-        '<span class="campStars">' + stars + '</span>' +
-      '</button>';
-    }
-    el.campList.innerHTML = html;
-    const cards = el.campList.querySelectorAll('[data-idx]');
-    for(let i = 0; i < cards.length; i++){
-      cards[i].addEventListener('click', () => startCampaign(parseInt(cards[i].dataset.idx, 10)));
-    }
-    updateMenuBadges();
-  }
-  function openCampaign(){
-    if(S.running) return;
-    hideAllScreens();
-    renderCampaign();
-    el.campaignScreen.classList.remove('hidden');
-  }
-  function startCampaign(idx){
-    const def = CAMPAIGN[idx];
-    if(!def || idx >= profile.campaign.unlocked) return;
-    campIdx = idx;
-    S.campaign = { idx:idx, def:def, startLives:def.lives };
-    hideAllScreens();
-    el.tutor.classList.add('hidden');
-    startGame(true);
-    applyModeUI();
-    showToast('Кампания ' + (idx + 1), def.title);
-  }
-  function campaignEnd(win){
-    if(!S.campaign) return;
-    const idx = S.campaign.idx, def = S.campaign.def;
-    campIdx = idx;
-    S.running = false; S.busy = true; S.paused = false; S.lastT = 0; S.clockT = 0;
-    hideTutorial();
-    hideAllScreens();
-    const lost = S.campaign.startLives - S.lives;
-    const stars = win ? (lost <= 0 ? 3 : lost === 1 ? 2 : 1) : 0;
-    let reward = 0;
-    if(win){
-      reward = def.reward + stars * 20;
-      profile.coins += reward;
-      if(stars > (profile.campaign.stars[idx] || 0)) profile.campaign.stars[idx] = stars;
-      if(profile.campaign.unlocked < idx + 2) profile.campaign.unlocked = Math.min(CAMPAIGN.length, idx + 2);
-      saveProfile();
-      sfxServe(); sfxCoin();
-    } else {
-      sfxLost();
-    }
-    finalizeRun();
-    updateHUD();
-    updateMenuBadges();
-    renderCampaign();
-    el.campResTitle.innerHTML = (win ? 'Уровень ' + (idx + 1) + ' пройден' : 'Уровень ' + (idx + 1) + ' провален') +
-      '<small>' + (win ? def.title : 'попробуй ещё раз') + '</small>';
-    let stHtml = '';
-    for(let n = 0; n < 3; n++) stHtml += '<span class="' + (n < stars ? 'on' : '') + '">★</span>';
-    el.campResStars.innerHTML = stHtml;
-    el.campResReward.innerHTML = win
-      ? 'Награда: <b>+' + reward + '</b> монет · Бургеров: ' + S.served + '/' + def.goal
-      : 'Бургеров: ' + S.served + '/' + def.goal + ' · клиенты разошлись';
-    el.campNextBtn.hidden = !(win && idx + 1 < CAMPAIGN.length);
-    el.campResultScreen.classList.remove('hidden');
-    S.campaign = null;
-  }
-
-  /* -------- sandbox (custom recipes) -------- */
-  let sbDraft = [];
-  function loadRecipes(){ return Array.isArray(profile.recipes) ? profile.recipes : (profile.recipes = []); }
-  function escapeHtml(s){
-    return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
-  }
-  function openSandbox(){
-    if(S.running) return;
-    hideAllScreens();
-    renderSandbox();
-    el.sandboxScreen.classList.remove('hidden');
-    setMusicTheme('sandbox');
-    startMusic();
-  }
-  window.__bmOpenSandbox = openSandbox;
-  function sandboxUnlocked(){
-    if(profile.sbxAdmin) return true;
-    for(const k in UPGRADES){ if(upgLevel(k) < UPGRADES[k].max) return false; }
-    for(let i = 0; i < ACH.length; i++){ if(!profile.ach[ACH[i].id]) return false; }
-    for(let i = 0; i < CAMPAIGN.length; i++){ if(!(profile.campaign.stars[i] > 0)) return false; }
-    return true;
-  }
-  function sandboxReqs(){
-    let uMax = 0, uAll = 0;
-    for(const k in UPGRADES){ uAll++; if(upgLevel(k) >= UPGRADES[k].max) uMax++; }
-    let aGot = 0;
-    for(let i = 0; i < ACH.length; i++){ if(profile.ach[ACH[i].id]) aGot++; }
-    let cDone = 0;
-    for(let i = 0; i < CAMPAIGN.length; i++){ if(profile.campaign.stars[i] > 0) cDone++; }
-    return [
-      { t:'Прокачать всю кухню', d:uMax + ' / ' + uAll, ok:uMax >= uAll },
-      { t:'Получить все достижения', d:aGot + ' / ' + ACH.length, ok:aGot >= ACH.length },
-      { t:'Пройти всю кампанию', d:cDone + ' / ' + CAMPAIGN.length, ok:cDone >= CAMPAIGN.length }
-    ];
-  }
-  function showSandboxLock(){
-    let w = document.getElementById('sbLock');
-    if(w) w.remove();
-    w = document.createElement('div');
-    w.id = 'sbLock';
-    const rows = sandboxReqs().map(r =>
-      '<div class="sbLockRow' + (r.ok ? ' ok' : '') + '"><i>' + (r.ok ? '✓' : '•') + '</i><span>' + r.t + '</span><b>' + r.d + '</b></div>'
-    ).join('');
-    w.innerHTML = '<style>' +
-      '#sbLock{position:fixed;inset:0;z-index:2147482000;display:flex;align-items:center;justify-content:center;padding:calc(env(safe-area-inset-top) + 20px) 18px calc(env(safe-area-inset-bottom) + 20px);background:rgba(5,3,2,.72);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);}' +
-      '#sbLock .card{width:100%;max-width:340px;border:1px solid rgba(255,255,255,.12);border-radius:20px;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.025));box-shadow:0 24px 70px rgba(0,0,0,.55);padding:20px 18px;color:#f7efe4;font-family:inherit;text-align:left;}' +
-      '#sbLock h3{margin:0 0 6px;font-size:20px;line-height:1.15;}' +
-      '#sbLock p{margin:0 0 14px;font-size:12.5px;line-height:1.4;color:rgba(247,239,228,.6);}' +
-      '.sbLockRow{display:flex;align-items:center;gap:10px;padding:10px 12px;margin-bottom:8px;border-radius:13px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);font-size:13.5px;}' +
-      '.sbLockRow i{flex:0 0 22px;height:22px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.1);font-style:normal;font-size:12px;font-weight:900;}' +
-      '.sbLockRow span{flex:1;}' +
-      '.sbLockRow b{font-weight:900;color:#ffb63d;}' +
-      '.sbLockRow.ok i{background:#59c26a;color:#0b2a10;}' +
-      '.sbLockRow.ok b{color:#7fdc8c;}' +
-      '#sbLock button{width:100%;margin-top:8px;border:0;border-radius:14px;padding:13px;background:linear-gradient(180deg,#ffcf6a,#ff9f2e);color:#2a1708;font:inherit;font-weight:900;font-size:15px;cursor:pointer;}' +
-      '#sbLock button:active{transform:translateY(1px);}' +
-      '</style><div class="card"><h3>Песочница закрыта</h3><p>Чтобы открыть песочницу, нужно выполнить всё:</p>' + rows + '<button type="button">Понятно</button></div>';
-    document.body.appendChild(w);
-    w.querySelector('button').addEventListener('click', () => w.remove());
-    w.addEventListener('click', e => { if(e.target === w) w.remove(); });
-  }
-  window.__bmSandbox = {
-    isUnlocked: () => sandboxUnlocked(),
-    isAdmin: () => !!profile.sbxAdmin,
-    set: (on) => { profile.sbxAdmin = !!on; saveProfile(); updateMenuBadges(); }
-  };
-  window.__bmUnlockAch = () => {
-    for(let i = 0; i < ACH.length; i++) profile.ach[ACH[i].id] = 1;
-    saveProfile(); renderAch(); updateMenuBadges();
-    return ACH.length;
-  };
-  window.__bmOpenAdmin = () => openAdmin();
-  window.__bmGameOver = () => gameOver(true);
-  function sbFmt(v, step){
-    v = Number(v) || 0;
-    return step < 1 ? v.toFixed(1) : String(Math.round(v));
-  }
-  function sbCfgRange(path, label, min, max, step){
-    const v = Number(sbGet(path));
-    return '<div class="sbCfgRow"><span>' + label + '</span><div class="sbRange">' +
-      '<input type="range" min="' + min + '" max="' + max + '" step="' + step + '" value="' + v + '" data-sbr="' + path + '">' +
-      '<b data-sbv="' + path + '">' + sbFmt(v, step) + '</b></div></div>';
-  }
-  function sbCfgSwitch(path, label){
-    const on = !!sbGet(path);
-    return '<div class="sbCfgRow"><span>' + label + '</span><button class="switch' + (on ? ' on' : '') +
-      '" type="button" role="switch" aria-checked="' + on + '" data-sbt="' + path + '"><i></i></button></div>';
-  }
-  function sbCfgSelect(path, label, opts){
-    let o = '';
-    for(let i = 0; i < opts.length; i++){
-      o += '<option value="' + opts[i][0] + '"' + (sbGet(path) === opts[i][0] ? ' selected' : '') + '>' + opts[i][1] + '</option>';
-    }
-    return '<div class="sbCfgRow"><span>' + label + '</span><select data-sbs="' + path + '">' + o + '</select></div>';
-  }
-  function sbCfgLooks(kind, path, label){
-    const list = SB_LOOK[kind], cur = sbGet(path);
-    let h = '<div class="sbCfgRow"><span>' + label + '</span><div class="sbSwRow">';
-    for(let i = 0; i < list.length; i++){
-      const it = list[i], col = kind === 'shirt' ? it.c : it.a;
-      h += '<button class="sbSw' + (cur === it.id ? ' on' : '') + '" type="button" data-sbl="' + path +
-        '" data-id="' + it.id + '" style="--c:' + col + '" aria-label="' + it.id + '"></button>';
-    }
-    return h + '</div></div>';
-  }
-  function applySandboxPreviewLook(){
-    const box = document.getElementById('sbAvaPreview');
-    if(!box) return;
-    const c = sbCfg();
-    const sh = SB_LOOK.shirt.filter(function(x){ return x.id === c.shirt; })[0] || SB_LOOK.shirt[0];
-    const bg = SB_LOOK.bg.filter(function(x){ return x.id === c.bg; })[0] || SB_LOOK.bg[0];
-    const sk = SB_LOOK.skin.filter(function(x){ return x.id === c.skin; })[0] || SB_LOOK.skin[0];
-    box.style.setProperty('--shirt', sh.c);
-    box.style.setProperty('--ava1', bg.a);
-    box.style.setProperty('--ava2', bg.b);
-    box.style.setProperty('--skin1', sk.a);
-    box.style.setProperty('--skin2', sk.b);
-  }
-  function sbCfgSyncInput(path){
-    if(!el.sbCfgBody) return;
-    const inp = el.sbCfgBody.querySelector('[data-sbr="' + path + '"]');
-    if(!inp) return;
-    const v = Number(sbGet(path));
-    inp.value = String(v);
-    const b = el.sbCfgBody.querySelector('[data-sbv="' + path + '"]');
-    if(b) b.textContent = sbFmt(v, Number(inp.step) || 1);
-  }
-  function renderSandboxSettings(){
-    if(!el.sbCfgBody) return;
-    let h = '';
-    h += '<div class="sbCfgSec">Кто придёт</div>';
-    h += sbCfgSelect('first', 'Первый клиент', [
-      ['random','Случайно'], ['normal','Обычный'], ['hurry','Торопыга'], ['kid','Ребёнок'], ['vip','VIP'], ['critic','Критик']
-    ]);
-    h += sbCfgRange('w.normal', 'Обычные', 0, 100, 1);
-    h += sbCfgRange('w.hurry', 'Торопыги', 0, 100, 1);
-    h += sbCfgRange('w.kid', 'Дети', 0, 100, 1);
-    h += sbCfgRange('w.vip', 'VIP', 0, 100, 1);
-    h += sbCfgRange('w.critic', 'Критики', 0, 100, 1);
-    h += sbCfgSwitch('showBadge', 'Показывать бейдж клиента');
-    h += '<div class="sbCfgSec">Заказ</div>';
-    h += sbCfgRange('minLayers', 'Мин. слоёв', 1, 10, 1);
-    h += sbCfgRange('maxLayers', 'Макс. слоёв', 1, 12, 1);
-    h += sbCfgRange('maxPatties', 'Макс. котлет', 0, 6, 1);
-    h += sbCfgRange('maxSauce', 'Макс. соусов', 0, 4, 1);
-    h += sbCfgRange('bigChance', 'Шанс большого заказа, %', 0, 100, 1);
-    h += sbCfgRange('sidesChance', 'Шанс гарнира, %', 0, 100, 1);
-    h += sbCfgRange('sideOnlyChance', 'Только гарнир, %', 0, 100, 1);
-    h += sbCfgRange('maxSides', 'Гарниров в заказе', 1, 2, 1);
-    h += '<div class="sbCfgSec">Начинки</div><div class="sbFillGrid">';
-    for(let i = 0; i < FILLINGS.length; i++){
-      const id = FILLINGS[i], on = !!sbGet('fill.' + id);
-      h += '<button class="sbFill' + (on ? ' on' : '') + '" type="button" data-sbf="' + id +
-        '" aria-pressed="' + on + '">' + ING[id].name + '</button>';
-    }
-    h += '</div>';
-    h += '<div class="sbCfgSec">Игра</div>';
-    h += sbCfgRange('lives', 'Жизни (0 = ∞)', 0, 9, 1);
-    h += sbCfgRange('maxOrders', 'Клиентов (0 = ∞)', 0, 50, 1);
-    h += sbCfgRange('speed', 'Скорость', .4, 2.5, .1);
-    h += sbCfgRange('patience', 'Терпение', .3, 3, .1);
-    h += sbCfgRange('freezes', 'Заморозки', 0, 9, 1);
-    h += sbCfgRange('hints', 'Подсказки', 0, 9, 1);
-    h += sbCfgRange('skips', 'Пропуски', 0, 9, 1);
-    h += '<div class="sbCfgSec">Скримеры</div>';
-    h += sbCfgRange('scare', 'Шанс скримера, % (0 = выкл)', 0, 100, 1);
-    h += sbCfgRange('scareType', 'Монстр (0 = случайно)', 0, SCARE_COUNT, 1);
-    h += sbCfgSelect('music', 'Музыка', [
-      ['sandbox','Песочница'], ['classic','Классика'], ['menu','Меню'], ['zen','Дзен'],
-      ['endless','Бесконечный'], ['hardcore','Хардкор'], ['timeattack','Тайм-атака'], ['rush','Спешка']
-    ]);
-    h += '<div class="sbCfgSec">Одежда и вид</div>';
-    h += sbCfgLooks('shirt', 'shirt', 'Форма');
-    h += sbCfgLooks('bg', 'bg', 'Фон клиента');
-    h += sbCfgLooks('skin', 'skin', 'Кожа');
-    h += '<div class="sbCfgRow"><span>Предпросмотр</span><div class="sbAvaWrap">' +
-      '<div class="avatar sbAvaPreview" id="sbAvaPreview"><span class="face"><i class="eye l"></i><i class="eye r"></i>' +
-      '<i class="brow l"></i><i class="brow r"></i><i class="mouth"></i></span></div></div></div>';
-    h += sbCfgSwitch('randomLook', 'Случайная форма каждый заказ');
-    h += sbCfgSwitch('particles', 'Частицы');
-    h += sbCfgSwitch('floaters', 'Всплывающий текст');
-    h += '<div class="sbCfgSec">Конструктор</div>';
-    h += sbCfgRange('draftMax', 'Макс. слоёв в рецепте', 1, 12, 1);
-    h += '<button class="sbReset" type="button" id="sbCfgReset">Сбросить настройки</button>';
-    el.sbCfgBody.innerHTML = h;
-    const cfgN = el.sbCfgBody.querySelectorAll('[data-sbr],[data-sbt],[data-sbs],[data-sbl],[data-sbf]').length;
-    if(el.sbCfgCount) el.sbCfgCount.textContent = cfgN;
-    if(el.sbCfgOpenCount) el.sbCfgOpenCount.textContent = cfgN;
-    applySandboxPreviewLook();
-    const ranges = el.sbCfgBody.querySelectorAll('[data-sbr]');
-    for(let i = 0; i < ranges.length; i++){
-      const inp = ranges[i], path = inp.dataset.sbr, step = Number(inp.step) || 1;
-      inp.addEventListener('input', function(){
-        const v = Number(inp.value);
-        sbPut(path, v);
-        const c = sbCfg();
-        if(path === 'minLayers' && v > c.maxLayers){ sbPut('maxLayers', v); sbCfgSyncInput('maxLayers'); }
-        if(path === 'maxLayers' && v < c.minLayers){ sbPut('minLayers', v); sbCfgSyncInput('minLayers'); }
-        const b = el.sbCfgBody.querySelector('[data-sbv="' + path + '"]');
-        if(b) b.textContent = sbFmt(v, step);
-      });
-      inp.addEventListener('change', sbFlush);
-    }
-    const toggles = el.sbCfgBody.querySelectorAll('[data-sbt]');
-    for(let i = 0; i < toggles.length; i++){
-      const btn = toggles[i], path = btn.dataset.sbt;
-      btn.addEventListener('click', function(){
-        const v = !sbGet(path);
-        sbPut(path, v); sbFlush();
-        btn.classList.toggle('on', v);
-        btn.setAttribute('aria-checked', String(v));
-        if(path === 'randomLook') applySandboxPreviewLook();
-      });
-    }
-    const selects = el.sbCfgBody.querySelectorAll('[data-sbs]');
-    for(let i = 0; i < selects.length; i++){
-      const sel = selects[i], path = sel.dataset.sbs;
-      sel.addEventListener('change', function(){
-        sbPut(path, sel.value); sbFlush();
-        if(path === 'music' && !S.running){ setMusicTheme(sel.value); startMusic(); }
-      });
-    }
-    const sws = el.sbCfgBody.querySelectorAll('[data-sbl]');
-    for(let i = 0; i < sws.length; i++){
-      const btn = sws[i], path = btn.dataset.sbl;
-      btn.addEventListener('click', function(){
-        sbPut(path, btn.dataset.id); sbFlush();
-        const row = btn.parentElement;
-        const siblings = row.querySelectorAll('.sbSw');
-        for(let j = 0; j < siblings.length; j++) siblings[j].classList.toggle('on', siblings[j] === btn);
-        applySandboxPreviewLook();
-      });
-    }
-    const fills = el.sbCfgBody.querySelectorAll('[data-sbf]');
-    for(let i = 0; i < fills.length; i++){
-      const btn = fills[i], id = btn.dataset.sbf;
-      btn.addEventListener('click', function(){
-        const on = sbGet('fill.' + id) ? 0 : 1;
-        sbPut('fill.' + id, on); sbFlush();
-        btn.classList.toggle('on', !!on);
-        btn.setAttribute('aria-pressed', String(!!on));
-      });
-    }
-    const reset = document.getElementById('sbCfgReset');
-    if(reset) reset.addEventListener('click', function(){
-      profile.sbCfg = normSbCfg(null);
-      saveProfile();
-      renderSandboxSettings();
-      showToast('Песочница', 'настройки сброшены');
-    });
-  }
-  function renderSandbox(){
-    renderSandboxSettings();
-    let ph = '';
-    const sbList = FILLINGS.concat(SIDES);
-    for(let i = 0; i < sbList.length; i++){
-      const id = sbList[i];
-      ph += '<button class="sbIng" type="button" data-ing="' + id + '" aria-label="' + ING[id].name + '" title="' + ING[id].name + '">' +
-        '<span class="iconBox">' + layerMarkup(id) + '</span></button>';
-    }
-    el.sbPalette.innerHTML = ph;
-    const btns = el.sbPalette.querySelectorAll('[data-ing]');
-    for(let i = 0; i < btns.length; i++) btns[i].addEventListener('click', () => sbAdd(btns[i].dataset.ing));
-    renderDraft();
-    renderRecipes();
-  }
-  function renderDraft(){
-    renderPreview();
-    if(!sbDraft.length){
-      el.sbStack.innerHTML = '<span class="sbHintEmpty">Нажми ингредиенты — бургер соберётся сверху вниз</span>';
-      return;
-    }
-    let html = '';
-    for(let i = 0; i < sbDraft.length; i++){
-      const id = sbDraft[i];
-      html += '<span class="sbChip"><i class="dot lay-' + id + '"></i>' + ING[id].name +
-        '<b class="x" data-i="' + i + '">×</b></span>';
-    }
-    el.sbStack.innerHTML = html;
-    const xs = el.sbStack.querySelectorAll('.x');
-    for(let i = 0; i < xs.length; i++) xs[i].addEventListener('click', () => sbRemove(parseInt(xs[i].dataset.i, 10)));
-  }
-  function renderPreview(){
-    const box = el.sbPreview;
-    if(!box) return;
-    if(!sbDraft.length){
-      box.innerHTML = '<span class="sbEmpty">Предпросмотр бургера</span>';
-      return;
-    }
-    const fill = sbDraft.filter(id => SIDES.indexOf(id) < 0);
-    const sides = sbDraft.filter(id => SIDES.indexOf(id) >= 0);
-    let html = '';
-    if(fill.length){
-      const stack = ['bun_bottom'].concat(fill, ['bun_top']).reverse();
-      html += '<div class="sbBurger">';
-      for(let i = 0; i < stack.length; i++){
-        const id = stack[i], d = ING[id];
-        html += '<div class="layer lay-' + id + '" style="--w:' + d.w + 'px;--h:' + d.h + 'px"></div>';
-      }
-      html += '</div>';
-    }
-    if(sides.length){
-      html += '<div class="sbSideRow">';
-      for(let i = 0; i < sides.length; i++) html += SIDE_ICON[sides[i]] || '';
-      html += '</div>';
-    }
-    box.innerHTML = html;
-  }
-  function sbAdd(id){
-    const cap = sbCfg().draftMax || 8;
-    if(sbDraft.length >= cap){ showToast('Лимит', 'макс. ' + cap + ' слоёв'); return; }
-    sbDraft.push(id);
-    tone(520, .05, 'triangle', .04);
-    renderDraft();
-  }
-  function sbRemove(i){
-    if(i >= 0 && i < sbDraft.length){ sbDraft.splice(i, 1); renderDraft(); }
-  }
-  function renderRecipes(){
-    const list = loadRecipes();
-    if(!list.length){
-      el.recipeList.innerHTML = '<div class="recipeCard empty">Своих рецептов пока нет</div>';
-      return;
-    }
-    let html = '';
-    for(let i = 0; i < list.length; i++){
-      const r = list[i];
-      const names = r.items.map(id => ING[id].name).join(' · ');
-      html += '<div class="recipeCard"><div class="rc"><b>' + escapeHtml(r.name || ('Рецепт ' + (i + 1))) + '</b>' +
-        '<span>' + escapeHtml(names) + '</span></div>' +
-        '<button class="play" type="button" data-play="' + i + '">Играть</button>' +
-        '<button class="del" type="button" data-del="' + i + '" aria-label="Удалить">×</button></div>';
-    }
-    el.recipeList.innerHTML = html;
-    const pb = el.recipeList.querySelectorAll('[data-play]');
-    for(let i = 0; i < pb.length; i++) pb[i].addEventListener('click', () => {
-      const r = loadRecipes()[parseInt(pb[i].dataset.play, 10)];
-      if(r) startSandbox(r.items, false);
-    });
-    const db = el.recipeList.querySelectorAll('[data-del]');
-    for(let i = 0; i < db.length; i++) db[i].addEventListener('click', () => {
-      loadRecipes().splice(parseInt(db[i].dataset.del, 10), 1);
-      saveProfile(); renderRecipes(); updateMenuBadges();
-    });
-  }
-  function sbSave(){
-    if(!sbDraft.length){ showToast('Пусто', 'добавь хотя бы один слой'); return; }
-    const list = loadRecipes();
-    const name = (el.sbName.value || '').trim() || ('Рецепт ' + (list.length + 1));
-    list.push({ name:name.slice(0, 18), items:sbDraft.slice() });
-    saveProfile();
-    sfxCoin(); tone(820, .08, 'triangle', .05);
-    showToast('Сохранено', name);
-    el.sbName.value = '';
-    sbDraft = [];
-    renderDraft(); renderRecipes(); updateMenuBadges();
-  }
-  function sbPlay(){
-    if(!sbDraft.length){ showToast('Пусто', 'добавь хотя бы один слой'); return; }
-    startSandbox(sbDraft.slice(), false);
-  }
-  function startSandbox(items, free){
-    initAudio();
-    finalizeRun();
-    hideTutorial();
-    const cfg = sbCfg();
-    S.campaign = null;
-    S.sandbox = { items: (items && items.length) ? items.slice() : null, free: !!free };
-    S.runSaved = true;
-    S.running = true; S.paused = false; S.busy = true; S.busyPerk = false;
-    S.score = 0; S.earned = 0; S.mode = 'classic';
-    S.lives = cfg.lives === 0 ? Infinity : cfg.lives; S.served = 0; S.level = 1; S.combo = 0; S.maxCombo = 0;
-    S.taps = 0; S.good = 0; S.perfs = 0; S.orderPerfect = true; S.bonusLives = 0;
-    S.freezes = cfg.freezes; S.hints = cfg.hints; S.skips = cfg.skips;
-    S.freezeUntil = 0; S.revives = 0; S.lastT = 0; S.clockT = 0; S.now = performance.now();
-    S.runId = '';
-    hideAllScreens();
-    el.recordSlot.innerHTML = '';
-    el.reviveBtn.hidden = true;
-    setFrozen(false);
-    setMusicTheme(cfg.music || 'sandbox');
-    startMusic();
-    paintCombo();
-    resetLayers();
-    nextOrder();
-    updateHUD();
-    applyModeUI();
-    updateMenuBadges();
-    if(!S.looping){ S.looping = true; requestAnimationFrame(loop); }
-    showToast('Песочница', free ? 'свободная сборка' : 'ваш рецепт');
-  }
-
-  /* -------- daily tasks & bonus -------- */
-  function renderDaily(){
-    const d = ensureDaily();
-    if(el.dailyReroll){
-      el.dailyReroll.disabled = !!d.rerolled;
-      el.dailyReroll.textContent = d.rerolled ? 'Обновлено' : 'Обновить';
-    }
-    const b = bonusReward();
-    paintFlame(b.streak);
-    el.bonusSum.innerHTML = b.amount + ' <small>монет</small>';
-    const available = bonusAvailable();
-    const active = available ? Math.max(0, b.streak - 1) : (profile.bonusStreak || 0);
-    let sr = '';
-    for(let i = 1; i <= BONUS_DAYS; i++){
-      sr += '<span class="sdayWrap' + (i <= active ? ' on' : '') + '">' +
-        '<b class="sdayAmt">' + (40 + i * 20) + '</b>' +
-        '<span class="sday">' + i + '</span>' +
-      '</span>';
-    }
-    el.streakRow.innerHTML = sr;
-    el.bonusBtn.disabled = !available;
-    el.bonusBtn.textContent = available ? 'Забрать ' + b.amount : 'Уже получено';
-    dailyWasAvail = available;
-    tickDailyTimer();
-
-    let html = '';
-    for(let i = 0; i < DAILY_TASKS.length; i++){
-      const t = DAILY_TASKS[i];
-      const val = Math.min(t.target, d.progress[t.key] || 0);
-      const done = val >= t.target;
-      const claimed = !!d.claimed[t.id];
-      const pct = Math.max(0, Math.min(100, Math.round(val / t.target * 100)));
-      html += '<div class="task' + (done ? ' done' : '') + '">' +
-        '<div class="ti"><b>' + t.name + '</b><span>' + val + '/' + t.target + ' · +' + t.reward + ' монет</span>' +
-          '<div class="bar"><i style="width:' + pct + '%"></i></div></div>' +
-        '<button class="claim' + (done && !claimed ? ' ready' : '') + '" type="button" data-task="' + t.id + '"' +
-          (done && !claimed ? '' : ' disabled') + '>' + (claimed ? 'Готово' : (done ? 'Забрать' : '+' + t.reward)) + '</button>' +
-      '</div>';
-    }
-    el.taskList.innerHTML = html;
-    const btns = el.taskList.querySelectorAll('[data-task]');
-    for(let i = 0; i < btns.length; i++){
-      btns[i].addEventListener('click', () => claimTask(btns[i].dataset.task));
-    }
-    updateMenuBadges();
-  }
-  function openDaily(){
-    if(S.running) return;
-    hideAllScreens();
-    renderDaily();
-    el.dailyScreen.classList.remove('hidden');
-  }
-  function claimTask(id){
-    const t = DAILY_TASKS.filter(x => x.id === id)[0];
-    if(!t) return;
-    const d = ensureDaily();
-    if(d.claimed[id]) return;
-    if((d.progress[t.key] || 0) < t.target) return;
-    d.claimed[id] = 1;
-    profile.coins += t.reward;
-    saveProfile();
-    sfxCoin(); tone(820, .08, 'triangle', .05); tone(1240, .11, 'sine', .04, .06);
-    renderDaily(); updateHUD(); updateMenuBadges();
-    showToast('Награда получена', '+' + t.reward + ' монет');
-  }
-  function rerollDaily(){
-    const d = ensureDaily();
-    if(d.rerolled){ showToast('Обновление заданий', 'Уже обновлено сегодня'); return; }
-    d.rerolled = true;
-    d.salt = (d.salt || 0) + 1;
-    d.ids = pickDaily(todayKey(), d.salt);
-    d.claimed = {};
-    saveProfile();
-    renderDaily();
-    sfxCoin(); tone(680, .1, 'triangle', .05);
-  }
-  function claimBonus(){
-    if(!bonusAvailable()) return;
-    const b = bonusReward();
-    profile.bonusDay = todayKey();
-    profile.bonusStreak = b.streak;
-    profile.bonusAt = Date.now();
-    profile.bonusSkip = false;
-    profile.coins += b.amount;
-    saveProfile();
-    paintFlame(b.streak, true);
-    sfxCoin(); sfxServe();
-    renderDaily(); updateHUD(); updateMenuBadges();
-    showToast('Ежедневный бонус', '+' + b.amount + ' монет · день ' + b.streak);
-  }
-  let dailyOfferShown = false;
-  function openDailyOffer(){
-    if(el.intro && !el.intro.classList.contains('hidden')) return;
-    if(S.running) return;
-    if(!el.startScreen || el.startScreen.classList.contains('hidden')) return;
-    if(el.dailyOffer && !el.dailyOffer.classList.contains('hidden')) return;
-    if(dailyOfferShown) return;
-    if(!bonusAvailable()) return;
-    const b = bonusReward();
-    el.doSum.innerHTML = b.amount + ' <small>монет</small>';
-    el.doText.textContent = 'Бонус за вход · день ' + b.streak + ' из 7';
-    dailyOfferShown = true;
-    el.dailyOffer.classList.remove('hidden');
-  }
-  function closeDailyOffer(){ el.dailyOffer.classList.add('hidden'); }
-  function openKitchen(){
-    if(S.running) return;
-    hideAllScreens();
-    renderKitchen();
-    el.kitchenScreen.classList.remove('hidden');
-  }
-
-  /* -------- skins -------- */
-  function renderSkin(){
-    const eqSkin = skinById(profile.skin);
-    if(el.skinPreview){
-      el.skinPreview.style.setProperty('--skin1', eqSkin.skin[0]);
-      el.skinPreview.style.setProperty('--skin2', eqSkin.skin[1]);
-      el.skinPreview.style.setProperty('--ava1', eqSkin.bg[0]);
-      el.skinPreview.style.setProperty('--ava2', eqSkin.bg[1]);
-      el.skinPreview.style.setProperty('--shirt', eqSkin.shirt[0]);
-      el.skinPreview.dataset.skin = eqSkin.id;
-      if(el.skinPreviewName) el.skinPreviewName.textContent = eqSkin.name;
-    }
-    el.skinCoins.textContent = profile.coins.toLocaleString('ru-RU');
-    let html = '';
-    for(let i = 0; i < SKINS.length; i++){
-      const s = SKINS[i];
-      const owned = skinOwned(s.id);
-      const eq = profile.skin === s.id;
-      const poor = !owned && profile.coins < s.price;
-      let sw = '';
-      for(let j = 0; j < s.shirt.length; j++) sw += '<i style="background:' + s.shirt[j] + '"></i>';
-      html += '<div class="upCard' + (eq ? ' maxed' : '') + '">' +
-        '<div class="upTop">' +
-          '<div class="upIcon skinSw">' + sw + '</div>' +
-          '<div class="tt"><b>' + s.name + '</b><span>' + (eq ? 'Надето' : (owned ? 'В коллекции' : 'Образ шеф-повара')) + '</span></div>' +
-          '<button class="upBuy' + (eq ? ' maxed' : (poor ? ' poor' : '')) + '" type="button" data-skin="' + s.id + '">' +
-            (eq ? 'НОШУ' : (owned ? 'Надеть' : s.price.toLocaleString('ru-RU') + ' монет')) + '</button>' +
-        '</div></div>';
-    }
-    el.skinList.innerHTML = html;
-    const btns = el.skinList.querySelectorAll('[data-skin]');
-    for(let i = 0; i < btns.length; i++){
-      btns[i].addEventListener('click', () => buySkin(btns[i].dataset.skin));
-    }
-    updateMenuBadges();
-  }
-  function buySkin(id){
-    const s = skinById(id);
-    if(skinOwned(id)){
-      profile.skin = id; saveProfile();
-      applySkin(); setAvatar(); renderSkin();
-      tone(760, .08, 'triangle', .05);
-      showToast('Скин надет', s.name);
-      return;
-    }
-    if(profile.coins < s.price){ tone(170, .14, 'sawtooth', .04, 0, 110); return; }
-    profile.coins -= s.price;
-    profile.skins[id] = 1;
-    profile.skin = id;
-    saveProfile();
-    applySkin(); setAvatar(); renderSkin(); updateHUD();
-    sfxCoin(); tone(720, .09, 'triangle', .05); tone(1080, .12, 'triangle', .045, .07);
-    showToast('Скин куплен', s.name);
-  }
-  function openSkin(){
-    if(S.running) return;
-    hideAllScreens();
-    renderSkin();
-    el.skinScreen.classList.remove('hidden');
-  }
-
-  /* -------- settings -------- */
-  let settingsFromGame = false;
-  function optHard(){ return profile.opt === true; }
-  function applyOpt(){
-    try{ document.documentElement.classList.toggle('optHard', optHard()); }catch(e){}
-    try{ relayout(); }catch(e){}
-  }
-  function toggleOpt(){
-    profile.opt = !optHard();
-    saveProfile();
-    paintSettings();
-    applyOpt();
-  }
-  function buildSnow(){
-    try{
-      const layer = document.getElementById('snowLayer');
-      if(!layer || layer.childElementCount) return;
-      let h = '';
-      for(let i = 0; i < 42; i++){
-        const x = (i * 37) % 100, s = 2 + (i % 5) * 1.4, d = 7 + (i % 7) * 1.1;
-        const delay = -(i % 13) * .63, drift = ((i % 2) ? -1 : 1) * (20 + (i % 5) * 12), o = .45 + (i % 5) * .11;
-        h += '<i class="flake" style="--x:' + x + '%;--s:' + s + 'px;--d:' + d + 's;--delay:' + delay + 's;--drift:' + drift + 'px;--o:' + o.toFixed(2) + '"></i>';
-      }
-      layer.innerHTML = h;
-    }catch(e){}
-  }
-  function applyXmas(){
-    try{
-      document.documentElement.classList.toggle('xmas', xmasOn());
-      buildSnow();
-      syncXmasAudio();
-      if(xmasOn()) stopMusic(); else if(musicEnabled() && !muted.v) startMusic(true);
-    }catch(e){}
-  }
-  function toggleXmas(){
-    profile.xmas = !xmasOn();
-    saveProfile();
-    paintSettings();
-    applyXmas();
-    renderPalette();
-    if(profile.xmas) xmasBell();
-  }
-  function paintSettings(){
-    const vol = Math.round(sfxGain() * 100);
-    el.setSound.classList.toggle('on', !muted.v);
-    el.setSound.setAttribute('aria-checked', String(!muted.v));
-    el.setVol.value = String(vol);
-    el.setVolVal.textContent = vol + '%';
-    el.setVibro.classList.toggle('on', !!profile.vibro);
-    el.setVibro.setAttribute('aria-checked', String(!!profile.vibro));
-    el.setMusic.classList.toggle('on', musicEnabled());
-    el.setMusic.setAttribute('aria-checked', String(musicEnabled()));
-    el.setOpt.classList.toggle('on', optHard());
-    el.setOpt.setAttribute('aria-checked', String(optHard()));
-    el.setXmas.classList.toggle('on', xmasOn());
-    el.setXmas.setAttribute('aria-checked', String(xmasOn()));
-    if(el.xmasCredit) el.xmasCredit.classList.toggle('hidden', !xmasOn());
-    el.resetConfirm.classList.add('hidden');
-  }
-  function openSettings(){
-    settingsFromGame = S.running;
-    if(S.running && !S.paused) togglePause(true);
-    hideAllScreens();
-    paintSettings();
-    el.settingsScreen.classList.remove('hidden');
-  }
-  function closeSettings(){
-    el.settingsScreen.classList.add('hidden');
-    if(settingsFromGame && S.running){
-      settingsFromGame = false;
-      el.pauseScreen.classList.remove('hidden');
-    } else {
-      settingsFromGame = false;
-      showMenu();
-    }
-  }
-  function toggleSoundSetting(){
-    muted.v = !muted.v;
-    saveJSON(KEY_MUTED, muted.v ? '1' : '0');
-    paintSound();
-    paintSettings();
-    if(!muted.v) initAudio();
-    if(muted.v) stopMusic(); else startMusic();
-    syncXmasAudio();
-  }
-  function toggleMusic(){
-    profile.music = !musicEnabled();
-    saveProfile();
-    paintSettings();
-    if(musicEnabled()) startMusic(); else stopMusic();
-    syncXmasAudio();
-  }
-  function setVolume(v){
-    profile.sfxVol = clamp(v, 0, 1);
-    saveProfile();
-    const pct = Math.round(profile.sfxVol * 100);
-    el.setVolVal.textContent = pct + '%';
-    if(profile.sfxVol > 0) initAudio();
-    if(music.on && music.gain && ac){
-      const p = music.gain.gain, now = ac.currentTime;
-      p.cancelScheduledValues(now); p.setValueAtTime(Math.max(.0001, p.value), now);
-      p.exponentialRampToValueAtTime(musicLevel(), now + .12);
-    }
-    syncXmasAudio();
-  }
-  function toggleVibro(){
-    profile.vibro = !profile.vibro;
-    saveProfile();
-    paintSettings();
-    if(profile.vibro) buzz(8);
-  }
-  function askReset(){
-    el.resetConfirm.classList.remove('hidden');
-    tone(220, .1, 'sawtooth', .035);
-  }
-  function resetAll(){
-    try{ if(store) store.clear(); }catch(e){}
-    try{ if(typeof localStorage !== 'undefined') localStorage.clear(); }catch(e){}
-    location.reload();
-  }
-
-  /* -------- intro cinematic -------- */
-  const INTRO_SCENES = [
-    { dur:2600, html:'<div class="sc scA"><div class="scSignA">ЗОЛОТАЯ БУЛОЧКА</div><div class="ibBurger"><i class="ibBunTop"></i><i class="ibLettuce"></i><i class="ibCheese"></i><i class="ibPatty"></i><i class="ibBunBot"></i></div><div class="introCap">Шикарная бургерная нового города.<br>Всё <b>новое</b> и <b>блестящее</b>.</div></div>' },
-    { dur:2900, html:'<div class="sc scB"><div class="scSignB">ТВОЙ ЛАРЁК</div><div class="scDump"><div class="scTrash"><i></i><i></i><i></i></div><div class="scCounter"></div><div class="scFlies"><i></i><i></i><i></i></div></div><div class="introCap">…а вот <b>твоя</b> закусочная.<br>Пусто, грязно, всё сломано.</div></div>' },
-    { dur:0, final:true, html:'<div class="sc scC"><div class="ibBurger"><i class="ibBunTop"></i><i class="ibLettuce"></i><i class="ibCheese"></i><i class="ibPatty"></i><i class="ibBunBot"></i></div><div class="introCap">Но у тебя есть <b>рецепт</b>.<br>Пора всё изменить — за работу!</div></div>' }
-  ];
-  let introTimer = 0;
-  function startIntro(){
-    hideAllScreens();
-    if(el.dailyOffer) el.dailyOffer.classList.add('hidden');
-    el.intro.classList.remove('hidden');
-    el.introBtn.hidden = true;
-    showIntroScene(0);
-  }
-  function showIntroScene(i){
-    const s = INTRO_SCENES[i];
-    if(!s){ finishIntro(); return; }
-    clearTimeout(introTimer);
-    el.introStage.innerHTML = s.html;
-    const sc = el.introStage.firstElementChild;
-    if(sc && sc.classList){ void sc.offsetWidth; sc.classList.add('introIn'); }
-    if(s.final){
-      el.introBtn.hidden = false;
-    } else {
-      el.introBtn.hidden = true;
-      introTimer = setTimeout(() => showIntroScene(i + 1), s.dur);
-    }
-  }
-  function finishIntro(){
-    clearTimeout(introTimer);
-    el.intro.classList.add('hidden');
-    el.introStage.innerHTML = '';
-    if(!profile.intro){ profile.intro = true; saveProfile(); }
-    startGame(false);
-    if(!profile.tutorialDone) startTutorial();
-    setTimeout(openDailyOffer, 500);
-  }
-  function skipIntro(){ finishIntro(); }
-
-  /* -------- interactive tutorial -------- */
-  const TUT = {
-    0:{ title:'Собирай снизу вверх', text:'Повторяй порядок из заказа.', btn:'Дальше' },
-    1:{ title:'Нажми продукт', text:'Подсвеченный ингредиент внизу.', btn:null },
-    2:{ title:'Верно!', text:'Следи за полоской терпения.', btn:'Понял' },
-    3:{ title:'Бонусы', text:'Заморозка, подсказка и скип — справа.', btn:'В бой' }
-  };
-  function clearTutFocus(){
-    const a = document.querySelectorAll('.tutFocus');
-    for(let i = 0; i < a.length; i++) a[i].classList.remove('tutFocus');
-  }
-  function hideTutorial(){
-    S.tutorial = null;
-    clearTutFocus();
-    el.tutor.classList.add('hidden');
-  }
-  function endTutorial(){
-    hideTutorial();
-    if(!profile.tutorialDone){ profile.tutorialDone = true; saveProfile(); }
-  }
-  function startTutorial(){
-    if(!S.running) return;
-    S.tutorial = { step:0 };
-    el.tutor.classList.remove('hidden');
-    showTutStep(0);
-  }
-  function showTutStep(step){
-    if(!S.tutorial) return;
-    S.tutorial.step = step;
-    const t = TUT[step];
-    if(!t) return;
-    el.tutorTitle.textContent = t.title;
-    el.tutorText.textContent = t.text;
-    el.tutorBtn.hidden = !t.btn;
-    if(t.btn) el.tutorBtn.textContent = t.btn;
-    clearTutFocus();
-    if(step === 1){
-      const need = S.order[S.placed];
-      for(let i = 0; i < palBtns.length; i++){
-        if(palBtns[i].dataset.ing === need){ palBtns[i].classList.add('tutFocus'); break; }
-      }
-      if(chips[S.placed]) chips[S.placed].classList.add('tutFocus');
-    } else if(step === 3){
-      el.powers.classList.add('tutFocus');
-    }
-  }
-  function advanceTutorial(){
-    if(!S.tutorial) return;
-    const step = S.tutorial.step;
-    if(step === 0) showTutStep(1);
-    else if(step === 2) showTutStep(3);
-    else if(step === 3) endTutorial();
-  }
-
-  /* ---------------- flow ---------------- */
-  function startGame(camp){
-    if(!camp && MODES[S.mode] && MODES[S.mode].hardcore && !profile.hardcoreWarned){
-      maybeHardcoreWarning(() => startGame(camp));
-      return;
-    }
-    initAudio();
-    if(el.dailyOffer) el.dailyOffer.classList.add('hidden');
-    finalizeRun();
-    if(!camp) S.campaign = null;
-    S.sandbox = null;
-    hideTutorial();
-    S.mode = S.campaign ? 'classic' : (MODES[S.mode] ? S.mode : 'classic');
-    if(!S.campaign && MODES[profile.mode]) S.mode = profile.mode;
-    S.runSaved = isTraining();
-    S.running = true; S.paused = false; S.busy = true; S.busyPerk = false;
-    S.score = 0; S.earned = 0;
-    setMusicTheme(S.mode); startMusic();
-    S.lives = isTraining() ? Infinity : (MODES[S.mode].hardcore ? 1 : (MODES[S.mode].lives + upgLevel('comfort') + prestigeLifeBonus()));
-    if(S.campaign) S.lives = S.campaign.def.lives;
-    S.served = 0; S.level = 1; S.combo = 0; S.maxCombo = 0;
-    S.taps = 0; S.good = 0; S.perfs = 0; S.orderPerfect = true;
-    S.bonusLives = 0;
-    S.meal = null; S.client = 'normal';
-    S.timeLeft = MODES[S.mode].timed || 0;
-    S.freezes = 1 + upgLevel('starter'); S.hints = 1 + upgLevel('starter'); S.skips = 0;
-    S.freezeUntil = 0; S.revives = 0; S.lastT = 0; S.clockT = 0; S.now = performance.now();
-    S.runId = '';
-    hideAllScreens();
-    el.recordSlot.innerHTML = '';
-    el.reviveBtn.hidden = true;
-    setFrozen(false);
-    paintCombo();
-    resetLayers();
-    nextOrder();
-    updateHUD();
-    applyModeUI();
-    updateMenuBadges();
-    if(!S.looping){ S.looping = true; requestAnimationFrame(loop); }
-  }
-
   function nextOrder(){
     clearHint();
     S.client = pickClient();
@@ -6690,8 +5482,8 @@ html.is-standalone #bmGate{display:none!important}
     const meal = S.meal || {};
     const base = 80 + S.order.length * 20 + Math.round(S.patience * 90) + Math.round(S.combo * 6);
     const comboBonus = (meal.combo && perfect) ? 1.2 : 1;
-    const gain = Math.round(base * mult * mode.score * (cd.score || 1) * comboBonus * (perfect ? 1.15 : 1) * prestigeScoreMult());
-    let tip = isTraining() ? 0 : Math.max(1, Math.round((2 + S.order.length * 1.2 + S.patience * 6 + S.combo) * mode.tip * (cd.tip || 1) * (1 + upgLevel('tips') * .15) * prestigeCoinMult()));
+    const gain = Math.round(base * mult * mode.score * (cd.score || 1) * comboBonus * (perfect ? 1.15 : 1) * prestigeScoreMult() * (1 + petBuff('score')));
+    let tip = isTraining() ? 0 : Math.max(1, Math.round((2 + S.order.length * 1.2 + S.patience * 6 + S.combo) * mode.tip * (cd.tip || 1) * (1 + upgLevel('tips') * .15) * prestigeCoinMult() * (1 + petBuff('coin'))));
     if(!isTraining() && meal.combo && perfect) tip += 25;
     if(!isTraining() && cd.critic){ if(perfect) tip += 120; else tip = Math.max(1, Math.round(tip * .4)); }
 
@@ -7066,7 +5858,7 @@ html.is-standalone #bmGate{display:none!important}
       paintLives();
     }
     if(!S.busy && !S.busyPerk && !frozen && !S.tutorial && !S.sandbox && !isTraining()){
-      S.patience -= (dt / Math.max(.2, S.duration)) * pressure();
+      S.patience -= (dt / Math.max(.2, S.duration)) * pressure() * (1 - petBuff('patience'));
       if(S.patience <= 0){ S.patience = 0; updatePatience(); loseCustomer(); return; }
       updatePatience();
     }
@@ -7125,6 +5917,7 @@ html.is-standalone #bmGate{display:none!important}
   el.setOpt.addEventListener('click', toggleOpt);
   el.setXmas.addEventListener('click', toggleXmas);
   el.setMusic.addEventListener('click', toggleMusic);
+  if(el.musicTrackSel) el.musicTrackSel.addEventListener('change', e => { profile.musicTrack = e.target.value || 'default'; saveProfile(); paintSettings(); stopMusic(); if(musicEnabled() && !muted.v) startMusic(true); syncMusicTracks(); });
   el.resetBtn.addEventListener('click', askReset);
   el.resetNo.addEventListener('click', () => el.resetConfirm.classList.add('hidden'));
   el.resetYes.addEventListener('click', resetAll);
@@ -7242,11 +6035,12 @@ html.is-standalone #bmGate{display:none!important}
     snow:() => (document.getElementById('snowLayer') || { childElementCount:0 }).childElementCount,
     wheel:() => ({ day:profile.wheelSpinDay, spins:profile.wheelSpins, left:wheelLeft() }),
     prestige:() => ({ day:profile.prestigeDay, today:profile.prestigeToday, left:prestigeLeft() }),
-    build:() => ({ floors:profile.build.floors, coins:profile.coins, buildAt:profile.buildAt, stats:buildStats() }),
     throwSnow:throwSnow, snowButton:() => !!document.getElementById('snowBtn') && !Array.prototype.some.call(document.querySelectorAll('#palette .ing'), b => b.dataset.ing === SNOW_ID),
     patience:() => S.patience,
-    grantBuild:grantBuildIncome, buyFloor:buyBuildFloor, spin:spinWheel
+    spin:spinWheel
   };
+  window.__bmPets = { PETS, grantPet, openPetCase, buyPetCase, rollPetCase, renderPets, openPets };
+  window.grantPet = grantPet; window.openPetCase=openPetCase; window.buyPetCase=buyPetCase; window.rollPetCase=rollPetCase; window.renderPets=renderPets; window.openPets=openPets; window.saveProfile=saveProfile; window.updateHUD=updateHUD; window.updateMenuBadges=updateMenuBadges; window.showToast=showToast; window.tone=tone; window.profile=profile;
   window.__bmPromo = {
     list:() => profile.promos.map((p) => Object.assign({}, p)),
     create:(cfg) => {
@@ -7292,40 +6086,22 @@ html.is-standalone #bmGate{display:none!important}
   $('perkFreeze').addEventListener('click', () => pickPerk('freeze'));
   $('perkHint').addEventListener('click', () => pickPerk('hint'));
   if(el.hardWarnOk) el.hardWarnOk.addEventListener('click', acceptHardcoreWarning);
-  if(el.buildBtn) el.buildBtn.addEventListener('click', openBuild);
-  if(el.buildBackBtn) el.buildBackBtn.addEventListener('click', showMenu);
-  if(el.buyFloorBtn) el.buyFloorBtn.addEventListener('click', buyBuildFloor);
-  if(el.buildTools){
-    el.buildTools.addEventListener('click', (ev) => {
-      const b = ev.target.closest ? ev.target.closest('.buildTool') : null;
-      if(!b || !BUILD_DEFS[b.dataset.tool]) return;
-      buildTool = b.dataset.tool;
-      renderBuildTools();
+  if(el.petsBtnNav) el.petsBtnNav.addEventListener('click', openPets);
+  if(el.petsBackBtn) el.petsBackBtn.addEventListener('click', showMenu);
+  if(el.buyPetCaseBtn) el.buyPetCaseBtn.addEventListener('click', buyPetCase);
+  if(el.openPetCaseBtn) el.openPetCaseBtn.addEventListener('click', () => openPetCase('кейс'));
       tone(500, .05, 'triangle', .035);
     });
   }
-  if(el.buildGrid){
-    el.buildGrid.addEventListener('click', (ev) => {
-      const c = ev.target.closest ? ev.target.closest('.buildCell') : null;
-      if(!c) return;
-      placeBuild(parseInt(c.dataset.i, 10));
-    });
-  }
-  setInterval(grantBuildIncome, 5000);
-  document.addEventListener('visibilitychange', () => { grantBuildIncome(); });
-  renderBuildTools();
-
   S.mode = MODES[profile.mode] ? profile.mode : 'classic';
   setMusicTheme('menu');
   ensureDaily();
   applySkin();
-  buildModes();
   initPalette();
   renderPalette();
   if(el.snowBtn) el.snowBtn.addEventListener('pointerdown', (ev) => { ev.preventDefault(); throwSnow(); });
   applyOpt();
   applyXmas();
-  grantBuildIncome();
   paintLives();
   updatePowers();
   paintCombo();
@@ -7339,7 +6115,6 @@ html.is-standalone #bmGate{display:none!important}
   setTimeout(relayout, 400);
   setTimeout(openDailyOffer, 700);
   resetLayers();
-  try{ const __bt = $('buildTag'); if(__bt) __bt.textContent = 'сборка r55 · 25.11.2026'; }catch(e){}
 })();
 </script>
 
@@ -7347,6 +6122,20 @@ html.is-standalone #bmGate{display:none!important}
 (function(){
   var K={salt:'qNropNjjjMK7/rsj1DUkMA==',iv:'6yy58WEM5ezPj5Ni',data:'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',iter:250000};
   var taps=0, tapTimer=0;
+  window.__bmEgg = function(id, reward){
+    try{
+      var profile = window.profile, saveProfile=window.saveProfile, showToast=window.showToast, updateHUD=window.updateHUD, updateMenuBadges=window.updateMenuBadges, renderPets=window.renderPets, grantPet=window.grantPet, tone=window.tone;
+      if(!profile) return;
+      profile.petEggs = profile.petEggs && typeof profile.petEggs==='object' ? profile.petEggs : {};
+      if(profile.petEggs[id]) { if(showToast) showToast('Секрет уже найден','Ищи другой'); return; }
+      profile.petEggs[id]=1;
+      if(reward==='case'){ profile.petCases=(profile.petCases||0)+1; if(showToast) showToast('Секретная пасхалка!','+1 кейс питомцев'); }
+      else if(reward==='pet'){ var ids=['cat_burger','cat_ninja','cat_lucky','burger_dog','golden_cat','cosmo_cat']; var pick=ids[Math.floor(Math.random()*ids.length)]; if(grantPet) grantPet(pick,'пасхалка'); else { profile.pets=profile.pets||{}; profile.pets[pick]=1; profile.pet=profile.pet||pick; if(showToast) showToast('Секретная пасхалка!','Питомец найден'); } }
+      else if(reward==='coins'){ profile.coins=(profile.coins||0)+777; if(showToast) showToast('Секретная пасхалка!','+777 монет'); }
+      if(saveProfile) saveProfile(); if(updateHUD) updateHUD(); if(updateMenuBadges) updateMenuBadges(); if(renderPets) renderPets();
+      if(tone){ tone(523,.08,'triangle',.05); tone(784,.1,'triangle',.05,.07); tone(1047,.16,'triangle',.04,.14); }
+    }catch(e){}
+  };
 
   function bytes(b64){
     var bin=atob(b64), out=new Uint8Array(bin.length);
@@ -7439,6 +6228,20 @@ html.is-standalone #bmGate{display:none!important}
   var b=document.querySelector('#startScreen .logo');
   if(a) a.addEventListener('click', tap);
   if(b) b.addEventListener('click', tap);
+  // secret easter eggs
+  function bindEgg(el, id, count, reward){
+    if(!el) return; var c=0,t=0;
+    el.addEventListener('click', function(){
+      c++; clearTimeout(t); t=setTimeout(function(){ c=0; }, 1600);
+      if(c>=count){ c=0; if(window.__bmEgg) window.__bmEgg(id,reward); }
+    });
+  }
+  bindEgg(document.getElementById('score'), 'egg_score_9', 9, 'coins');
+  bindEgg(document.getElementById('avatar'), 'egg_avatar_12', 12, 'case');
+  bindEgg(document.querySelector('#settingsScreen .title'), 'egg_settings_15', 15, 'pet');
+  bindEgg(document.querySelector('#prestigeScreen .title'),'egg_prestige_10',10,'case');
+  bindEgg(document.querySelector('#wheelScreen .title'),'egg_wheel_10',10,'coins');
+  bindEgg(document.querySelector('#petsScreen .title'),'egg_pets_7',7,'pet');
 })();
 </script>
 </body>
