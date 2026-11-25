@@ -359,6 +359,11 @@
     border-radius:5px 5px 12px 12px/5px 5px 16px 16px;
     box-shadow:inset 0 2px 3px rgba(255,255,255,.35), inset 0 -4px 8px rgba(0,0,0,.45);
   }
+  .lay-mandarin{
+    background:radial-gradient(circle at 36% 30%,#ffe08a 0 12%,#ff9b1f 48%,#c85a08 100%);
+    border-radius:50%;
+    box-shadow:inset -2px -3px 5px rgba(120,45,0,.45),inset 2px 2px 3px rgba(255,240,180,.55);
+  }
   .ing .iconBox .sideIconWrap,.sbIng .iconBox .sideIconWrap{width:100%;height:100%;display:flex;align-items:center;justify-content:center;pointer-events:none}
   .sideIcon{height:80%;width:auto;display:block;filter:drop-shadow(0 2px 2px rgba(0,0,0,.45))}
   .clientTag{
@@ -1037,6 +1042,45 @@
   .prBonus b{display:block;font-size:15px;font-weight:950;color:#c9a6ff;margin-top:2px}
   .prProg{text-align:center;font-size:11px;font-weight:800;color:#b7a28d;margin:4px 0 10px}
   .prNote{margin:10px 0 0;font-size:10.5px;line-height:1.45;color:#9c8874;text-align:center}
+  .caseRow{display:flex;flex-direction:column;gap:7px;width:100%;max-width:330px;margin:2px 0 10px}
+  .caseBtn{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;padding:9px 12px;border-radius:12px;border:1px solid rgba(255,190,90,.25);background:linear-gradient(180deg,rgba(255,190,90,.16),rgba(255,255,255,.03));color:#f3e3cc;font-weight:900;font-size:12px;box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
+  .caseBtn small{display:block;font-size:9px;font-weight:700;color:#a88f75}
+  .caseBtn b{color:#ffd884;white-space:nowrap}
+  .caseBtn.poor{opacity:.45}
+  .caseBtn:active{transform:scale(.98)}
+  .petBuffLine{width:100%;max-width:360px;text-align:center;font-size:10.5px;font-weight:800;color:#c9a6ff;margin:8px 0 4px;line-height:1.5}
+  .upIcon.petIco{display:grid;place-items:center;font-size:10px;font-weight:950;color:#ffe0a0;background:linear-gradient(180deg,#3b2415,#1b0f08)}
+  .petCompanion{position:absolute;left:50%;margin-left:-30px;bottom:50%;width:60px;height:60px;z-index:6;cursor:pointer;pointer-events:auto;transform-origin:50% 100%;animation:petIdle 2.4s ease-in-out infinite}
+  .petCompanion[hidden]{display:none!important}
+  .petCompanion.drop{animation:petDrop .75s cubic-bezier(.2,1.5,.4,1) both, petIdle 2.4s ease-in-out .75s infinite}
+  .petCompanion.petted .petArt{animation:petPurr .28s ease-in-out 3}
+  .petCompanion .petHeart{position:absolute;left:50%;top:-18px;width:8px;height:8px;margin-left:-4px;opacity:0;background:#ff6b8a;transform:rotate(45deg);pointer-events:none}
+  .petCompanion .petHeart::before,.petCompanion .petHeart::after{content:"";position:absolute;width:8px;height:8px;border-radius:50%;background:#ff6b8a}
+  .petCompanion .petHeart::before{left:-4px;top:0}
+  .petCompanion .petHeart::after{left:0;top:-4px}
+  .petCompanion.petted .petHeart{animation:petHeartUp .9s ease-out}
+  .petCompanion .petArt,.caseDropPet .petArt{width:100%;height:100%;display:block;overflow:visible;opacity:1}
+  .petHatArt{display:none}
+  html.xmas .petHatArt{display:block}
+  @keyframes petDrop{0%{transform:translateY(-90px) scale(.7);opacity:0}70%{transform:translateY(6px) scale(1.08);opacity:1}100%{transform:translateY(0) scale(1);opacity:1}}
+  @keyframes petIdle{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-3px) rotate(2deg)}}
+  @keyframes petPurr{50%{transform:scale(1.08,.94)}}
+  @keyframes petHeartUp{0%{opacity:0;transform:translateY(0) scale(.5) rotate(45deg)}30%{opacity:1}100%{opacity:0;transform:translateY(-26px) scale(1.2) rotate(45deg)}}
+  .caseStage{position:fixed;inset:0;z-index:3200;display:grid;place-items:center;background:rgba(6,4,2,.86);backdrop-filter:blur(3px);cursor:pointer}
+  .caseStage.hidden{display:none}
+  .caseScene{position:relative;width:min(320px,86vw);height:300px;display:flex;align-items:center;justify-content:center}
+  .caseBox{position:absolute;bottom:48px;width:110px;height:78px;border-radius:12px;border:2px solid #ffd884;background:linear-gradient(180deg,#a7672d,#5d2f0e);box-shadow:0 16px 30px rgba(0,0,0,.6),inset 0 2px 0 rgba(255,255,255,.25)}
+  .caseBox::before{content:"";position:absolute;left:-4px;right:-4px;top:-17px;height:21px;border-radius:8px;border:2px solid #ffd884;background:linear-gradient(180deg,#d68b3c,#8c4a18);transform-origin:left bottom}
+  .caseStage.open .caseBox{animation:caseShake .55s ease-in-out both}
+  .caseStage.open .caseBox::before{animation:caseLid .65s ease-out both}
+  .caseDropPet{position:absolute;left:50%;top:38px;width:58px;height:58px;margin-left:-29px;opacity:0;transform:translateY(-150px) scale(.5)}
+  .caseStage.open .caseDropPet{animation:casePetDrop 1s cubic-bezier(.2,1.4,.4,1) .45s both}
+  .caseDropName{position:absolute;bottom:0;left:0;right:0;text-align:center;font-size:14px;font-weight:900;color:#ffd884;opacity:0;line-height:1.4}
+  .caseStage.open .caseDropName{animation:caseName .5s ease-out 1.25s both}
+  @keyframes caseShake{0%,100%{transform:translateX(0) rotate(0)}20%{transform:translateX(-7px) rotate(-7deg)}40%{transform:translateX(7px) rotate(7deg)}60%{transform:translateX(-5px) rotate(-5deg)}80%{transform:translateX(5px) rotate(5deg)}}
+  @keyframes caseLid{0%{transform:rotate(0)}55%{transform:rotate(-105deg)}100%{transform:rotate(-105deg)}}
+  @keyframes casePetDrop{0%{opacity:0;transform:translateY(-150px) scale(.5)}70%{opacity:1;transform:translateY(12px) scale(1.14)}100%{opacity:1;transform:translateY(0) scale(1)}}
+  @keyframes caseName{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
   .skinPreviewWrap{display:flex;align-items:center;gap:12px;justify-content:center;margin:4px 0 8px}
   .skinPreview{width:52px;height:78px}
   .skinPreviewName{font-size:15px;font-weight:900;color:#ffd884}
@@ -1343,7 +1387,7 @@
   .sbCfgBody.hidden{display:none}
   #sandboxSettingsScreen .title{margin-bottom:4px}
   #sandboxSettingsScreen .sbCfg{max-width:380px}
-  #sandboxSettingsScreen .sbCfgBody{max-height:none;overflow:visible;border-top:0;padding:4px 12px 10px}
+  #sandboxSettingsScreen .sbCfgBody{max-height:calc(var(--vh,100dvh) - 190px);overflow-y:auto;border-top:1px solid rgba(255,255,255,.07);padding:4px 12px 10px;-webkit-overflow-scrolling:touch}
   .sbCfgSec{margin:10px 0 2px;font-size:10px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;color:#ffb63d}
   .sbCfgRow{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:11.5px;font-weight:750;color:#f4e7d5;text-align:left}
   .sbCfgRow:last-child{border-bottom:0}
@@ -1452,7 +1496,7 @@
   <footer class="palette" id="palette"></footer>
 
   <div class="screen" id="startScreen">
-    <div class="heroWrap"><canvas class="heroCanvas" id="heroCanvas"></canvas></div>
+    <div class="heroWrap"><canvas class="heroCanvas" id="heroCanvas"></canvas><div class="petCompanion" id="petCompanion" hidden></div></div>
     <h1 class="logo"><b>BURGER</b><span>MASTER</span></h1>
     <p class="tagline">Клиент диктует состав. Выкладывай слои снизу вверх точно в нужном порядке — и чем быстрее, тем жирнее чаевые.</p>
     <div class="modeRow" id="modeRow"></div>
@@ -1465,6 +1509,7 @@
       <button class="navBtn" id="kitchenBtn" type="button"><b>Кухня</b><span id="kitchenLvl">ур. 0</span></button>
       <button class="navBtn" id="dailyBtn" type="button"><b>Награды</b><span id="dailyBadgeTxt">0/5</span><i class="dotBadge" id="dailyDot" hidden></i></button>
       <button class="navBtn" id="skinBtn" type="button"><b>Скины</b><span id="skinCount">0/10</span></button>
+      <button class="navBtn" id="petBtn" type="button"><b>Питомцы</b><span id="petCount">0/6</span></button>
       <button class="navBtn" id="prestigeBtnNav" type="button"><b>Перерождение</b><span id="prestigeNav">0 очк.</span></button>
       <button class="navBtn" id="wheelBtnNav" type="button"><b>Рулетка</b><span id="wheelNav">бесплатно</span><i class="dotBadge" id="wheelDot" hidden></i></button>
       <button class="navBtn" id="sandboxBtn" type="button"><b>Песочница</b><span id="sandboxCount">0 рец.</span></button>
@@ -1552,7 +1597,7 @@
   <div class="screen hidden" id="prestigeScreen">
     <div class="title">Перерождение<small>начни заново · стань сильнее</small></div>
     <div class="prestigeCard">
-      <div class="prRow"><span>Перерождений</span><b id="prestigeCur">0</b></div>
+      <div class="prRow"><span>Перерождений</span><b id="prestigeCur">0/50</b></div>
       <div class="prRow"><span>Очки престижа</span><b id="prestigePts">0</b></div>
       <div class="prBonus">
         <div><i>Монеты</i><b id="prestigeCoin">+0%</b></div>
@@ -1561,7 +1606,7 @@
       </div>
       <div class="prProg" id="prestigeProg">0 / 50 бургеров</div>
       <button class="cta" id="prestigeBtn" type="button">Переродиться</button>
-      <p class="prNote">Сброс монет, кухни и кампании за постоянные бонусы. Скины и достижения остаются.</p>
+      <p class="prNote">Максимум 50 перерождений. Сброс монет, кухни и кампании за постоянные бонусы. Скины, питомцы и достижения остаются.</p>
     </div>
     <button class="cta ghost" id="prestigeBackBtn" type="button">Назад</button>
   </div>
@@ -1575,6 +1620,23 @@
     <div class="coinLine">Монеты: <b id="skinCoins">0</b></div>
     <div class="kitchenList" id="skinList"></div>
     <button class="cta ghost" id="skinBackBtn" type="button">Назад</button>
+  </div>
+  <div class="screen hidden" id="petScreen">
+    <div class="title">Магазин питомцев<small>коты, кролики и кейсы</small></div>
+    <div class="coinLine">Монеты: <b id="petCoins">0</b></div>
+    <div class="caseRow" id="caseList"></div>
+    <div class="petBuffLine" id="petBuffs">Баффы: пока нет</div>
+    <div class="kitchenList" id="petList"></div>
+    <div class="petBuffLine" id="petCaseResult"></div>
+    <button class="cta ghost" id="petBackBtn" type="button">Назад</button>
+  </div>
+
+  <div class="caseStage hidden" id="caseStage">
+    <div class="caseScene">
+      <div class="caseBox"></div>
+      <div class="caseDropPet" id="caseDropPet"></div>
+      <div class="caseDropName" id="caseDropName"></div>
+    </div>
   </div>
 
   <div class="screen hidden" id="dailyScreen">
@@ -1817,7 +1879,8 @@
     jalapeno:  { name:'Халапеньо',     w:138, h:8  },
     snow:      { name:'Снежок',        w:92,  h:12 },
     fries:     { name:'Картошка',      w:96,  h:64 },
-    cola:      { name:'Напиток',       w:66,  h:92 }
+    cola:      { name:'Напиток',       w:66,  h:92 },
+    mandarin:  { name:'Мандарин',      w:76,  h:76 }
   };
   const FILLINGS = ['patty','cheese','lettuce','tomato','onion','bacon','pickle','sauce','egg','jalapeno'];
   const SNOW_ID = 'snow';
@@ -1834,9 +1897,11 @@
   };
   function isTraining(){ return !!(MODES[S.mode] && MODES[S.mode].training); }
 
-  const WHEEL_DAY_LIMIT = 50, PRESTIGE_DAY_LIMIT = 3;
+  const WHEEL_DAY_LIMIT = 50, PRESTIGE_DAY_LIMIT = 3, PRESTIGE_MAX = 50;
   const SCARE_COUNT = 25;
   const SIDES = ['fries', 'cola'];
+  const XMAS_SIDES = ['fries', 'cola', 'mandarin'];
+  function activeSides(){ return xmasOn() ? XMAS_SIDES : SIDES; }
   const CLIENT_TYPES = [
     { id:'normal', w:60, minLvl:0 },
     { id:'hurry',  w:15, minLvl:2 },
@@ -1877,7 +1942,7 @@
     sidesChance:22, sideOnlyChance:16, maxSides:2, bigChance:16,
     fill:{}, freezes:3, hints:3, skips:3,
     music:'sandbox', shirt:'blue', bg:'brown', skin:'light',
-    randomLook:true, showBadge:true, particles:true, floaters:true,
+    randomLook:true, showBadge:true, particles:true, floaters:true, permBonuses:true, endlessBoosters:true,
     draftMax:8, scare:0, scareType:0
   };
   for(let i = 0; i < FILLINGS.length; i++) SB_CFG_DEF.fill[FILLINGS[i]] = 1;
@@ -1922,6 +1987,8 @@
     o.showBadge = x.showBadge !== false;
     o.particles = x.particles !== false;
     o.floaters = x.floaters !== false;
+    o.permBonuses = x.permBonuses !== false;
+    o.endlessBoosters = x.endlessBoosters !== false;
     o.draftMax = sbInt(x.draftMax, 1, 12, d.draftMax);
     o.scare = sbInt(x.scare, 0, 100, d.scare);
     o.scareType = sbInt(x.scareType, 0, SCARE_COUNT, d.scareType);
@@ -1954,9 +2021,23 @@
     return o;
   }
   function sbSidePick(n){
-    const r = Math.random();
-    if(n <= 1) return [r < .5 ? 'fries' : 'cola'];
-    return r < .34 ? ['fries'] : r < .68 ? ['cola'] : ['fries', 'cola'];
+    const pool = XMAS_SIDES, r = Math.random();
+    if(n <= 1) return [pool[Math.floor(r * pool.length) % pool.length]];
+    const a = pool[Math.floor(r * pool.length) % pool.length];
+    if(r < .34) return [a];
+    let b = pool[(pool.indexOf(a) + 1 + Math.floor(r * 2)) % pool.length];
+    if(b === a) b = pool[(pool.indexOf(a) + 1) % pool.length];
+    return b === a ? [a] : [a, b];
+  }
+  function pickSides(sr, max){
+    const pool = activeSides();
+    const a = pool[Math.floor(sr * pool.length) % pool.length];
+    const out = [a];
+    if(max >= 2 && sr > .58){
+      const b = pool[(pool.indexOf(a) + 1 + Math.floor(sr * 2)) % pool.length];
+      if(b !== a) out.push(b);
+    }
+    return out;
   }
   function pickClient(){
     if(S.sandbox){
@@ -2185,6 +2266,8 @@
     kitchenScreen:$('kitchenScreen'), kitchenCoins:$('kitchenCoins'), kitchenList:$('kitchenList'), kitchenBackBtn:$('kitchenBackBtn'),
     skinScreen:$('skinScreen'), skinCoins:$('skinCoins'), skinList:$('skinList'), skinBackBtn:$('skinBackBtn'), skinBtn:$('skinBtn'), skinCount:$('skinCount'),
     skinPreview:$('skinPreview'), skinPreviewName:$('skinPreviewName'),
+    petBtn:$('petBtn'), petCount:$('petCount'), petScreen:$('petScreen'), petCoins:$('petCoins'), caseList:$('caseList'), petList:$('petList'), petBuffs:$('petBuffs'), petCaseResult:$('petCaseResult'), petBackBtn:$('petBackBtn'),
+    petCompanion:$('petCompanion'), caseStage:$('caseStage'), caseDropPet:$('caseDropPet'), caseDropName:$('caseDropName'),
     prestigeScreen:$('prestigeScreen'), prestigeCur:$('prestigeCur'), prestigePts:$('prestigePts'), prestigeCoin:$('prestigeCoin'), prestigeScore:$('prestigeScore'),
     prestigeLife:$('prestigeLife'), prestigeProg:$('prestigeProg'), prestigeBtn:$('prestigeBtn'), prestigeBackBtn:$('prestigeBackBtn'), prestigeBtnNav:$('prestigeBtnNav'), prestigeNav:$('prestigeNav'),
     wheelScreen:$('wheelScreen'), wheelDisc:$('wheelDisc'), wheelLabels:$('wheelLabels'), wheelMsg:$('wheelMsg'), wheelTimer:$('wheelTimer'), wheelBtn:$('wheelBtn'), wheelLegend:$('wheelLegend'), wheelBackBtn:$('wheelBackBtn'), wheelBtnNav:$('wheelBtnNav'), wheelNav:$('wheelNav'),
@@ -2227,7 +2310,7 @@
     const d = { coins:0, mode:'classic', ach:{}, burgers:0, bestCombo:0, tutorialDone:false,
       upg:{}, campaign:{ unlocked:1, stars:{} }, daily:null, bonusDay:'', bonusStreak:0, bonusAt:0, bonusSkip:false,
       sfxVol:1, vibro:true, music:true, opt:false, xmas:false, recipes:[], sbxAdmin:false,
-      skins:{}, skin:'default', prestige:0, pp:0, prestigeBurgers:0, prestigeDay:'', prestigeToday:0, wheelDay:'', wheelSpinDay:'', wheelSpins:0, intro:false,
+      skins:{}, skin:'default', pets:{}, activePet:null, prestige:0, pp:0, prestigeBurgers:0, prestigeDay:'', prestigeToday:0, wheelDay:'', wheelSpinDay:'', wheelSpins:0, intro:false,
       stats:{ earned:0, play:0, perfect:0, orders:0 }, hardcoreWarned:false };
     const p = loadJSON(KEY_PROFILE, null);
     if(p && typeof p === 'object') Object.assign(d, p);
@@ -2244,7 +2327,7 @@
     d.tutorialDone = !!(p && p.tutorialDone);
     if(!Array.isArray(d.recipes)) d.recipes = [];
     d.recipes = d.recipes.filter(r => r && Array.isArray(r.items) && r.items.length)
-      .map(r => ({ name:String(r.name || '').slice(0, 18), items:r.items.filter(id => FILLINGS.indexOf(id) >= 0 || SIDES.indexOf(id) >= 0).slice(0, 8) }))
+      .map(r => ({ name:String(r.name || '').slice(0, 18), items:r.items.filter(id => FILLINGS.indexOf(id) >= 0 || XMAS_SIDES.indexOf(id) >= 0).slice(0, 8) }))
       .filter(r => r.items.length);
     d.bonusStreak = Math.max(0, Math.floor(d.bonusStreak || 0));
     d.bonusSkip = !!d.bonusSkip;
@@ -2256,9 +2339,11 @@
     d.sbCfg = normSbCfg(d.sbCfg);
     d.sbxAdmin = !!d.sbxAdmin;
     if(!d.skins || typeof d.skins !== 'object') d.skins = {};
+    if(!d.pets || typeof d.pets !== 'object') d.pets = {};
+    if(typeof d.activePet !== 'string' || !d.pets[d.activePet]) d.activePet = null;
     d.skin = (typeof d.skin === 'string' && d.skin) ? d.skin : 'default';
     d.prestige = Math.max(0, Math.floor(d.prestige || 0));
-    d.pp = Math.max(0, Math.floor(d.pp || 0));
+    d.pp = Math.max(0, Math.round((Number(d.pp) || 0) * 2) / 2);
     d.prestigeBurgers = Math.max(0, Math.floor(d.prestigeBurgers || 0));
     d.prestigeDay = typeof d.prestigeDay === 'string' ? d.prestigeDay : '';
     d.prestigeToday = Math.max(0, Math.floor(d.prestigeToday || 0));
@@ -2452,14 +2537,31 @@
 
   const muted = { v: loadJSON(KEY_MUTED, false) === true || loadJSON(KEY_MUTED, '0') === '1' };
 
-  const xmasAudio = { music:null, bell:null };
+  const XMAS_TRACKS = ['./Xmas/jingle-bells-calm.mp3', './Xmas/jingle-bells-full.ogg'];
+  const xmasAudio = { music:null, bell:null, idx:0 };
   function xmasOn(){ return profile.xmas === true; }
+  function xmasTrackUrl(){ return XMAS_TRACKS[xmasAudio.idx % XMAS_TRACKS.length]; }
+  function xmasNextTrack(){
+    try{
+      if(!xmasAudio.music) return;
+      xmasAudio.music.pause();
+      xmasAudio.idx = (xmasAudio.idx + 1) % XMAS_TRACKS.length;
+      xmasAudio.music.src = xmasTrackUrl();
+      xmasAudio.music.volume = xmasMusicVolume();
+      xmasAudio.music.load();
+      if(xmasOn() && musicEnabled() && !muted.v && !document.hidden){
+        const p = xmasAudio.music.play(); if(p && p.catch) p.catch(()=>{});
+      }
+    }catch(e){}
+  }
   function ensureXmasAudio(){
     try{
       if(!xmasAudio.music){
-        xmasAudio.music = new Audio('./Xmas/jingle-bells-calm.mp3');
-        xmasAudio.music.loop = true;
+        xmasAudio.music = new Audio(xmasTrackUrl());
+        xmasAudio.music.loop = false;
         xmasAudio.music.preload = 'auto';
+        xmasAudio.music.addEventListener('ended', xmasNextTrack);
+        xmasAudio.music.addEventListener('error', xmasNextTrack);
       }
       if(!xmasAudio.bell) xmasAudio.bell = new Audio('./Xmas/sleigh-bells.wav');
     }catch(e){ xmasAudio.music = null; xmasAudio.bell = null; }
@@ -2821,7 +2923,14 @@
       '<path d="M12 33.5 Q20 31 28 33.5" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" opacity=".9"/>' +
       '<path d="M7.5 14 H32.5 L28.0 44 Q27.8 45.2 26.6 45.2 H13.4 Q12.2 45.2 12.0 44 Z" fill="none" stroke="#c3d3dd" stroke-width="1.2"/>' +
       '<ellipse cx="20" cy="14.5" rx="10.2" ry="2.2" fill="#e7eef3"/>' +
-      '<ellipse cx="20" cy="13.4" rx="6.4" ry="1.4" fill="#f7fbfd"/></svg>'
+      '<ellipse cx="20" cy="13.4" rx="6.4" ry="1.4" fill="#f7fbfd"/></svg>',
+    mandarin:'<svg class="sideIcon" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+      '<circle cx="22" cy="25" r="14" fill="#ff9b1f" stroke="#c85a08" stroke-width="1.4"/>' +
+      '<circle cx="22" cy="25" r="14" fill="none" stroke="#ffd06a" stroke-width="1" opacity=".65"/>' +
+      '<path d="M22 11 Q27 8 31 11" fill="none" stroke="#6b3b12" stroke-width="2" stroke-linecap="round"/>' +
+      '<path d="M24 10 Q32 4 36 10 Q30 14 24 10 Z" fill="#3f8f38"/>' +
+      '<path d="M13 16 Q9 22 11 28 M31 16 Q35 22 33 28" fill="none" stroke="#fff1c8" stroke-width="2" stroke-linecap="round" opacity=".8"/>' +
+      '<circle cx="17" cy="22" r="2" fill="#ffd66a" opacity=".8"/></svg>'
   };
   function layerMarkup(id){
     if(SIDE_ICON[id]) return '<span class="sideIconWrap">' + SIDE_ICON[id] + '</span>';
@@ -3657,6 +3766,12 @@
     ctx.translate(cx, baseY + bob);
     ctx.fillStyle = 'rgba(0,0,0,.28)';
     ctx.beginPath(); ctx.ellipse(0, 0, u * .20, u * .040, 0, 0, TAU); ctx.fill();
+    const intro = p >= 1 ? 1 : easeOutBack(clamp(p / .72, 0, 1));
+    const wob = t0 ? Math.sin((now - t0) / 85) * Math.exp(-(now - t0) / 420) * u * .026 : 0;
+    ctx.translate(wob, (1 - intro) * -u * .55);
+    ctx.rotate((1 - intro) * -.24);
+    const sq = .86 + .14 * intro;
+    ctx.scale(sq, 1.14 - .14 * intro);
 
     const boxTop = -u * .205, topW = u * .30, botW = u * .198;
     const fryW = u * .050, nFry = 9;
@@ -3754,6 +3869,12 @@
     ctx.translate(cx, baseY + bob);
     ctx.fillStyle = 'rgba(0,0,0,.26)';
     ctx.beginPath(); ctx.ellipse(0, 0, u * .14, u * .032, 0, 0, TAU); ctx.fill();
+    const intro = p >= 1 ? 1 : easeOutBounce(clamp(p / .80, 0, 1));
+    const wob = t0 ? Math.sin((now - t0) / 90) * Math.exp(-(now - t0) / 430) * u * .022 : 0;
+    ctx.translate(wob, (1 - intro) * -u * .62);
+    ctx.rotate((1 - intro) * .18);
+    const sq = .84 + .16 * intro;
+    ctx.scale(sq, 1.12 - .12 * intro);
 
     const topW = u * .205, botW = u * .150, ch = u * .35;
     const fill = p >= 1 ? 1 : clamp(p, 0, 1);
@@ -3865,10 +3986,87 @@
     ctx.restore();
   }
 
+  function drawMandarin(cx, baseY, u, now){
+    const t0 = ST.sideT && ST.sideT.mandarin;
+    const p = t0 ? clamp((now - t0) / 1400, 0, 1) : 1;
+    const peel = clamp((p - .22) / .62, 0, 1);
+    const intro = p >= 1 ? 1 : easeOutBounce(clamp(p / .70, 0, 1));
+    const wob = t0 ? Math.sin((now - t0) / 95) * Math.exp(-(now - t0) / 450) * u * .02 : 0;
+    ctx.save();
+    ctx.translate(cx, baseY);
+    ctx.fillStyle = 'rgba(0,0,0,.26)';
+    ctx.beginPath(); ctx.ellipse(0, 0, u * .16, u * .035, 0, 0, TAU); ctx.fill();
+    ctx.translate(wob, (1 - intro) * -u * .50);
+    ctx.rotate((1 - intro) * -.16);
+    const sq = .82 + .18 * intro;
+    ctx.scale(sq, 1.10 - .10 * intro);
+    const r = u * .155;
+    const g = ctx.createRadialGradient(-r * .35, -r * .42, r * .12, 0, 0, r * 1.15);
+    g.addColorStop(0, '#ffd66a');
+    g.addColorStop(.55, '#ff9b1f');
+    g.addColorStop(1, '#c85a08');
+    ctx.fillStyle = g;
+    ctx.beginPath(); ctx.arc(0, 0, r, 0, TAU); ctx.fill();
+    ctx.strokeStyle = 'rgba(255,232,170,.40)'; ctx.lineWidth = u * .006; ctx.stroke();
+    if(peel > .05){
+      ctx.globalAlpha = .35 + .65 * peel;
+      for(let i = 0; i < 6; i++){
+        const a = i * TAU / 6 + peel * .18;
+        ctx.save();
+        ctx.translate(Math.cos(a) * r * .30, Math.sin(a) * r * .30 - r * .10);
+        ctx.rotate(a + peel * .75);
+        ctx.translate(0, -peel * r * .78);
+        ctx.fillStyle = '#ffb02e';
+        roundRectPath(-r * .16, -r * .62, r * .32, r * .72, r * .14); ctx.fill();
+        ctx.fillStyle = '#fff1c8';
+        roundRectPath(-r * .10, -r * .50, r * .20, r * .52, r * .10); ctx.fill();
+        ctx.restore();
+      }
+      ctx.globalAlpha = 1;
+      ctx.fillStyle = 'rgba(255,226,130,.92)';
+      for(let i = 0; i < 6; i++){
+        const a = i * TAU / 6 + Math.PI / 6;
+        ctx.save(); ctx.rotate(a); ctx.translate(0, -r * .34);
+        ctx.beginPath(); ctx.ellipse(0, 0, r * .16, r * .27, 0, 0, TAU); ctx.fill(); ctx.restore();
+      }
+    }
+    ctx.strokeStyle = '#6b3b12'; ctx.lineWidth = u * .012; ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(0, -r * .95); ctx.lineTo(u * .012, -r * 1.22); ctx.stroke();
+    ctx.fillStyle = '#3f8f38';
+    ctx.beginPath(); ctx.ellipse(r * .18, -r * 1.16, r * .20, r * .09, -.5, 0, TAU); ctx.fill();
+    if(p < .96){
+      ctx.globalAlpha = .75 * (1 - p);
+      ctx.fillStyle = '#ffb02e';
+      for(let k = 0; k < 4; k++){
+        const a = k * TAU / 4 + now / 600;
+        ctx.save(); ctx.translate(Math.cos(a) * r * 1.2, Math.sin(a) * r * 1.2 - p * u * .15);
+        ctx.rotate(a); roundRectPath(-r * .06, -r * .18, r * .12, r * .36, r * .05); ctx.fill(); ctx.restore();
+      }
+      ctx.globalAlpha = 1;
+    }
+    ctx.restore();
+  }
+
   function drawTableSides(cx, baseY, u, now){
     if(!ST.sides || !ST.sides.length) return;
-    if(ST.sides.indexOf('fries') >= 0) drawFries(cx - u * .64, baseY + u * .015, u, now);
-    if(ST.sides.indexOf('cola') >= 0) drawCola(cx + u * .64, baseY + u * .015, u, now);
+    const hasF = ST.sides.indexOf('fries') >= 0;
+    const hasC = ST.sides.indexOf('cola') >= 0;
+    const hasM = ST.sides.indexOf('mandarin') >= 0;
+    const pad = Math.max(14, u * .08);
+    const halfF = u * .19, halfC = u * .13, halfM = u * .12;
+    const put = (x, half) => clamp(x, pad + half, CW - pad - half);
+    let fx = cx - u * (hasM ? .78 : .64);
+    let lx = cx + u * (hasM ? (hasF ? .46 : .58) : .64);
+    let mx = cx + u * (hasC ? (hasF ? .90 : 1.00) : .70);
+    if(hasF) fx = put(fx, halfF);
+    if(hasC) lx = put(lx, halfC);
+    if(hasM) mx = put(mx, halfM);
+    if(hasC && hasM) lx = Math.min(lx, mx - halfC - halfM - u * .02);
+    if(hasF && hasC) fx = Math.min(fx, lx - halfF - halfC - u * .02);
+    if(hasF) fx = put(fx, halfF);
+    if(hasF) drawFries(fx, baseY + u * .015, u, now);
+    if(hasC) drawCola(lx, baseY + u * .015, u, now);
+    if(hasM) drawMandarin(mx, baseY + u * .02, u * .66, now);
   }
 
   const PARTS = [];
@@ -4039,6 +4237,10 @@
 
       softShadow(cx, baseY + 2, unit * .62, unit * .62 * K_SQUASH * 1.5, .55);
       softShadow(cx, baseY - unit * .1, unit * .48, unit * .48 * K_SQUASH * 1.3, .35);
+      const heroNow = performance.now();
+      drawFries(cx - unit * .64, baseY + unit * .015, unit * .68, heroNow);
+      drawCola(cx + unit * .64, baseY + unit * .015, unit * .68, heroNow);
+      if(xmasOn()) drawMandarin(cx + unit * .92, baseY + unit * .02, unit * .46, heroNow);
 
       let y = baseY, n = 0;
       for(let i = 0; i < HERO_STACK.length; i++){
@@ -4102,6 +4304,130 @@
   ];
   function skinById(id){ return SKINS.filter(s => s.id === id)[0] || SKINS[0]; }
   function skinOwned(id){ const s = skinById(id); return s.price === 0 || !!profile.skins[id]; }
+  const PETS = [
+    { id:'milk',   name:'Молочный кот', rarity:'Обычный',  price:800,  ico:'М', effect:'+6% монет',          buff:{ coins:.06 }, color:['#f2d8b2','#c99a63'], kind:'cat' },
+    { id:'cheese', name:'Сырный кот',   rarity:'Обычный',  price:1200, ico:'С', effect:'+8% чаевых',         buff:{ tips:.08 },  color:['#ffe08a','#d6a531'], kind:'cat' },
+    { id:'grill',  name:'Гриль-кот',    rarity:'Редкий',   price:2500, ico:'Г', effect:'+7% очков',          buff:{ score:.07 }, color:['#e9a06a','#a85624'], kind:'cat' },
+    { id:'sleepy', name:'Сонный кот',   rarity:'Редкий',   price:3200, ico:'З', effect:'+1 жизнь',           buff:{ life:1 },    color:['#b9a7d8','#6c5b96'], kind:'cat' },
+    { id:'slow',   name:'Ленивый кот',  rarity:'Редкий',   price:2800, ico:'Л', effect:'+8% времени',        buff:{ time:.08 },  color:['#a8d8c0','#4f9a76'], kind:'cat' },
+    { id:'boss',   name:'Босс-кот',     rarity:'Эпический', price:6000, ico:'Б', effect:'+12% монет, +10% очков', buff:{ coins:.12, score:.10 }, color:['#d7b7ff','#7b3fc4'], kind:'cat' },
+    { id:'bunny',  name:'Кролик',       rarity:'Обычный',  price:1500, ico:'К', effect:'+7% чаевых',         buff:{ tips:.07 },  color:['#f4e6d8','#b79a86'], kind:'rabbit' },
+    { id:'carrot', name:'Морковный кролик', rarity:'Редкий', price:3200, ico:'М', effect:'+8% времени',      buff:{ time:.08 },  color:['#ffd08a','#d17928'], kind:'rabbit' },
+    { id:'moon',   name:'Лунный кролик', rarity:'Эпический', price:7000, ico:'Л', effect:'+10% очков, +8% монет', buff:{ score:.10, coins:.08 }, color:['#dce8ff','#7f95c9'], kind:'rabbit' }
+  ];
+  const PET_CASES = [
+    { id:'cat',    name:'Кейс с питомцем', price:600,  desc:'кот или кролик',           pool:['milk','cheese','grill','sleepy','slow','bunny','carrot'] },
+    { id:'rabbit', name:'Кроличий кейс',   price:900,  desc:'обычный или редкий кролик', pool:['bunny','carrot'] },
+    { id:'vipcat', name:'VIP-кейс',       price:1400, desc:'редкий питомец',            pool:['grill','sleepy','slow','boss','carrot','moon'] }
+  ];
+  function petById(id){ return PETS.filter(p => p.id === id)[0] || null; }
+  function petOwned(id){ return !!(profile.pets && profile.pets[id]); }
+  function activePet(){ return petOwned(profile.activePet || '') ? petById(profile.activePet) : null; }
+  function petFaceHTML(p){
+    const c = p && p.color ? p.color : ['#e8c08a','#a96f3d'];
+    const c1 = c[0], c2 = c[1];
+    const hat = '<g class="petHatArt"><path d="M16 25 L47 11 L49 24 Z" fill="#e5322d" stroke="#9e1f18" stroke-width="1.2"/>' +
+      '<path d="M14 24 Q32 20 50 24 L50 28 Q32 25 14 28 Z" fill="#fff"/><circle cx="49" cy="10" r="4" fill="#fff"/></g>';
+    if(p && p.kind === 'rabbit'){
+      return '<svg class="petArt" viewBox="0 0 64 64" aria-hidden="true">' +
+        '<ellipse cx="32" cy="58" rx="19" ry="4" fill="rgba(0,0,0,.25)"/>' +
+        '<path d="M20 36 Q12 52 19 56" fill="none" stroke="' + c2 + '" stroke-width="7" stroke-linecap="round"/>' +
+        '<ellipse cx="22" cy="18" rx="7" ry="17" fill="' + c1 + '" stroke="' + c2 + '" stroke-width="1.2" transform="rotate(-12 22 18)"/>' +
+        '<ellipse cx="42" cy="18" rx="7" ry="17" fill="' + c1 + '" stroke="' + c2 + '" stroke-width="1.2" transform="rotate(12 42 18)"/>' +
+        '<ellipse cx="22" cy="18" rx="3.5" ry="12" fill="#ffb6c6" transform="rotate(-12 22 18)"/>' +
+        '<ellipse cx="42" cy="18" rx="3.5" ry="12" fill="#ffb6c6" transform="rotate(12 42 18)"/>' +
+        '<ellipse cx="32" cy="43" rx="18" ry="15" fill="' + c1 + '" stroke="' + c2 + '" stroke-width="1.5"/>' +
+        '<ellipse cx="24" cy="40" rx="3" ry="4" fill="#2a1607"/><ellipse cx="40" cy="40" rx="3" ry="4" fill="#2a1607"/>' +
+        '<path d="M29 47 Q32 51 35 47 Q32 45 29 47 Z" fill="#ff8a9e"/>' +
+        '<path d="M32 49 L32 52 M32 52 Q28 55 25 52 M32 52 Q36 55 39 52" fill="none" stroke="#6b4436" stroke-width="1.4" stroke-linecap="round"/>' +
+        hat + '</svg>';
+    }
+    return '<svg class="petArt" viewBox="0 0 64 64" aria-hidden="true">' +
+      '<ellipse cx="32" cy="58" rx="19" ry="4" fill="rgba(0,0,0,.25)"/>' +
+      '<path d="M48 54 Q59 51 55 43" fill="none" stroke="' + c2 + '" stroke-width="7" stroke-linecap="round"/>' +
+      '<path d="M18 29 L17 12 L29 21 Z" fill="' + c1 + '" stroke="' + c2 + '" stroke-width="1.2"/>' +
+      '<path d="M46 29 L47 12 L35 21 Z" fill="' + c1 + '" stroke="' + c2 + '" stroke-width="1.2"/>' +
+      '<ellipse cx="32" cy="42" rx="18" ry="15" fill="' + c1 + '" stroke="' + c2 + '" stroke-width="1.5"/>' +
+      '<ellipse cx="25" cy="39" rx="3" ry="4" fill="#2a1607"/><ellipse cx="39" cy="39" rx="3" ry="4" fill="#2a1607"/>' +
+      '<path d="M29 46 Q32 50 35 46 Q32 44 29 46 Z" fill="#ff8a8a"/>' +
+      '<path d="M32 49 L32 52 M32 52 Q28 55 25 52 M32 52 Q36 55 39 52" fill="none" stroke="#6b4436" stroke-width="1.4" stroke-linecap="round"/>' +
+      '<path d="M17 48 L9 46 M17 52 L9 54 M47 48 L55 46 M47 52 L55 54" stroke="#e8d3b7" stroke-width="1.4" stroke-linecap="round"/>' +
+      hat + '</svg>';
+  }
+  function renderPetCompanion(animate){
+    if(!el.petCompanion) return;
+    const p = activePet();
+    if(!p){ el.petCompanion.hidden = true; el.petCompanion.innerHTML = ''; return; }
+    el.petCompanion.hidden = false;
+    el.petCompanion.innerHTML = petFaceHTML(p) + '<i class="petHeart"></i>';
+    el.petCompanion.dataset.pet = p.id;
+    el.petCompanion.classList.remove('drop','petted');
+    clearTimeout(renderPetCompanion.timer);
+    if(animate){
+      void el.petCompanion.offsetWidth;
+      el.petCompanion.classList.add('drop');
+      renderPetCompanion.timer = setTimeout(() => { if(el.petCompanion) el.petCompanion.classList.remove('drop'); }, 820);
+    }
+  }
+  function petThePet(){
+    if(!el.petCompanion || el.petCompanion.hidden) return;
+    el.petCompanion.classList.remove('petted');
+    void el.petCompanion.offsetWidth;
+    el.petCompanion.classList.add('petted');
+    clearTimeout(petThePet.timer);
+    petThePet.timer = setTimeout(() => { if(el.petCompanion) el.petCompanion.classList.remove('petted'); }, 1000);
+    tone(520, .05, 'sine', .018); tone(760, .07, 'sine', .016, .06);
+  }
+  function equipPet(id){
+    const p = petById(id);
+    if(!p || !petOwned(id)) return;
+    profile.activePet = profile.activePet === id ? null : id;
+    saveProfile();
+    renderPets();
+    renderPetCompanion(profile.activePet === id);
+    showToast('Питомец', profile.activePet ? (p.name + ' на кухне') : (p.name + ' снят'));
+    tone(680, .08, 'triangle', .04);
+  }
+  function showCaseDrop(p, fallback){
+    if(!el.caseStage) return;
+    el.caseStage.classList.remove('hidden','open');
+    if(el.caseDropPet) el.caseDropPet.innerHTML = petFaceHTML(p || PETS[0]);
+    if(el.caseDropName) el.caseDropName.textContent = p ? (p.name + ' · ' + p.effect) : fallback;
+    void el.caseStage.offsetWidth;
+    el.caseStage.classList.add('open');
+    clearTimeout(showCaseDrop.timer);
+    showCaseDrop.timer = setTimeout(closeCaseDrop, 2600);
+  }
+  function closeCaseDrop(){
+    if(!el.caseStage) return;
+    el.caseStage.classList.add('hidden');
+    el.caseStage.classList.remove('open');
+  }
+  function petBuff(field){
+    let t = 0;
+    for(let i = 0; i < PETS.length; i++){
+      const p = PETS[i];
+      if(petOwned(p.id)) t += (p.buff && p.buff[field]) || 0;
+    }
+    return t;
+  }
+  function petCoinMult(){ return 1 + petBuff('coins'); }
+  function petTipMult(){ return 1 + petBuff('tips'); }
+  function petScoreMult(){ return 1 + petBuff('score'); }
+  function petLifeBonus(){ return Math.floor(petBuff('life')); }
+  function petTimeMult(){ return 1 + petBuff('time'); }
+  function petBuffText(){
+    const out = [];
+    const coins = Math.round(petBuff('coins') * 100), tips = Math.round(petBuff('tips') * 100);
+    const score = Math.round(petBuff('score') * 100), time = Math.round(petBuff('time') * 100);
+    const life = petLifeBonus();
+    if(coins) out.push('+' + coins + '% монет');
+    if(tips) out.push('+' + tips + '% чаевых');
+    if(score) out.push('+' + score + '% очков');
+    if(time) out.push('+' + time + '% времени');
+    if(life) out.push('+' + life + ' жизнь');
+    return out.length ? out.join(' · ') : 'пока нет';
+  }
   function applySkin(){
     const s = skinById(profile.skin);
     el.avatar.style.setProperty('--skin1', s.skin[0]);
@@ -4112,6 +4438,7 @@
   }
 
   function prestigeNeed(){ return 50 * ((profile.prestige || 0) + 1); }
+  function fmtPP(v){ const n = Math.round((Number(v) || 0) * 2) / 2; return Number.isInteger(n) ? String(n) : n.toFixed(1); }
   function prestigeGain(){ return Math.floor(Math.sqrt(Math.max(0, (profile.burgers || 0) - (profile.prestigeBurgers || 0)) / 25)); }
   function prestigeCoinMult(){ return 1 + (profile.pp || 0) * 0.03; }
   function prestigeScoreMult(){ return 1 + (profile.pp || 0) * 0.02; }
@@ -4122,12 +4449,12 @@
     return profile.prestigeToday;
   }
   function prestigeLeft(){ return Math.max(0, PRESTIGE_DAY_LIMIT - prestigeSpinsToday()); }
-  function prestigeReady(){ const have = (profile.burgers || 0) - (profile.prestigeBurgers || 0); return have >= prestigeNeed() && prestigeGain() > 0 && prestigeLeft() > 0; }
+  function prestigeReady(){ const have = (profile.burgers || 0) - (profile.prestigeBurgers || 0); return (profile.prestige || 0) < PRESTIGE_MAX && have >= prestigeNeed() && prestigeGain() > 0 && prestigeLeft() > 0; }
   let prestigeArm = 0;
   function renderPrestige(){
     const pp = profile.pp || 0;
-    el.prestigeCur.textContent = profile.prestige || 0;
-    el.prestigePts.textContent = pp;
+    el.prestigeCur.textContent = (profile.prestige || 0) + '/' + PRESTIGE_MAX;
+    el.prestigePts.textContent = fmtPP(pp);
     el.prestigeCoin.textContent = '+' + Math.round((prestigeCoinMult() - 1) * 100) + '%';
     el.prestigeScore.textContent = '+' + Math.round((prestigeScoreMult() - 1) * 100) + '%';
     el.prestigeLife.textContent = '+' + prestigeLifeBonus();
@@ -4135,10 +4462,11 @@
     const have = (profile.burgers || 0) - (profile.prestigeBurgers || 0);
     const gain = prestigeGain();
     const left = prestigeLeft();
-    el.prestigeProg.textContent = have.toLocaleString('ru-RU') + ' / ' + need.toLocaleString('ru-RU') + ' бургеров · ' + left + '/' + PRESTIGE_DAY_LIMIT;
-    const ready = have >= need && gain > 0 && left > 0;
+    const maxed = (profile.prestige || 0) >= PRESTIGE_MAX;
+    el.prestigeProg.textContent = maxed ? ('Достигнут лимит ' + PRESTIGE_MAX + ' перерождений') : (have.toLocaleString('ru-RU') + ' / ' + need.toLocaleString('ru-RU') + ' бургеров · ' + left + '/' + PRESTIGE_DAY_LIMIT);
+    const ready = have >= need && gain > 0 && left > 0 && !maxed;
     el.prestigeBtn.disabled = !ready;
-    el.prestigeBtn.textContent = left <= 0 ? 'Лимит перерождений на сегодня' : (ready ? ('Переродиться · +' + gain + ' очк.') : ('Ещё ' + Math.max(0, need - have).toLocaleString('ru-RU') + ' бургеров'));
+    el.prestigeBtn.textContent = maxed ? ('Лимит ' + PRESTIGE_MAX + ' перерождений') : (left <= 0 ? 'Лимит перерождений на сегодня' : (ready ? ('Переродиться · +' + gain + ' очк.') : ('Ещё ' + Math.max(0, need - have).toLocaleString('ru-RU') + ' бургеров')));
   }
   function doPrestige(){
     if(!prestigeReady()) return;
@@ -4172,7 +4500,7 @@
     { id:'c250',  label:'250 монет',  short:'250',  w:12, kind:'coins', amount:250,  color:'#e07a2f' },
     { id:'c500',  label:'500 монет',  short:'500',  w:9,  kind:'coins', amount:500,  color:'#f2a63b' },
     { id:'c1000', label:'1000 монет', short:'1000', w:5,  kind:'coins', amount:1000, color:'#e07a2f' },
-    { id:'pp2',   label:'+2 очка',    short:'+2★',  w:12, kind:'pp',    amount:2,    color:'#8b5cf0' },
+    { id:'pp05',  label:'+0.5 очка',  short:'+0.5★', w:12, kind:'pp',    amount:0.5,  color:'#8b5cf0' },
     { id:'skin',  label:'Скин',       short:'Скин', w:12, kind:'skin',  amount:0,    color:'#3ddc97' }
   ];
   let wheelRot = 0, wheelSpinning = false, wheelResult = '';
@@ -4238,9 +4566,9 @@
       wheelResult = '+' + seg.amount + ' монет';
       sfxCoin(); showToast('Рулетка', '+' + seg.amount + ' монет');
     } else if(seg.kind === 'pp'){
-      profile.pp = (profile.pp || 0) + seg.amount;
-      wheelResult = '+' + seg.amount + ' очка престижа';
-      tone(660, .14, 'triangle', .05); showToast('Рулетка', '+' + seg.amount + ' очков престижа');
+      profile.pp = Math.round(((profile.pp || 0) + seg.amount) * 2) / 2;
+      wheelResult = '+' + fmtPP(seg.amount) + ' очка престижа';
+      tone(660, .14, 'triangle', .05); showToast('Рулетка', '+' + fmtPP(seg.amount) + ' очков престижа');
     } else if(seg.kind === 'skin'){
       const locked = SKINS.filter(s => !skinOwned(s.id));
       if(locked.length){
@@ -4296,7 +4624,7 @@
   function makeOrder(){
     if(S.sandbox && S.sandbox.items && S.sandbox.items.length){
       const items = S.sandbox.items;
-      const hasFill = items.some(function(x){ return SIDES.indexOf(x) < 0; });
+      const hasFill = items.some(function(x){ return XMAS_SIDES.indexOf(x) < 0; });
       return hasFill ? items.concat('bun_top') : items.slice();
     }
     if(S.sandbox){
@@ -4356,7 +4684,7 @@
     const sideOnly = !cd.kid && !S.campaign && !cd.critic && S.level >= 2 && Math.random() < .16;
     if(sideOnly){
       const sr = Math.random();
-      const sides = sr < .45 ? ['fries'] : sr < .9 ? ['cola'] : ['fries', 'cola'];
+      const sides = pickSides(sr, 2);
       S.meal = { combo: sides.length > 1, big: false, sideOnly: true };
       return sides;
     }
@@ -4364,7 +4692,7 @@
     let combo = false;
     if(!cd.kid && !S.campaign && Math.random() < .22){
       const sr = Math.random();
-      const sides = sr < .4 ? ['fries'] : sr < .8 ? ['cola'] : ['fries', 'cola'];
+      const sides = pickSides(sr, 2);
       combo = true;
       for(let i = 0; i < sides.length; i++) list.push(sides[i]);
     }
@@ -4375,15 +4703,15 @@
     const base = 9.5 + order.length * 1.9 - (S.level - 1) * .55;
     const campSpeed = S.campaign ? S.campaign.def.speed : 1;
     const cd = CLIENT_DEFS[S.client] || CLIENT_DEFS.normal;
-    let d = Math.max(6, base) * MODES[S.mode].dur * (1 + upgLevel('grill') * .08) * campSpeed * (cd.dur || 1);
+    let d = Math.max(6, base) * MODES[S.mode].dur * (1 + upgLevel('grill') * .08) * campSpeed * (cd.dur || 1) * petTimeMult();
     if(S.sandbox){
       const c = sbCfg();
-      d = d / Math.max(.2, c.speed) * Math.max(.2, c.patience);
+      d = d / Math.max(.2, c.speed) * Math.max(.2, c.patience) * sandboxClientBonus().dur;
     }
     return d;
   }
   function comboMult(){ return 1 + Math.min(S.combo, 10) * .12 + upgLevel('combo') * .08; }
-  function lifeCap(){ return MODES[S.mode].lives + 2 + upgLevel('comfort') + prestigeLifeBonus() + (S.bonusLives || 0); }
+  function lifeCap(){ return MODES[S.mode].lives + 2 + upgLevel('comfort') + prestigeLifeBonus() + petLifeBonus() + (S.bonusLives || 0); }
   function pressure(){
     const lvl = 1 + Math.min(1.5, (S.level - 1) * .08);
     const low = 1 + (1 - clamp(S.patience, 0, 1)) * 1.15;
@@ -4423,8 +4751,9 @@
     const ids = need.slice();
     const extras = [];
     const target = PAL_SLOTS;
-    for(let i = 0; i < SIDES.length && ids.length + extras.length < target; i++){
-      if(ids.indexOf(SIDES[i]) < 0 && extras.indexOf(SIDES[i]) < 0) extras.push(SIDES[i]);
+    const sidePool = activeSides();
+    for(let i = 0; i < sidePool.length && ids.length + extras.length < target; i++){
+      if(ids.indexOf(sidePool[i]) < 0 && extras.indexOf(sidePool[i]) < 0) extras.push(sidePool[i]);
     }
     for(let i = 0; i < FILLINGS.length && ids.length + extras.length < target; i++){
       if(ids.indexOf(FILLINGS[i]) < 0 && extras.indexOf(FILLINGS[i]) < 0) extras.push(FILLINGS[i]);
@@ -4948,7 +5277,7 @@
 
   /* ---------------- menu screens: campaign / kitchen / daily ---------------- */
   let campIdx = 0;
-  const SCREEN_KEYS = ['startScreen','overScreen','pauseScreen','perkScreen','campaignScreen','kitchenScreen','dailyScreen','settingsScreen','achScreen','adminScreen','campResultScreen','sandboxScreen','sandboxSettingsScreen','skinScreen','prestigeScreen','wheelScreen'];
+  const SCREEN_KEYS = ['startScreen','overScreen','pauseScreen','perkScreen','campaignScreen','kitchenScreen','dailyScreen','settingsScreen','achScreen','adminScreen','campResultScreen','sandboxScreen','sandboxSettingsScreen','skinScreen','petScreen','prestigeScreen','wheelScreen'];
 
   function hideAllScreens(){
     for(let i = 0; i < SCREEN_KEYS.length; i++) el[SCREEN_KEYS[i]].classList.add('hidden');
@@ -4981,7 +5310,12 @@
       for(let i = 0; i < SKINS.length; i++){ if(skinOwned(SKINS[i].id)) ownedN++; }
       el.skinCount.textContent = ownedN + '/' + SKINS.length;
     }
-    if(el.prestigeNav) el.prestigeNav.textContent = (profile.pp || 0) + ' очк.';
+    if(el.petCount){
+      let petN = 0;
+      for(let i = 0; i < PETS.length; i++){ if(petOwned(PETS[i].id)) petN++; }
+      el.petCount.textContent = petN + '/' + PETS.length;
+    }
+    if(el.prestigeNav) el.prestigeNav.textContent = fmtPP(profile.pp) + ' очк.';
     if(el.prestigeBtn) el.prestigeBtn.classList.toggle('ready', prestigeReady());
     if(el.wheelNav){
       const wfree = wheelFreeAvailable();
@@ -5250,6 +5584,10 @@
     h += sbCfgRange('w.vip', 'VIP', 0, 100, 1);
     h += sbCfgRange('w.critic', 'Критики', 0, 100, 1);
     h += sbCfgSwitch('showBadge', 'Показывать бейдж клиента');
+    h += sbCfgSwitch('permBonuses', 'Вечные бонусы клиентов');
+    h += '<div class="sbCfgSec">Скримеры</div>';
+    h += sbCfgRange('scare', 'Шанс скримера, %', 0, 100, 1);
+    h += sbCfgRange('scareType', 'Монстр (0 = случайно)', 0, SCARE_COUNT, 1);
     h += '<div class="sbCfgSec">Заказ</div>';
     h += sbCfgRange('minLayers', 'Мин. слоёв', 1, 10, 1);
     h += sbCfgRange('maxLayers', 'Макс. слоёв', 1, 12, 1);
@@ -5267,6 +5605,7 @@
     }
     h += '</div>';
     h += '<div class="sbCfgSec">Игра</div>';
+    h += sbCfgSwitch('endlessBoosters', 'Вечные бустеры (∞)');
     h += sbCfgRange('lives', 'Жизни (0 = ∞)', 0, 9, 1);
     h += sbCfgRange('maxOrders', 'Клиентов (0 = ∞)', 0, 50, 1);
     h += sbCfgRange('speed', 'Скорость', .4, 2.5, .1);
@@ -5274,9 +5613,6 @@
     h += sbCfgRange('freezes', 'Заморозки', 0, 9, 1);
     h += sbCfgRange('hints', 'Подсказки', 0, 9, 1);
     h += sbCfgRange('skips', 'Пропуски', 0, 9, 1);
-    h += '<div class="sbCfgSec">Скримеры</div>';
-    h += sbCfgRange('scare', 'Шанс скримера, % (0 = выкл)', 0, 100, 1);
-    h += sbCfgRange('scareType', 'Монстр (0 = случайно)', 0, SCARE_COUNT, 1);
     h += sbCfgSelect('music', 'Музыка', [
       ['sandbox','Песочница'], ['classic','Классика'], ['menu','Меню'], ['zen','Дзен'],
       ['endless','Бесконечный'], ['hardcore','Хардкор'], ['timeattack','Тайм-атака'], ['rush','Спешка']
@@ -5364,7 +5700,7 @@
   function renderSandbox(){
     renderSandboxSettings();
     let ph = '';
-    const sbList = FILLINGS.concat(SIDES);
+    const sbList = FILLINGS.concat(XMAS_SIDES);
     for(let i = 0; i < sbList.length; i++){
       const id = sbList[i];
       ph += '<button class="sbIng" type="button" data-ing="' + id + '" aria-label="' + ING[id].name + '" title="' + ING[id].name + '">' +
@@ -5399,8 +5735,9 @@
       box.innerHTML = '<span class="sbEmpty">Предпросмотр бургера</span>';
       return;
     }
-    const fill = sbDraft.filter(id => SIDES.indexOf(id) < 0);
-    const sides = sbDraft.filter(id => SIDES.indexOf(id) >= 0);
+    const sidePool = XMAS_SIDES;
+    const fill = sbDraft.filter(id => sidePool.indexOf(id) < 0);
+    const sides = sbDraft.filter(id => sidePool.indexOf(id) >= 0);
     let html = '';
     if(fill.length){
       const stack = ['bun_bottom'].concat(fill, ['bun_top']).reverse();
@@ -5483,7 +5820,9 @@
     S.score = 0; S.earned = 0; S.mode = 'classic';
     S.lives = cfg.lives === 0 ? Infinity : cfg.lives; S.served = 0; S.level = 1; S.combo = 0; S.maxCombo = 0;
     S.taps = 0; S.good = 0; S.perfs = 0; S.orderPerfect = true; S.bonusLives = 0;
-    S.freezes = cfg.freezes; S.hints = cfg.hints; S.skips = cfg.skips;
+    S.freezes = cfg.endlessBoosters ? Infinity : cfg.freezes;
+    S.hints = cfg.endlessBoosters ? Infinity : cfg.hints;
+    S.skips = cfg.endlessBoosters ? Infinity : cfg.skips;
     S.freezeUntil = 0; S.revives = 0; S.lastT = 0; S.clockT = 0; S.now = performance.now();
     S.runId = '';
     hideAllScreens();
@@ -5675,6 +6014,80 @@
     el.skinScreen.classList.remove('hidden');
   }
 
+  function renderPets(){
+    el.petCoins.textContent = profile.coins.toLocaleString('ru-RU');
+    let ch = '';
+    for(let i = 0; i < PET_CASES.length; i++){
+      const c = PET_CASES[i], poor = profile.coins < c.price;
+      ch += '<button class="caseBtn' + (poor ? ' poor' : '') + '" type="button" data-case="' + c.id + '"><span>' + c.name + '<small>' + c.desc + '</small></span><b>' + c.price.toLocaleString('ru-RU') + ' монет</b></button>';
+    }
+    el.caseList.innerHTML = ch;
+    const cb = el.caseList.querySelectorAll('[data-case]');
+    for(let i = 0; i < cb.length; i++) cb[i].addEventListener('click', () => openPetCase(cb[i].dataset.case));
+    let html = '';
+    for(let i = 0; i < PETS.length; i++){
+      const p = PETS[i], owned = petOwned(p.id), poor = profile.coins < p.price;
+      html += '<div class="upCard' + (owned ? ' maxed' : '') + '">' +
+        '<div class="upTop">' +
+          '<div class="upIcon petIco">' + p.ico + '</div>' +
+          '<div class="tt"><b>' + p.name + '</b><span>' + p.rarity + ' · ' + p.effect + '</span></div>' +
+          '<button class="upBuy' + (!owned && poor ? ' poor' : '') + '" type="button" data-pet="' + p.id + '">' +
+            (owned ? (profile.activePet === p.id ? 'Снять' : 'Надеть') : p.price.toLocaleString('ru-RU') + ' монет') + '</button>' +
+        '</div></div>';
+    }
+    el.petList.innerHTML = html;
+    const pb = el.petList.querySelectorAll('[data-pet]');
+    for(let i = 0; i < pb.length; i++) pb[i].addEventListener('click', () => {
+      const id = pb[i].dataset.pet;
+      if(petOwned(id)) equipPet(id); else buyPet(id);
+    });
+    el.petBuffs.textContent = 'Баффы: ' + petBuffText();
+    updateMenuBadges();
+  }
+  function buyPet(id){
+    const p = petById(id);
+    if(!p || petOwned(id)) return;
+    if(profile.coins < p.price){ tone(170, .14, 'sawtooth', .04, 0, 110); return; }
+    profile.coins -= p.price;
+    profile.pets[id] = 1;
+    profile.activePet = id;
+    saveProfile();
+    sfxCoin();
+    showToast('Питомец', p.name + ' · ' + p.effect);
+    renderPets(); renderPetCompanion(true); updateHUD();
+  }
+  function openPetCase(id){
+    const c = PET_CASES.filter(x => x.id === id)[0];
+    if(!c) return;
+    if(profile.coins < c.price){ tone(170, .14, 'sawtooth', .04, 0, 110); return; }
+    profile.coins -= c.price;
+    const locked = c.pool.filter(x => !petOwned(x));
+    let msg = '', got = null;
+    if(locked.length){
+      const pid = locked[Math.floor(Math.random() * locked.length)], p = petById(pid);
+      profile.pets[pid] = 1;
+      profile.activePet = pid;
+      got = p;
+      msg = p.name + ' · ' + p.effect;
+      tone(880, .16, 'triangle', .05);
+    } else {
+      const refund = Math.round(c.price * .6);
+      profile.coins += refund;
+      msg = 'Все коты уже есть · +' + refund + ' монет';
+      sfxCoin();
+    }
+    saveProfile();
+    if(el.petCaseResult) el.petCaseResult.textContent = msg;
+    showCaseDrop(got, msg);
+    renderPets(); renderPetCompanion(!!got); updateHUD();
+  }
+  function openPets(){
+    if(S.running) return;
+    hideAllScreens();
+    renderPets();
+    el.petScreen.classList.remove('hidden');
+  }
+
   /* -------- settings -------- */
   let settingsFromGame = false;
   function optHard(){ return profile.opt === true; }
@@ -5704,6 +6117,7 @@
   function applyXmas(){
     try{
       document.documentElement.classList.toggle('xmas', xmasOn());
+      renderPetCompanion(false);
       buildSnow();
       syncXmasAudio();
       if(xmasOn()) stopMusic(); else if(musicEnabled() && !muted.v) startMusic(true);
@@ -5907,7 +6321,7 @@
     S.running = true; S.paused = false; S.busy = true; S.busyPerk = false;
     S.score = 0; S.earned = 0;
     setMusicTheme(S.mode); startMusic();
-    S.lives = isTraining() ? Infinity : (MODES[S.mode].hardcore ? 1 : (MODES[S.mode].lives + upgLevel('comfort') + prestigeLifeBonus()));
+    S.lives = isTraining() ? Infinity : (MODES[S.mode].hardcore ? 1 : (MODES[S.mode].lives + upgLevel('comfort') + prestigeLifeBonus() + petLifeBonus()));
     if(S.campaign) S.lives = S.campaign.def.lives;
     S.served = 0; S.level = 1; S.combo = 0; S.maxCombo = 0;
     S.taps = 0; S.good = 0; S.perfs = 0; S.orderPerfect = true;
@@ -6003,7 +6417,7 @@
 
     if(id === need){
       S.good++;
-      if(SIDES.indexOf(id) < 0){
+      if(XMAS_SIDES.indexOf(id) < 0){
         if(!ST.layers.some(l => l.id !== 'bun_bottom' && l.id !== 'bun_top')){
           const bun = ST.layers.find(l => l.id === 'bun_bottom');
           if(bun) bun.born = performance.now();
@@ -6011,7 +6425,7 @@
         pushLayer(id);
       } else {
         if(ST.sides.indexOf(id) < 0){ ST.sides.push(id); ST.sideT[id] = performance.now(); }
-        requestDraw(1150);
+        requestDraw(id === 'mandarin' ? 1500 : 1150);
       }
       const chip = chips[S.placed];
       if(chip){ chip.classList.add('done'); chip.classList.remove('next', 'hint'); }
@@ -6051,6 +6465,27 @@
     }
   }
 
+  function serveLandDelay(){
+    const last = ST.layers[ST.layers.length - 1];
+    const la = last ? ANIM[last.id] : null;
+    let d = la ? Math.min(760, la.dur * (la.fall || .6)) : 120;
+    const lastId = S.order[S.order.length - 1];
+    if(lastId === 'mandarin') d = Math.max(d, 1050);
+    else if(lastId && XMAS_SIDES.indexOf(lastId) >= 0) d = Math.max(d, 420);
+    return d;
+  }
+  function sandboxClientBonus(){
+    let tip = 1, score = 1, dur = 1, critic = false;
+    if(!sbGet('permBonuses')) return { tip:tip, score:score, dur:dur, critic:critic };
+    for(let i = 0; i < SB_CLIENTS.length; i++){
+      const cd = CLIENT_DEFS[SB_CLIENTS[i]] || CLIENT_DEFS.normal;
+      tip = Math.max(tip, cd.tip || 1);
+      score = Math.max(score, cd.score || 1);
+      dur = Math.max(dur, cd.dur || 1);
+      if(cd.critic) critic = true;
+    }
+    return { tip:tip, score:score, dur:dur, critic:critic };
+  }
   function serve(){
     if(S.sandbox){ serveSandbox(); return; }
     S.busy = true;
@@ -6061,8 +6496,8 @@
     const meal = S.meal || {};
     const base = 80 + S.order.length * 20 + Math.round(S.patience * 90) + Math.round(S.combo * 6);
     const comboBonus = (meal.combo && perfect) ? 1.2 : 1;
-    const gain = Math.round(base * mult * mode.score * (cd.score || 1) * comboBonus * (perfect ? 1.15 : 1) * prestigeScoreMult());
-    let tip = isTraining() ? 0 : Math.max(1, Math.round((2 + S.order.length * 1.2 + S.patience * 6 + S.combo) * mode.tip * (cd.tip || 1) * (1 + upgLevel('tips') * .15) * prestigeCoinMult()));
+    const gain = Math.round(base * mult * mode.score * (cd.score || 1) * comboBonus * (perfect ? 1.15 : 1) * prestigeScoreMult() * petScoreMult());
+    let tip = isTraining() ? 0 : Math.max(1, Math.round((2 + S.order.length * 1.2 + S.patience * 6 + S.combo) * mode.tip * (cd.tip || 1) * (1 + upgLevel('tips') * .15) * prestigeCoinMult() * petCoinMult() * petTipMult()));
     if(!isTraining() && meal.combo && perfect) tip += 25;
     if(!isTraining() && cd.critic){ if(perfect) tip += 120; else tip = Math.max(1, Math.round(tip * .4)); }
 
@@ -6106,7 +6541,7 @@
 
     const last = ST.layers[ST.layers.length - 1];
     const la = last ? ANIM[last.id] : null;
-    const landDelay = la ? Math.min(760, la.dur * (la.fall || .6)) : 120;
+    const landDelay = serveLandDelay();
     const afterServe = landDelay + ST.serveDur + 90;
     setTimeout(() => { ST.serveT = performance.now(); requestDraw(900); }, landDelay);
 
@@ -6131,18 +6566,38 @@
   function serveSandbox(){
     S.busy = true;
     S.served++;
-    sfxServe(); buzz(12);
-    puffs(5, true);
+    const bonus = sandboxClientBonus();
+    const perfect = S.orderPerfect;
+    const gain = Math.round((90 + S.order.length * 20 + Math.round(S.patience * 80)) * comboMult() * bonus.score * (perfect ? 1.15 : 1) * prestigeScoreMult() * petScoreMult());
+    let tip = Math.max(1, Math.round((3 + S.order.length * 1.2 + S.patience * 5) * bonus.tip * (1 + upgLevel('tips') * .15) * prestigeCoinMult() * petCoinMult() * petTipMult()));
+    if(perfect && bonus.critic) tip += 120;
+    S.score += gain;
+    S.earned += tip;
+    profile.coins += tip;
+    profile.burgers++;
+    S.combo++;
+    S.maxCombo = Math.max(S.maxCombo, S.combo);
+    profile.bestCombo = Math.max(profile.bestCombo || 0, S.combo);
+    saveProfile();
+    sfxServe(); sfxCoin(); buzz(18);
+    puffs(5, perfect);
+    showFloat('+' + gain, false, '+' + tip + ' монет · вечные бонусы' + (perfect ? ' · идеально' : ''));
     updateHUD();
     updateStamp();
     paintCombo();
-    const last = ST.layers[ST.layers.length - 1];
-    const la = last ? ANIM[last.id] : null;
-    const landDelay = la ? Math.min(760, la.dur * (la.fall || .6)) : 120;
+    updateMenuBadges();
+    const landDelay = serveLandDelay();
     const afterServe = landDelay + ST.serveDur + 90;
     setTimeout(() => { ST.serveT = performance.now(); requestDraw(900); }, landDelay);
     setTimeout(() => {
       if(!S.running) return;
+      setMood('love');
+      el.avatar.classList.add('leave');
+      showFloat('Готово!', false, S.sandbox && sbCfg().maxOrders > 0 ? S.served + '/' + sbCfg().maxOrders : '');
+    }, landDelay + Math.min(260, ST.serveDur * .45));
+    setTimeout(() => {
+      if(!S.running) return;
+      el.avatar.classList.remove('leave');
       if(S.sandbox && sbCfg().maxOrders > 0 && S.served >= sbCfg().maxOrders){ gameOver(true); return; }
       nextOrder();
     }, afterServe);
@@ -6560,6 +7015,10 @@
   el.kitchenBackBtn.addEventListener('click', showMenu);
   el.skinBtn.addEventListener('click', openSkin);
   el.skinBackBtn.addEventListener('click', showMenu);
+  el.petBtn.addEventListener('click', openPets);
+  el.petBackBtn.addEventListener('click', showMenu);
+  if(el.petCompanion) el.petCompanion.addEventListener('click', petThePet);
+  if(el.caseStage) el.caseStage.addEventListener('click', closeCaseDrop);
   el.prestigeBtnNav.addEventListener('click', openPrestige);
   el.prestigeBackBtn.addEventListener('click', showMenu);
   el.prestigeBtn.addEventListener('click', doPrestige);
@@ -6596,7 +7055,10 @@
     toggle:toggleXmas, isOn:xmasOn,
     snow:() => (document.getElementById('snowLayer') || { childElementCount:0 }).childElementCount,
     wheel:() => ({ day:profile.wheelSpinDay, spins:profile.wheelSpins, left:wheelLeft() }),
-    prestige:() => ({ day:profile.prestigeDay, today:profile.prestigeToday, left:prestigeLeft() }),
+    prestige:() => ({ day:profile.prestigeDay, today:profile.prestigeToday, left:prestigeLeft(), max:PRESTIGE_MAX }),
+    pets:() => PETS.map(p => ({ id:p.id, owned:petOwned(p.id) })),
+    activePet:() => profile.activePet || null,
+    pet:petThePet, openCase:openPetCase,
     throwSnow:throwSnow, snowButton:() => !!document.getElementById('snowBtn') && !Array.prototype.some.call(document.querySelectorAll('#palette .ing'), b => b.dataset.ing === SNOW_ID),
     patience:() => S.patience,
     spin:spinWheel
@@ -6770,6 +7232,10 @@
     return /iPad|iPhone|iPod/.test(navigator.userAgent) ||
       (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
   }
+  function isWebView(){
+    var ua = navigator.userAgent || '';
+    return /;\s*wv\)|Version\/4\.0|WebView/i.test(ua) || /com\.burgermaster\.game/i.test(ua);
+  }
   function show(){
     if(document.getElementById('bmInstallHint')) return;
     var ios=isIOS();
@@ -6800,7 +7266,7 @@
     </div>`;
     document.body.appendChild(w);
   }
-  if(!isStandalone()){
+  if(!isStandalone() && !isWebView()){
     show();
     document.addEventListener('contextmenu', function(e){ e.preventDefault(); });
     document.addEventListener('keydown', function(e){
