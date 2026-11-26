@@ -802,6 +802,25 @@
   .admNum::placeholder{color:#8d7762}
   .admNum:focus{border-color:rgba(255,190,90,.6);box-shadow:0 0 0 2px rgba(255,180,60,.18)}
   .acInput .admBtn{flex:none;min-width:74px}
+  select.admNum{appearance:none;-webkit-appearance:none}
+  .promoRow{display:flex;gap:8px;width:100%;max-width:340px}
+  .promoRow input{flex:1;min-width:0;padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.3);color:#f7efe4;font:inherit;font-size:16px;outline:none}
+  .promoRow input:focus{border-color:rgba(255,182,61,.7)}
+  .promoRow .cta{flex:none;padding:12px 16px}
+  .promoMsg{min-height:30px;font-size:11.5px;font-weight:800;color:#cbb6a0;line-height:1.35}
+  .promoMsg.err{color:#ff9b86}
+  .promoItem{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);font-size:11.5px;font-weight:800}
+  .promoItem span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .promoItem .admBtn{min-width:70px;padding:7px 8px;font-size:10.5px}
+  .promoFlash{
+    position:fixed;left:50%;top:16%;z-index:2147481200;transform:translateX(-50%);
+    width:max-content;max-width:min(92vw,360px);padding:14px 18px;border-radius:18px;
+    background:linear-gradient(180deg,#ffe2a2,#ffb347);border:1px solid rgba(255,255,255,.45);
+    box-shadow:0 18px 50px rgba(0,0,0,.55);color:#2a1708;text-align:center;
+    font:900 15px/1.35 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    pointer-events:none;
+  }
+  .promoFlash[hidden]{display:none!important}
   .shopRow{display:flex;flex-direction:column;gap:7px;width:100%;max-width:330px}
   .shopBtn{
     display:flex;align-items:center;justify-content:space-between;gap:10px;
@@ -1512,6 +1531,7 @@
       <button class="navBtn" id="petBtn" type="button"><b>Питомцы</b><span id="petCount">0/6</span></button>
       <button class="navBtn" id="prestigeBtnNav" type="button"><b>Перерождение</b><span id="prestigeNav">0 очк.</span></button>
       <button class="navBtn" id="wheelBtnNav" type="button"><b>Рулетка</b><span id="wheelNav">бесплатно</span><i class="dotBadge" id="wheelDot" hidden></i></button>
+      <button class="navBtn" id="promoBtn" type="button"><b>Промокоды</b></button>
       <button class="navBtn" id="sandboxBtn" type="button"><b>Песочница</b><span id="sandboxCount">0 рец.</span></button>
     </div>
     <div class="achRow" id="achRow"></div>
@@ -1657,6 +1677,18 @@
     <button class="cta ghost" id="dailyBackBtn" type="button">Назад</button>
   </div>
 
+  <div class="screen hidden" id="promoScreen">
+    <div class="title">Промокоды</div>
+    <div class="setCard">
+      <div class="promoRow">
+        <input id="promoInput" type="text" maxlength="16" placeholder="Промокод" autocomplete="off" autocapitalize="characters" spellcheck="false">
+        <button class="cta" id="promoApply" type="button">Активировать</button>
+      </div>
+      <div class="promoMsg" id="promoMsg"></div>
+    </div>
+    <button class="cta ghost" id="promoBackBtn" type="button">Назад</button>
+  </div>
+
   <div class="bmModal hidden" id="dailyOffer">
     <div class="bmModalCard" role="dialog" aria-modal="true" aria-labelledby="doTitle">
       <h3 id="doTitle">Ежедневная награда!</h3>
@@ -1696,61 +1728,30 @@
   </div>
 
   <div class="screen hidden" id="adminScreen">
-    <div class="title">Админ-панель<small>управление игрой</small></div>
+    <div class="title">Админ-панель<small>промокоды</small></div>
     <div class="adminList">
       <div class="adminCard">
-        <div class="acTop"><b>Рекорд</b><span id="admBest">0</span></div>
-        <div class="acBtns">
-          <button class="admBtn" id="admBest1" type="button">+1000</button>
-          <button class="admBtn" id="admBest2" type="button">+10000</button>
-          <button class="admBtn danger" id="admBestReset" type="button">Сбросить</button>
+        <div class="acTop"><b>Промокоды</b></div>
+        <div class="acInput">
+          <input class="admNum" id="admPromoCode" type="text" maxlength="16" placeholder="КОД (RU/EN)">
+          <select class="admNum" id="admPromoType"></select>
         </div>
         <div class="acInput">
-          <input class="admNum" id="admBestVal" type="number" inputmode="numeric" placeholder="своё число">
-          <input class="admNum" id="admBestBurgers" type="number" inputmode="numeric" placeholder="бургеров">
-          <button class="admBtn" id="admBestSet" type="button">Задать</button>
-        </div>
-      </div>
-      <div class="adminCard">
-        <div class="acTop"><b>Монеты</b><span id="admCoins">0</span></div>
-        <div class="acBtns">
-          <button class="admBtn" id="admCoins1" type="button">+500</button>
-          <button class="admBtn" id="admCoins2" type="button">+5000</button>
-          <button class="admBtn danger" id="admCoins0" type="button">Обнулить</button>
+          <input class="admNum" id="admPromoValue" type="text" placeholder="значение / id">
+          <select class="admNum" id="admPromoReset"></select>
+          <select class="admNum" id="admPromoPet"></select>
         </div>
         <div class="acInput">
-          <input class="admNum" id="admCoinsVal" type="number" inputmode="numeric" placeholder="своё число">
-          <button class="admBtn" id="admCoinsSet" type="button">Задать</button>
+          <input class="admNum" id="admPromoUses" type="number" inputmode="numeric" placeholder="лимит (1)">
+          <input class="admNum" id="admPromoDate" type="datetime-local" title="Срок действия">
+          <input class="admNum" id="admPromoLevel" type="number" inputmode="numeric" placeholder="ур. (1)">
         </div>
-      </div>
-      <div class="adminCard">
-        <div class="acTop"><b>Достижения</b><span id="admAch">0/0</span></div>
-        <div class="acBtns">
-          <button class="admBtn" id="admAchAll" type="button">Выдать все</button>
-          <button class="admBtn danger" id="admAchReset" type="button">Сбросить</button>
+        <div class="acInput">
+          <input class="admNum" id="admPromoText" type="text" maxlength="80" placeholder="текст при активации">
         </div>
-      </div>
-      <div class="adminCard">
-        <div class="acTop"><b>Песочница</b><span id="admSbx">закрыта</span></div>
-        <div class="acBtns">
-          <button class="admBtn" id="admSbxToggle" type="button">Разблокировать</button>
-        </div>
-      </div>
-      <div class="adminCard">
-        <div class="acTop"><b>Прогресс</b><span id="admLvl">1/12</span></div>
-        <div class="acBtns">
-          <button class="admBtn" id="admCampaign" type="button">Кампания</button>
-          <button class="admBtn" id="admCampaignStars" type="button">Все звёзды</button>
-          <button class="admBtn" id="admKitchen" type="button">Кухня макс.</button>
-          <button class="admBtn danger" id="admWipe" type="button">Сброс</button>
-        </div>
-      </div>
-      <div class="adminCard">
-        <div class="acTop"><b>Ежедневная награда</b><span id="admBonus">—</span></div>
-        <div class="acBtns">
-          <button class="admBtn" id="admBonusSkip" type="button">Пропустить ожидание</button>
-          <button class="admBtn danger" id="admBonusReset" type="button">Сбросить серию</button>
-        </div>
+        <div class="promoMsg" id="admPromoHint">Код можно писать кириллицей или латиницей.</div>
+        <div class="acBtns"><button class="admBtn" id="admPromoCreate" type="button">Создать код</button></div>
+        <div class="adminList" id="admPromoList"></div>
       </div>
     </div>
     <button class="cta ghost" id="adminCloseBtn" type="button">Закрыть</button>
@@ -1857,6 +1858,8 @@
   <div class="flameWrap" id="burstFlame"><div class="flame"><i class="f1"></i><i class="f2"></i></div></div>
   <b id="burstText">День 1</b>
 </div>
+
+<div class="promoFlash" id="promoFlash" hidden aria-live="polite"></div>
 
 <script>
 (() => {
@@ -2070,6 +2073,35 @@
   const KEY_SCORES  = 'burgerMaster.scores.v1';
   const KEY_MUTED   = 'burgerMaster.muted.v1';
   const KEY_PROFILE = 'burgerMaster.profile.v2';
+  const PROMO_TYPES = {
+    coins:'Монеты', freeze:'Заморозки', hint:'Подсказки', skip:'Пропуски',
+    life:'+1 клиент', coinmult:'× монеты', skin:'Скин', pet:'Питомец',
+    campaign:'Кампания', sandbox:'Песочница', reset:'Сброс прогресса'
+  };
+  const PROMO_RESETS = {
+    campaign:'Кампанию', coins:'Монеты', upg:'Улучшения', skins:'Скины',
+    pets:'Питомцев', daily:'Задания', ach:'Достижения', scores:'Рекорды', all:'Всё'
+  };
+  const PROMO_MAP = {А:'A',В:'B',Е:'E',К:'K',М:'M',Н:'H',О:'O',Р:'P',С:'C',Т:'T',У:'Y',Х:'X'};
+  function normPromoCode(v){
+    return String(v || '')
+      .trim().toUpperCase()
+      .split('').map(ch => PROMO_MAP[ch] || ch).join('')
+      .slice(0,16);
+  }
+  function promoLabel(v){ return String(v || '').trim().toUpperCase().slice(0,16); }
+  function validPromoCode(s){ return /^[A-ZА-ЯЁ0-9-]{3,16}$/.test(s); }
+  function promoEsc(s){
+    return String(s == null ? '' : s).replace(/[&<>"']/g, ch => ({
+      '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+    })[ch]);
+  }
+  const BUILTIN_PROMO = {
+    code:'СБРОС', label:'СБРОС', type:'bundle', value:0, target:'',
+    usesMax:1, minLevel:1, expiresAt:new Date(2026,10,30,23,59,59).getTime(),
+    text:'100000 монет, все достижения, 10 заморозок, 10 подсказок, 10 пропусков',
+    builtin:true
+  };
   const PRICE = { freeze:40, hint:30, life:120, revive:150 };
 
   const CAMPAIGN = [
@@ -2244,14 +2276,11 @@
     achRow:$('achRow'), achCount:$('achCount'),
     achScreen:$('achScreen'), achList:$('achList'), achBackBtn:$('achBackBtn'), achSub:$('achSub'),
     adminScreen:$('adminScreen'), adminCloseBtn:$('adminCloseBtn'),
-    admBest:$('admBest'), admCoins:$('admCoins'), admAch:$('admAch'), admSbx:$('admSbx'), admLvl:$('admLvl'), admSbxToggle:$('admSbxToggle'),
-    admBest1:$('admBest1'), admBest2:$('admBest2'), admBestReset:$('admBestReset'),
-    admCoins1:$('admCoins1'), admCoins2:$('admCoins2'), admCoins0:$('admCoins0'),
-    admAchAll:$('admAchAll'), admAchReset:$('admAchReset'),
-    admBestVal:$('admBestVal'), admBestBurgers:$('admBestBurgers'), admBestSet:$('admBestSet'),
-    admCoinsVal:$('admCoinsVal'), admCoinsSet:$('admCoinsSet'),
-    admBonus:$('admBonus'), admBonusSkip:$('admBonusSkip'), admBonusReset:$('admBonusReset'),
-    admCampaign:$('admCampaign'), admCampaignStars:$('admCampaignStars'), admKitchen:$('admKitchen'), admWipe:$('admWipe'),
+    admPromoCode:$('admPromoCode'), admPromoType:$('admPromoType'),
+    admPromoValue:$('admPromoValue'), admPromoReset:$('admPromoReset'), admPromoPet:$('admPromoPet'),
+    admPromoUses:$('admPromoUses'), admPromoDate:$('admPromoDate'), admPromoLevel:$('admPromoLevel'),
+    admPromoText:$('admPromoText'), admPromoHint:$('admPromoHint'),
+    admPromoCreate:$('admPromoCreate'), admPromoList:$('admPromoList'),
     overScore:$('overScore'), overServed:$('overServed'), overLevel:$('overLevel'),
     overCombo:$('overCombo'), overAcc:$('overAcc'), overCoins:$('overCoins'),
     overScores:$('overScores'), recordSlot:$('recordSlot'), reviveBtn:$('reviveBtn'),
@@ -2275,6 +2304,8 @@
     bonusBtn:$('bonusBtn'), taskList:$('taskList'), dailyBackBtn:$('dailyBackBtn'), dailyReroll:$('dailyReroll'),
     bonusTimer:$('bonusTimer'), dailyOffer:$('dailyOffer'), doSum:$('doSum'), doText:$('doText'), doClaim:$('doClaim'), doLater:$('doLater'),
     streakFlame:$('streakFlame'), flameLabel:$('flameLabel'), flameBurst:$('flameBurst'), burstFlame:$('burstFlame'), burstText:$('burstText'),
+    promoBtn:$('promoBtn'), promoScreen:$('promoScreen'), promoInput:$('promoInput'),
+    promoApply:$('promoApply'), promoMsg:$('promoMsg'), promoFlash:$('promoFlash'), promoBackBtn:$('promoBackBtn'),
     settingsScreen:$('settingsScreen'), settingsBtn:$('settingsBtn'), setSound:$('setSound'), setMusic:$('setMusic'), setVol:$('setVol'),
     setVolVal:$('setVolVal'), setVibro:$('setVibro'), setOpt:$('setOpt'), setXmas:$('setXmas'), xmasCredit:$('xmasCredit'), resetBtn:$('resetBtn'), resetConfirm:$('resetConfirm'),
     resetYes:$('resetYes'), resetNo:$('resetNo'), settingsBackBtn:$('settingsBackBtn'),
@@ -2300,6 +2331,14 @@
       return localStorage;
     } catch(e){ return null; }
   })();
+  const WEB_RESET_FLAG = 'burgerMaster.webReset.v1';
+  if(store && !store.getItem(WEB_RESET_FLAG)){
+    for(let i = store.length - 1; i >= 0; i--){
+      const k = store.key(i);
+      if(k && k.indexOf('burgerMaster.') === 0 && k !== WEB_RESET_FLAG) store.removeItem(k);
+    }
+    store.setItem(WEB_RESET_FLAG, '1');
+  }
   function loadJSON(k, fb){
     if(!store) return fb;
     try { const v = store.getItem(k); return v === null ? fb : JSON.parse(v); } catch(e){ return fb; }
@@ -2311,6 +2350,7 @@
       upg:{}, campaign:{ unlocked:1, stars:{} }, daily:null, bonusDay:'', bonusStreak:0, bonusAt:0, bonusSkip:false,
       sfxVol:1, vibro:true, music:true, opt:false, xmas:false, recipes:[], sbxAdmin:false,
       skins:{}, skin:'default', pets:{}, activePet:null, prestige:0, pp:0, prestigeBurgers:0, prestigeDay:'', prestigeToday:0, wheelDay:'', wheelSpinDay:'', wheelSpins:0, intro:false,
+      promo:{ codes:[], redeemed:{}, boosts:{ coinMult:1, coinShifts:0, grant:{ freeze:0, hint:0, skip:0, life:0 } } },
       stats:{ earned:0, play:0, perfect:0, orders:0 }, hardcoreWarned:false };
     const p = loadJSON(KEY_PROFILE, null);
     if(p && typeof p === 'object') Object.assign(d, p);
@@ -2356,6 +2396,28 @@
     d.intro = !!d.intro;
     d.hardcoreWarned = d.hardcoreWarned === true;
     if(!d.stats || typeof d.stats !== 'object') d.stats = { earned:0, play:0, perfect:0, orders:0 };
+    if(!d.promo || typeof d.promo !== 'object') d.promo = {};
+    if(!Array.isArray(d.promo.codes)) d.promo.codes = [];
+    if(!d.promo.redeemed || typeof d.promo.redeemed !== 'object') d.promo.redeemed = {};
+    if(!d.promo.boosts || typeof d.promo.boosts !== 'object') d.promo.boosts = {};
+    d.promo.boosts.coinMult = Math.max(1, Math.min(5, Number(d.promo.boosts.coinMult) || 1));
+    d.promo.boosts.coinShifts = Math.min(1, Math.max(0, Math.floor(Number(d.promo.boosts.coinShifts) || 0)));
+    d.promo.codes = d.promo.codes.filter(c => c && typeof c === 'object' && validPromoCode(normPromoCode(c.code)));
+    d.promo.codes.forEach(c => {
+      c.code = normPromoCode(c.code);
+      c.label = promoLabel(c.label || c.code) || c.code;
+      c.text = typeof c.text === 'string' ? c.text.slice(0, 80) : '';
+      if(!PROMO_RESETS[c.target]) c.target = 'campaign';
+    });
+    Object.keys(d.promo.redeemed).forEach(k => {
+      const nk = normPromoCode(k);
+      if(nk === k) return;
+      if(!d.promo.redeemed[nk]) d.promo.redeemed[nk] = d.promo.redeemed[k];
+      delete d.promo.redeemed[k];
+    });
+    const pg = d.promo.boosts.grant;
+    if(!pg || typeof pg !== 'object') pg = d.promo.boosts.grant = {};
+    ['freeze','hint','skip','life'].forEach(k => { pg[k] = Math.max(0, Math.floor(Number(pg[k]) || 0)); });
     return d;
   })();
   function saveProfile(){ saveJSON(KEY_PROFILE, profile); }
@@ -5000,15 +5062,7 @@
 
   /* ---------------- admin panel ---------------- */
   function renderAdmin(){
-    el.admBest.textContent = best.toLocaleString('ru-RU');
-    el.admCoins.textContent = profile.coins.toLocaleString('ru-RU');
-    let got = 0;
-    for(let i = 0; i < ACH.length; i++){ if(profile.ach[ACH[i].id]) got++; }
-    el.admAch.textContent = got + '/' + ACH.length;
-    el.admSbx.textContent = sandboxUnlocked() ? 'открыта' : 'закрыта';
-    el.admSbxToggle.textContent = profile.sbxAdmin ? 'Заблокировать' : 'Разблокировать';
-    el.admLvl.textContent = (profile.campaign.unlocked || 1) + '/' + CAMPAIGN.length;
-    el.admBonus.textContent = bonusAvailable() ? 'доступна' : 'через ' + fmtLeft(msToBonus());
+    renderAdminPromo();
   }
   function openAdmin(){
     if(S.running && !S.paused) togglePause(true);
@@ -5021,32 +5075,6 @@
     el.adminScreen.classList.add('hidden');
     if(S.running && S.paused){ el.pauseScreen.classList.remove('hidden'); }
     else { showMenu(); }
-  }
-  function adminGiveScore(add){
-    const score = Math.max(1, (best || 0) + add);
-    pushScore({ score:score, served:0, date:Date.now(), id:'adm' + Date.now() + Math.floor(Math.random()*999) });
-    refreshMenuStats();
-    renderAdmin();
-    showToast('Админ', 'Рекорд ' + score.toLocaleString('ru-RU'));
-  }
-  function adminResetScores(){
-    saveScores([]);
-    refreshMenuStats();
-    renderAdmin();
-    showToast('Админ', 'Рекорды сброшены');
-  }
-  function adminSetScore(v, burgers){
-    const n = Math.max(0, Math.floor(Number(v)) || 0);
-    const b = Math.max(0, Math.floor(Number(burgers)) || 0);
-    saveScores(n > 0 ? [{ score:n, served:b, date:Date.now(), id:'adm' + Date.now() }] : []);
-    refreshMenuStats();
-    renderAdmin();
-    showToast('Админ', 'Рекорд = ' + n.toLocaleString('ru-RU'));
-  }
-  function adminSetCoins(v){
-    const n = Math.max(0, Math.floor(Number(v)) || 0);
-    profile.coins = n; saveProfile(); updateHUD(); updateMenuBadges(); refreshMenuStats(); renderAdmin();
-    showToast('Админ', 'Монеты = ' + n.toLocaleString('ru-RU'));
   }
   function clearHint(){
     if(S.hintTimer){ clearTimeout(S.hintTimer); S.hintTimer = 0; }
@@ -5277,7 +5305,7 @@
 
   /* ---------------- menu screens: campaign / kitchen / daily ---------------- */
   let campIdx = 0;
-  const SCREEN_KEYS = ['startScreen','overScreen','pauseScreen','perkScreen','campaignScreen','kitchenScreen','dailyScreen','settingsScreen','achScreen','adminScreen','campResultScreen','sandboxScreen','sandboxSettingsScreen','skinScreen','petScreen','prestigeScreen','wheelScreen'];
+  const SCREEN_KEYS = ['startScreen','overScreen','pauseScreen','perkScreen','campaignScreen','kitchenScreen','dailyScreen','settingsScreen','achScreen','adminScreen','campResultScreen','sandboxScreen','sandboxSettingsScreen','skinScreen','petScreen','prestigeScreen','wheelScreen','promoScreen'];
 
   function hideAllScreens(){
     for(let i = 0; i < SCREEN_KEYS.length; i++) el[SCREEN_KEYS[i]].classList.add('hidden');
@@ -5893,6 +5921,251 @@
     renderDaily();
     el.dailyScreen.classList.remove('hidden');
   }
+  function updatePromoFields(){
+    const t = el.admPromoType.value;
+    const hints = {
+      coins:'Монеты: значение — количество.', freeze:'Заморозки: значение — количество, действуют 1 смену.',
+      hint:'Подсказки: значение — количество, действуют 1 смену.', skip:'Пропуски: значение — количество, действуют 1 смену.',
+      life:'Клиенты: значение — количество, действуют 1 смену.', coinmult:'Множитель монет: 2–5, действует 1 смену.',
+      skin:'Скин: значение — id скина.', pet:'Питомец: выберите из списка.',
+      campaign:'Кампания: значение — номер уровня.', sandbox:'Песочница: значение не нужно.',
+      reset:'Сброс: выберите, что обнулить при активации.'
+    };
+    const ph = {
+      coins:'монеты', freeze:'шт.', hint:'шт.', skip:'шт.', life:'шт.', coinmult:'×2–5',
+      skin:'id скина', pet:'—', campaign:'уровень', sandbox:'—', reset:'—'
+    };
+    el.admPromoHint.textContent = hints[t] || 'Код можно писать кириллицей или латиницей.';
+    el.admPromoValue.placeholder = ph[t] || 'значение / id';
+    el.admPromoPet.disabled = t !== 'pet';
+    el.admPromoPet.style.opacity = t === 'pet' ? '1' : '.45';
+  }
+  function renderAdminPromo(){
+    const curType = el.admPromoType.value;
+    el.admPromoType.innerHTML = Object.keys(PROMO_TYPES).map(k => '<option value="'+k+'">'+PROMO_TYPES[k]+'</option>').join('');
+    if(PROMO_TYPES[curType]) el.admPromoType.value = curType;
+    const curReset = el.admPromoReset.value;
+    el.admPromoReset.innerHTML = Object.keys(PROMO_RESETS).map(k => '<option value="'+k+'">Сбросить: '+PROMO_RESETS[k]+'</option>').join('');
+    if(PROMO_RESETS[curReset]) el.admPromoReset.value = curReset;
+    const curPet = el.admPromoPet.value;
+    el.admPromoPet.innerHTML = '<option value="">Питомец...</option>' + PETS.map(p => '<option value="'+p.id+'">'+p.name+'</option>').join('');
+    if(curPet) el.admPromoPet.value = curPet;
+    updatePromoFields();
+    if(!profile.promo.codes.length){
+      el.admPromoList.innerHTML = '<div class="promoItem"><span>Кодов пока нет</span></div>';
+      return;
+    }
+    el.admPromoList.innerHTML = profile.promo.codes.map((c,i) => {
+      const used = c.uses || 0, max = c.usesMax || 1;
+      let amount;
+      if(c.type === 'coins') amount = Math.max(1, Math.round(Number(c.value) || 1)) + ' монет';
+      else if(c.type === 'reset') amount = 'сброс: ' + (PROMO_RESETS[c.target] || '—');
+      else if(c.type === 'coinmult') amount = '×' + Math.max(2, Math.round(Number(c.value) || 2)) + ' на 1 смену';
+      else if(['freeze','hint','skip','life'].indexOf(c.type) >= 0) amount = PROMO_TYPES[c.type] + ' +' + Math.max(1, Math.round(Number(c.value) || 1)) + ' на 1 смену';
+      else if(c.type === 'skin') amount = PROMO_TYPES[c.type] + ': ' + promoEsc(c.value);
+      else if(c.type === 'pet') amount = PROMO_TYPES[c.type] + ': ' + promoEsc((petById(c.value) || {}).name || c.value);
+      else amount = PROMO_TYPES[c.type] || '—';
+      const info = promoEsc(promoLabel(c.label || c.code)) + ' · ' + amount + ' · ' + used + '/' + max +
+        (c.text ? ' · «' + promoEsc(c.text) + '»' : '') +
+        (c.expiresAt ? ' · до ' + new Date(c.expiresAt).toLocaleString('ru-RU') : '');
+      return '<div class="promoItem"><span>' + info + '</span>' +
+        '<button class="admBtn danger" type="button" data-promo-del="'+i+'">Удалить</button></div>';
+    }).join('');
+    const btns = el.admPromoList.querySelectorAll('[data-promo-del]');
+    for(let i=0;i<btns.length;i++){
+      btns[i].addEventListener('click', () => {
+        const idx = parseInt(btns[i].dataset.promoDel,10);
+        const item = profile.promo.codes[idx];
+        if(!item) return;
+        delete profile.promo.redeemed[normPromoCode(item.code)];
+        profile.promo.codes.splice(idx,1);
+        saveProfile(); renderAdminPromo(); updateMenuBadges();
+        showToast('Админ','Промокод удалён');
+      });
+    }
+  }
+  function createPromo(){
+    const raw = el.admPromoCode.value;
+    const label = promoLabel(raw);
+    const code = normPromoCode(raw);
+    if(!validPromoCode(code)){ showToast('Админ','Код: 3–16 символов A-Z, А-Я, 0-9 или -'); return; }
+    if(code === normPromoCode(BUILTIN_PROMO.code)){ showToast('Админ','Это встроенный код'); return; }
+    if(profile.promo.codes.some(c => normPromoCode(c.code) === code)){ showToast('Админ','Такой код уже есть'); return; }
+    const type = PROMO_TYPES[el.admPromoType.value] ? el.admPromoType.value : 'coins';
+    const intVal = (v, lo, hi, dv) => {
+      const n = (v === '' || v == null) ? NaN : Math.round(Number(v));
+      return isFinite(n) ? Math.max(lo, Math.min(hi, n)) : dv;
+    };
+    let value = 1, target = 'campaign';
+    if(type === 'coins') value = intVal(el.admPromoValue.value,1,100000,100);
+    else if(['freeze','hint','skip','life'].indexOf(type) >= 0) value = intVal(el.admPromoValue.value,1,20,1);
+    else if(type === 'coinmult') value = intVal(el.admPromoValue.value,2,5,2);
+    else if(type === 'campaign') value = intVal(el.admPromoValue.value,1,CAMPAIGN.length,1);
+    else if(type === 'skin'){
+      value = String(el.admPromoValue.value || '').trim();
+      const s = skinById(value);
+      if(!value || value === 'default' || !s || s.id !== value){ showToast('Админ','Неизвестный скин'); return; }
+    } else if(type === 'pet'){
+      value = String(el.admPromoPet.value || '').trim();
+      if(!petById(value)){ showToast('Админ','Выберите питомца из списка'); return; }
+    } else if(type === 'reset'){
+      target = PROMO_RESETS[el.admPromoReset.value] ? el.admPromoReset.value : 'campaign';
+    }
+    const now = Date.now();
+    const rawDate = el.admPromoDate.value;
+    const parsedDate = rawDate ? new Date(rawDate).getTime() : 0;
+    if(rawDate && (!isFinite(parsedDate) || parsedDate <= now)){ showToast('Админ','Укажите будущую дату и время'); return; }
+    const expiresAt = parsedDate || 0;
+    delete profile.promo.redeemed[code];
+    profile.promo.codes.push({
+      code:code, label:label, type:type, value:value, target:target,
+      shifts:type === 'coinmult' ? 1 : 0,
+      text:String(el.admPromoText.value || '').trim().slice(0,80),
+      days:expiresAt ? (expiresAt - now) / 86400000 : 0, expiresAt:expiresAt,
+      uses:0, usesMax:intVal(el.admPromoUses.value,1,99,1),
+      minLevel:intVal(el.admPromoLevel.value,1,CAMPAIGN.length,1),
+      createdAt:now
+    });
+    el.admPromoCode.value = '';
+    el.admPromoValue.value = '';
+    el.admPromoPet.value = '';
+    el.admPromoUses.value = '';
+    el.admPromoDate.value = '';
+    el.admPromoLevel.value = '';
+    el.admPromoText.value = '';
+    saveProfile(); renderAdminPromo(); updateMenuBadges();
+    showToast('Админ','Код '+label+' создан');
+  }
+  function resetPromoProgress(target){
+    const t = PROMO_RESETS[target] ? target : 'campaign';
+    if(t === 'campaign' || t === 'all'){ profile.campaign.unlocked = 1; profile.campaign.stars = {}; }
+    if(t === 'coins' || t === 'all'){ profile.coins = 0; }
+    if(t === 'upg' || t === 'all'){ profile.upg = { grill:0, tips:0, combo:0, starter:0, comfort:0 }; }
+    if(t === 'skins' || t === 'all'){ profile.skins = {}; profile.skin = 'default'; }
+    if(t === 'pets' || t === 'all'){ profile.pets = {}; profile.activePet = null; }
+    if(t === 'daily' || t === 'all'){
+      profile.daily = null; profile.bonusDay = ''; profile.bonusStreak = 0;
+      profile.bonusAt = 0; profile.bonusSkip = false;
+    }
+    if(t === 'ach' || t === 'all'){ profile.ach = {}; }
+    if(t === 'scores' || t === 'all'){ saveScores([]); best = 0; }
+    try{
+      applySkin(); setAvatar(); renderSkin(); renderPetCompanion(true); renderPets();
+      renderAch(); renderDaily(); updateHUD(); refreshMenuStats();
+    }catch(e){}
+    return 'Сброс: ' + PROMO_RESETS[t];
+  }
+  function promoCoinMult(){
+    return Math.max(1, Number(profile.promo.boosts.coinMult) || 1);
+  }
+  function spendPromoShift(){
+    if(profile.promo.boosts.coinShifts > 0){
+      profile.promo.boosts.coinShifts--;
+      if(profile.promo.boosts.coinShifts <= 0) profile.promo.boosts.coinMult = 1;
+      saveProfile();
+    }
+  }
+  let promoFlashTimer = 0;
+  function showPromoFlash(text){
+    if(!el.promoFlash || !text) return;
+    el.promoFlash.textContent = text;
+    el.promoFlash.hidden = false;
+    clearTimeout(promoFlashTimer);
+    promoFlashTimer = setTimeout(() => { el.promoFlash.hidden = true; }, 5000);
+  }
+  function setPromoMsg(text, err){
+    el.promoMsg.textContent = text || '';
+    el.promoMsg.classList.toggle('err', !!err);
+  }
+  function renderPromo(){}
+  function applyPromoReward(c){
+    const raw = c.value;
+    if(c.type === 'coins'){
+      const n = Math.max(1, Math.min(100000, Math.round(Number(raw) || 0)));
+      profile.coins += n; sfxCoin();
+      return '+'+n+' монет';
+    }
+    if(['freeze','hint','skip','life'].indexOf(c.type) >= 0){
+      const n = Math.max(1, Math.min(20, Math.round(Number(raw) || 1)));
+      profile.promo.boosts.grant[c.type] = (profile.promo.boosts.grant[c.type] || 0) + n;
+      return PROMO_TYPES[c.type] + ' +' + n + ' на 1 смену';
+    }
+    if(c.type === 'skin'){
+      const s = skinById(raw);
+      if(!raw || raw === 'default' || !s || s.id !== raw) return null;
+      profile.skins[raw] = 1; profile.skin = raw;
+      try{ applySkin(); setAvatar(); renderSkin(); }catch(e){}
+      return 'Скин: ' + s.name;
+    }
+    if(c.type === 'pet'){
+      const p = petById(raw);
+      if(!p || p.id !== raw) return null;
+      profile.pets[raw] = 1; profile.activePet = raw;
+      try{ renderPetCompanion(true); renderPets(); }catch(e){}
+      return 'Питомец: ' + p.name;
+    }
+    if(c.type === 'campaign'){
+      const n = Math.max(1, Math.min(CAMPAIGN.length, Math.round(Number(raw) || 1)));
+      profile.campaign.unlocked = Math.max(profile.campaign.unlocked || 1, n);
+      return 'Кампания до '+n;
+    }
+    if(c.type === 'sandbox'){
+      profile.sbxAdmin = true;
+      return 'Песочница открыта';
+    }
+    if(c.type === 'coinmult'){
+      const m = Math.max(2, Math.min(5, Math.round(Number(raw) || 2)));
+      profile.promo.boosts.coinMult = Math.max(profile.promo.boosts.coinMult || 1, m);
+      profile.promo.boosts.coinShifts = Math.max(profile.promo.boosts.coinShifts || 0, 1);
+      return '×'+m+' монет на 1 смену';
+    }
+    if(c.type === 'reset') return resetPromoProgress(c.target);
+    return null;
+  }
+  function applyBuiltinPromo(){
+    profile.coins = (Number(profile.coins) || 0) + 100000;
+    sfxCoin();
+    for(let i = 0; i < ACH.length; i++) profile.ach[ACH[i].id] = 1;
+    const g = profile.promo.boosts.grant;
+    g.freeze = (g.freeze || 0) + 10;
+    g.hint = (g.hint || 0) + 10;
+    g.skip = (g.skip || 0) + 10;
+    try{ renderAch(); updateHUD(); refreshMenuStats(); }catch(e){}
+    return BUILTIN_PROMO.text;
+  }
+  function redeemPromo(){
+    const code = normPromoCode(el.promoInput.value);
+    if(!validPromoCode(code)){ setPromoMsg('Введите код: 3–16 символов A-Z, А-Я, 0-9 или -', true); tone(170,.14,'sawtooth',.04,0,110); return; }
+    const c = code === normPromoCode(BUILTIN_PROMO.code)
+      ? BUILTIN_PROMO
+      : profile.promo.codes.filter(x => normPromoCode(x.code) === code)[0];
+    if(!c){ setPromoMsg('Такого кода нет в этом профиле', true); tone(170,.14,'sawtooth',.04,0,110); return; }
+    const rec = profile.promo.redeemed[code] || { at:0, uses:0 };
+    if(rec.uses >= (c.usesMax || 1)){ setPromoMsg('Код уже активирован', true); tone(170,.14,'sawtooth',.04,0,110); return; }
+    if(c.expiresAt && Date.now() > c.expiresAt){ setPromoMsg('Срок действия кода истёк', true); return; }
+    if((c.minLevel || 1) > (profile.campaign.unlocked || 1)){
+      setPromoMsg('Код доступен с уровня '+c.minLevel, true); return;
+    }
+    const label = c.builtin ? applyBuiltinPromo() : applyPromoReward(c);
+    if(!label){ setPromoMsg('Не удалось применить награду', true); return; }
+    const shown = c.text && String(c.text).trim() ? String(c.text).trim() : label;
+    rec.uses++; rec.at = Date.now(); rec.text = shown;
+    profile.promo.redeemed[code] = rec;
+    if(!c.builtin) c.uses = rec.uses;
+    el.promoInput.value = '';
+    saveProfile();
+    setPromoMsg('Активировано: ' + shown, false);
+    showPromoFlash(shown);
+    renderPromo(); updateHUD(); updateMenuBadges(); refreshMenuStats();
+    tone(700,.1,'triangle',.05); tone(1050,.14,'triangle',.045,.08);
+    showToast('Промокод активирован', shown);
+  }
+  function openPromo(){
+    if(S.running) return;
+    hideAllScreens();
+    renderPromo();
+    el.promoScreen.classList.remove('hidden');
+  }
   function claimTask(id){
     const t = DAILY_TASKS.filter(x => x.id === id)[0];
     if(!t) return;
@@ -6329,6 +6602,19 @@
     S.meal = null; S.client = 'normal';
     S.timeLeft = MODES[S.mode].timed || 0;
     S.freezes = 1 + upgLevel('starter'); S.hints = 1 + upgLevel('starter'); S.skips = 0;
+    try{
+      const g = profile.promo.boosts.grant;
+      S.freezes += g.freeze || 0;
+      S.hints += g.hint || 0;
+      S.skips += g.skip || 0;
+      if(g.life){
+        S.bonusLives = (S.bonusLives || 0) + g.life;
+        S.lives = Math.min(lifeCap(), S.lives + g.life);
+      }
+      g.freeze = g.hint = g.skip = g.life = 0;
+      saveProfile();
+      updateHUD();
+    }catch(e){}
     S.freezeUntil = 0; S.revives = 0; S.lastT = 0; S.clockT = 0; S.now = performance.now();
     S.runId = '';
     hideAllScreens();
@@ -6497,7 +6783,7 @@
     const base = 80 + S.order.length * 20 + Math.round(S.patience * 90) + Math.round(S.combo * 6);
     const comboBonus = (meal.combo && perfect) ? 1.2 : 1;
     const gain = Math.round(base * mult * mode.score * (cd.score || 1) * comboBonus * (perfect ? 1.15 : 1) * prestigeScoreMult() * petScoreMult());
-    let tip = isTraining() ? 0 : Math.max(1, Math.round((2 + S.order.length * 1.2 + S.patience * 6 + S.combo) * mode.tip * (cd.tip || 1) * (1 + upgLevel('tips') * .15) * prestigeCoinMult() * petCoinMult() * petTipMult()));
+    let tip = isTraining() ? 0 : Math.max(1, Math.round((2 + S.order.length * 1.2 + S.patience * 6 + S.combo) * mode.tip * (cd.tip || 1) * (1 + upgLevel('tips') * .15) * prestigeCoinMult() * petCoinMult() * petTipMult() * promoCoinMult()));
     if(!isTraining() && meal.combo && perfect) tip += 25;
     if(!isTraining() && cd.critic){ if(perfect) tip += 120; else tip = Math.max(1, Math.round(tip * .4)); }
 
@@ -6569,7 +6855,7 @@
     const bonus = sandboxClientBonus();
     const perfect = S.orderPerfect;
     const gain = Math.round((90 + S.order.length * 20 + Math.round(S.patience * 80)) * comboMult() * bonus.score * (perfect ? 1.15 : 1) * prestigeScoreMult() * petScoreMult());
-    let tip = Math.max(1, Math.round((3 + S.order.length * 1.2 + S.patience * 5) * bonus.tip * (1 + upgLevel('tips') * .15) * prestigeCoinMult() * petCoinMult() * petTipMult()));
+    let tip = Math.max(1, Math.round((3 + S.order.length * 1.2 + S.patience * 5) * bonus.tip * (1 + upgLevel('tips') * .15) * prestigeCoinMult() * petCoinMult() * petTipMult() * promoCoinMult()));
     if(perfect && bonus.critic) tip += 120;
     S.score += gain;
     S.earned += tip;
@@ -6680,6 +6966,7 @@
     if(S.sandbox){
       S.running = false; S.busy = true; S.paused = false; S.lastT = 0; S.clockT = 0;
       S.sandbox = null;
+      spendPromoShift();
       showMenu();
       return;
     }
@@ -6729,6 +7016,7 @@
         dailyAdd('shifts', 1);
         if(bonusAvailable()) paintFlame(bonusReward().streak, true);
       }
+      spendPromoShift();
     }catch(e){}
     try{ refreshBest(); }catch(e){}
     try{ updateMenuBadges(); }catch(e){}
@@ -6828,6 +7116,7 @@
     try{ renderScores(el.startScores, loadScores()); }catch(e){}
     try{ renderAch(); }catch(e){}
     try{ updateMenuBadges(); }catch(e){}
+    try{ renderPromo(); }catch(e){}
     try{ setTimeout(drawHero, 60); }catch(e){}
     try{ startMusic(); }catch(e){}
   }
@@ -6977,38 +7266,6 @@
   el.achCount.addEventListener('click', openAch);
   el.achBackBtn.addEventListener('click', showMenu);
   el.adminCloseBtn.addEventListener('click', closeAdmin);
-  el.admBest1.addEventListener('click', () => adminGiveScore(1000));
-  el.admBest2.addEventListener('click', () => adminGiveScore(10000));
-  el.admBestReset.addEventListener('click', adminResetScores);
-  el.admCoins1.addEventListener('click', () => { profile.coins += 500; saveProfile(); renderAdmin(); updateMenuBadges(); refreshMenuStats(); });
-  el.admCoins2.addEventListener('click', () => { profile.coins += 5000; saveProfile(); renderAdmin(); updateMenuBadges(); refreshMenuStats(); });
-  el.admCoins0.addEventListener('click', () => { profile.coins = 0; saveProfile(); renderAdmin(); updateMenuBadges(); refreshMenuStats(); });
-  el.admAchAll.addEventListener('click', () => { window.__bmUnlockAch(); renderAdmin(); });
-  el.admAchReset.addEventListener('click', () => { profile.ach = {}; saveProfile(); renderAch(); renderAdmin(); });
-  el.admSbxToggle.addEventListener('click', () => { profile.sbxAdmin = !profile.sbxAdmin; saveProfile(); updateMenuBadges(); renderAdmin(); });
-  el.admCampaign.addEventListener('click', () => { profile.campaign.unlocked = CAMPAIGN.length; saveProfile(); updateMenuBadges(); renderAdmin(); });
-  el.admCampaignStars.addEventListener('click', () => {
-    for(let i = 0; i < CAMPAIGN.length; i++) profile.campaign.stars[i] = 3;
-    profile.campaign.unlocked = CAMPAIGN.length;
-    saveProfile(); checkAch(); updateMenuBadges(); renderAdmin();
-    showToast('Админ', 'Кампания: по 3★ на всех уровнях');
-  });
-  el.admKitchen.addEventListener('click', () => { for(const k in UPGRADES){ profile.upg[k] = UPGRADES[k].max; } saveProfile(); updateMenuBadges(); renderAdmin(); });
-  el.admWipe.addEventListener('click', resetAll);
-  el.admBestSet.addEventListener('click', () => adminSetScore(el.admBestVal.value, el.admBestBurgers.value));
-  el.admCoinsSet.addEventListener('click', () => adminSetCoins(el.admCoinsVal.value));
-  el.admBestVal.addEventListener('keydown', (e) => { if(e.key === 'Enter'){ e.preventDefault(); adminSetScore(el.admBestVal.value, el.admBestBurgers.value); } });
-  el.admCoinsVal.addEventListener('keydown', (e) => { if(e.key === 'Enter'){ e.preventDefault(); adminSetCoins(el.admCoinsVal.value); } });
-  el.admBonusSkip.addEventListener('click', () => {
-    profile.bonusAt = Date.now() - BONUS_COOLDOWN - 1000; profile.bonusSkip = true; saveProfile();
-    renderAdmin(); renderDaily(); updateMenuBadges();
-    showToast('Админ', 'Ожидание награды пропущено');
-  });
-  el.admBonusReset.addEventListener('click', () => {
-    profile.bonusAt = 0; profile.bonusDay = ''; profile.bonusStreak = 0; profile.bonusSkip = false; saveProfile();
-    renderAdmin(); renderDaily(); updateMenuBadges();
-    showToast('Админ', 'Серия награды сброшена');
-  });
   el.campaignBtn.addEventListener('click', openCampaign);
   el.campBackBtn.addEventListener('click', showMenu);
   el.kitchenBtn.addEventListener('click', openKitchen);
@@ -7027,6 +7284,13 @@
   el.wheelBtn.addEventListener('click', spinWheel);
   el.dailyBtn.addEventListener('click', openDaily);
   el.dailyBackBtn.addEventListener('click', showMenu);
+  el.promoBtn.addEventListener('click', openPromo);
+  el.promoBackBtn.addEventListener('click', showMenu);
+  el.promoApply.addEventListener('click', redeemPromo);
+  el.promoInput.addEventListener('keydown', e => { if(e.key === 'Enter'){ e.preventDefault(); redeemPromo(); } });
+  el.admPromoCreate.addEventListener('click', createPromo);
+  el.admPromoType.addEventListener('change', updatePromoFields);
+  el.admPromoCode.addEventListener('keydown', e => { if(e.key === 'Enter'){ e.preventDefault(); createPromo(); } });
   if(el.dailyReroll) el.dailyReroll.addEventListener('click', rerollDaily);
   el.doClaim.addEventListener('click', () => { try{ claimBonus(); }catch(e){} try{ closeDailyOffer(); }catch(e){} });
   el.doLater.addEventListener('click', closeDailyOffer);
@@ -7109,6 +7373,7 @@
   renderAch();
   updateHUD();
   updateMenuBadges();
+  renderPromo();
   renderScores(el.startScores, loadScores());
   el.startBest.textContent = best.toLocaleString('ru-RU');
   el.startCoins.textContent = profile.coins.toLocaleString('ru-RU');
