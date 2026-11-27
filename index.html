@@ -681,6 +681,10 @@
     background:linear-gradient(180deg,#ffe08a,#ffb63d);
     padding:4px 10px;border-radius:99px;box-shadow:0 6px 16px rgba(255,170,50,.35);
   }
+  .recordTag.muted{
+    color:#c8d6cf;background:linear-gradient(180deg,rgba(120,200,160,.22),rgba(120,200,160,.08));
+    border:1px solid rgba(120,220,160,.28);box-shadow:none;letter-spacing:.08em;
+  }
   .title{font-size:clamp(24px,7.5vw,32px);font-weight:950;letter-spacing:-.01em;margin:0;line-height:1.05}
   .title small{display:block;font-size:10px;letter-spacing:.22em;color:#a58d76;font-weight:800;margin-top:7px;text-transform:uppercase}
 
@@ -821,6 +825,26 @@
     pointer-events:none;
   }
   .promoFlash[hidden]{display:none!important}
+  .promoGuide{display:flex;gap:6px;width:100%;max-width:360px;margin:10px 0 12px}
+  .promoGuideStep{flex:1;text-align:center;padding:8px 5px;border-radius:13px;
+    background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);opacity:.55;transition:.2s}
+  .promoGuideStep b{display:block;width:21px;height:21px;line-height:21px;margin:0 auto 5px;border-radius:50%;
+    font-size:11px;font-weight:900;color:#f4e7d5;background:rgba(255,255,255,.12)}
+  .promoGuideStep span{display:block;font-size:10px;font-weight:800;color:#d3c1ae;line-height:1.25}
+  .promoGuideStep.active{opacity:1;border-color:rgba(255,182,61,.6);background:rgba(255,182,61,.13);box-shadow:0 0 14px rgba(255,170,50,.12)}
+  .promoGuideStep.active b{color:#2a1708;background:linear-gradient(180deg,#ffe08a,#ffb63d)}
+  .promoGuideStep.done{opacity:.85;border-color:rgba(120,220,160,.3)}
+  .promoGuideStep.done b{color:#10261a;background:linear-gradient(180deg,#9ce8b8,#5fc489)}
+  .promoHintCard{width:100%;max-width:360px;margin:10px auto;padding:11px 13px;border-radius:14px;
+    background:linear-gradient(180deg,rgba(120,200,160,.12),rgba(255,255,255,.02));
+    border:1px solid rgba(120,220,160,.2);font-size:11px;font-weight:700;color:#bcd4c7;line-height:1.45}
+  .promoHintCard b{display:block;font-size:11.5px;font-weight:900;color:#d8f0e2;margin-bottom:3px}
+  .promoStepHead{display:flex;align-items:center;gap:8px;margin:13px 0 1px;
+    font-size:11px;font-weight:900;color:#ffd884;letter-spacing:.03em}
+  .promoStepHead b{flex:none;width:20px;height:20px;line-height:20px;text-align:center;border-radius:50%;
+    font-size:11px;color:#2a1708;background:linear-gradient(180deg,#ffe08a,#ffb63d)}
+  .promoStepHead span{color:#f0e2d0}
+  .promoListTitle{margin:13px 0 2px;font-size:10.5px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;color:#a58d76}
   .shopRow{display:flex;flex-direction:column;gap:7px;width:100%;max-width:330px}
   .shopBtn{
     display:flex;align-items:center;justify-content:space-between;gap:10px;
@@ -1678,13 +1702,22 @@
   </div>
 
   <div class="screen hidden" id="promoScreen">
-    <div class="title">Промокоды</div>
+    <div class="title">Промокоды<small>активация за 3 шага</small></div>
+    <div class="promoGuide">
+      <div class="promoGuideStep active" id="promoStep1"><b>1</b><span>Введите код</span></div>
+      <div class="promoGuideStep" id="promoStep2"><b>2</b><span>Активируйте</span></div>
+      <div class="promoGuideStep" id="promoStep3"><b>3</b><span>Получите награду</span></div>
+    </div>
     <div class="setCard">
       <div class="promoRow">
         <input id="promoInput" type="text" maxlength="16" placeholder="Промокод" autocomplete="off" autocapitalize="characters" spellcheck="false">
         <button class="cta" id="promoApply" type="button">Активировать</button>
       </div>
       <div class="promoMsg" id="promoMsg"></div>
+    </div>
+    <div class="promoHintCard">
+      <b>Подсказка</b>
+      Код можно вводить кириллицей или латиницей. После активации награда появится на экране.
     </div>
     <button class="cta ghost" id="promoBackBtn" type="button">Назад</button>
   </div>
@@ -1731,7 +1764,8 @@
     <div class="title">Админ-панель<small>промокоды</small></div>
     <div class="adminList">
       <div class="adminCard">
-        <div class="acTop"><b>Промокоды</b></div>
+        <div class="acTop"><b>Новый промокод</b></div>
+        <div class="promoStepHead"><b>1</b><span>Код и награда</span></div>
         <div class="acInput">
           <input class="admNum" id="admPromoCode" type="text" maxlength="16" placeholder="КОД (RU/EN)">
           <select class="admNum" id="admPromoType"></select>
@@ -1739,18 +1773,24 @@
         <div class="acInput">
           <input class="admNum" id="admPromoValue" type="text" placeholder="значение / id">
           <select class="admNum" id="admPromoReset"></select>
-          <select class="admNum" id="admPromoPet"></select>
         </div>
+        <div class="acInput">
+          <select class="admNum" id="admPromoPet"></select>
+          <select class="admNum" id="admPromoSkin"></select>
+        </div>
+        <div class="promoStepHead"><b>2</b><span>Условия действия</span></div>
         <div class="acInput">
           <input class="admNum" id="admPromoUses" type="number" inputmode="numeric" placeholder="лимит (1)">
           <input class="admNum" id="admPromoDate" type="datetime-local" title="Срок действия">
           <input class="admNum" id="admPromoLevel" type="number" inputmode="numeric" placeholder="ур. (1)">
         </div>
+        <div class="promoStepHead"><b>3</b><span>Текст и создание</span></div>
         <div class="acInput">
           <input class="admNum" id="admPromoText" type="text" maxlength="80" placeholder="текст при активации">
         </div>
         <div class="promoMsg" id="admPromoHint">Код можно писать кириллицей или латиницей.</div>
         <div class="acBtns"><button class="admBtn" id="admPromoCreate" type="button">Создать код</button></div>
+        <div class="promoListTitle">Созданные коды</div>
         <div class="adminList" id="admPromoList"></div>
       </div>
     </div>
@@ -2098,7 +2138,7 @@
   }
   const BUILTIN_PROMO = {
     code:'СБРОС', label:'СБРОС', type:'bundle', value:0, target:'',
-    usesMax:1, minLevel:1, expiresAt:new Date(2026,10,30,23,59,59).getTime(),
+    usesMax:1, minLevel:1, expiresAt:new Date(2026,11,1,23,59,59).getTime(),
     text:'100000 монет, все достижения, 10 заморозок, 10 подсказок, 10 пропусков',
     builtin:true
   };
@@ -2277,7 +2317,7 @@
     achScreen:$('achScreen'), achList:$('achList'), achBackBtn:$('achBackBtn'), achSub:$('achSub'),
     adminScreen:$('adminScreen'), adminCloseBtn:$('adminCloseBtn'),
     admPromoCode:$('admPromoCode'), admPromoType:$('admPromoType'),
-    admPromoValue:$('admPromoValue'), admPromoReset:$('admPromoReset'), admPromoPet:$('admPromoPet'),
+    admPromoValue:$('admPromoValue'), admPromoReset:$('admPromoReset'), admPromoPet:$('admPromoPet'), admPromoSkin:$('admPromoSkin'),
     admPromoUses:$('admPromoUses'), admPromoDate:$('admPromoDate'), admPromoLevel:$('admPromoLevel'),
     admPromoText:$('admPromoText'), admPromoHint:$('admPromoHint'),
     admPromoCreate:$('admPromoCreate'), admPromoList:$('admPromoList'),
@@ -2306,6 +2346,7 @@
     streakFlame:$('streakFlame'), flameLabel:$('flameLabel'), flameBurst:$('flameBurst'), burstFlame:$('burstFlame'), burstText:$('burstText'),
     promoBtn:$('promoBtn'), promoScreen:$('promoScreen'), promoInput:$('promoInput'),
     promoApply:$('promoApply'), promoMsg:$('promoMsg'), promoFlash:$('promoFlash'), promoBackBtn:$('promoBackBtn'),
+    promoStep1:$('promoStep1'), promoStep2:$('promoStep2'), promoStep3:$('promoStep3'),
     settingsScreen:$('settingsScreen'), settingsBtn:$('settingsBtn'), setSound:$('setSound'), setMusic:$('setMusic'), setVol:$('setVol'),
     setVolVal:$('setVolVal'), setVibro:$('setVibro'), setOpt:$('setOpt'), setXmas:$('setXmas'), xmasCredit:$('xmasCredit'), resetBtn:$('resetBtn'), resetConfirm:$('resetConfirm'),
     resetYes:$('resetYes'), resetNo:$('resetNo'), settingsBackBtn:$('settingsBackBtn'),
@@ -4822,6 +4863,11 @@
     }
     shuffle(extras);
     for(let i = 0; i < extras.length; i++) ids.push(extras[i]);
+    const ordered = ids.slice();
+    shuffle(ids);
+    if(ids.length > 1 && ids.every((id, i) => id === ordered[i])){
+      const t = ids[0]; ids[0] = ids[ids.length - 1]; ids[ids.length - 1] = t;
+    }
     ensurePalBtns(ids.length);
     for(let i = 0; i < palBtns.length; i++){
       const b = palBtns[i];
@@ -5728,7 +5774,7 @@
   function renderSandbox(){
     renderSandboxSettings();
     let ph = '';
-    const sbList = FILLINGS.concat(XMAS_SIDES);
+    const sbList = shuffle(FILLINGS.concat(XMAS_SIDES));
     for(let i = 0; i < sbList.length; i++){
       const id = sbList[i];
       ph += '<button class="sbIng" type="button" data-ing="' + id + '" aria-label="' + ING[id].name + '" title="' + ING[id].name + '">' +
@@ -5927,18 +5973,20 @@
       coins:'Монеты: значение — количество.', freeze:'Заморозки: значение — количество, действуют 1 смену.',
       hint:'Подсказки: значение — количество, действуют 1 смену.', skip:'Пропуски: значение — количество, действуют 1 смену.',
       life:'Клиенты: значение — количество, действуют 1 смену.', coinmult:'Множитель монет: 2–5, действует 1 смену.',
-      skin:'Скин: значение — id скина.', pet:'Питомец: выберите из списка.',
+      skin:'Скин: выберите из списка.', pet:'Питомец: выберите из списка.',
       campaign:'Кампания: значение — номер уровня.', sandbox:'Песочница: значение не нужно.',
       reset:'Сброс: выберите, что обнулить при активации.'
     };
     const ph = {
       coins:'монеты', freeze:'шт.', hint:'шт.', skip:'шт.', life:'шт.', coinmult:'×2–5',
-      skin:'id скина', pet:'—', campaign:'уровень', sandbox:'—', reset:'—'
+      skin:'—', pet:'—', campaign:'уровень', sandbox:'—', reset:'—'
     };
     el.admPromoHint.textContent = hints[t] || 'Код можно писать кириллицей или латиницей.';
     el.admPromoValue.placeholder = ph[t] || 'значение / id';
     el.admPromoPet.disabled = t !== 'pet';
     el.admPromoPet.style.opacity = t === 'pet' ? '1' : '.45';
+    el.admPromoSkin.disabled = t !== 'skin';
+    el.admPromoSkin.style.opacity = t === 'skin' ? '1' : '.45';
   }
   function renderAdminPromo(){
     const curType = el.admPromoType.value;
@@ -5950,6 +5998,9 @@
     const curPet = el.admPromoPet.value;
     el.admPromoPet.innerHTML = '<option value="">Питомец...</option>' + PETS.map(p => '<option value="'+p.id+'">'+p.name+'</option>').join('');
     if(curPet) el.admPromoPet.value = curPet;
+    const curSkin = el.admPromoSkin.value;
+    el.admPromoSkin.innerHTML = '<option value="">Скин...</option>' + SKINS.filter(s => s.id !== 'default').map(s => '<option value="'+s.id+'">'+s.name+'</option>').join('');
+    if(curSkin) el.admPromoSkin.value = curSkin;
     updatePromoFields();
     if(!profile.promo.codes.length){
       el.admPromoList.innerHTML = '<div class="promoItem"><span>Кодов пока нет</span></div>';
@@ -5962,7 +6013,7 @@
       else if(c.type === 'reset') amount = 'сброс: ' + (PROMO_RESETS[c.target] || '—');
       else if(c.type === 'coinmult') amount = '×' + Math.max(2, Math.round(Number(c.value) || 2)) + ' на 1 смену';
       else if(['freeze','hint','skip','life'].indexOf(c.type) >= 0) amount = PROMO_TYPES[c.type] + ' +' + Math.max(1, Math.round(Number(c.value) || 1)) + ' на 1 смену';
-      else if(c.type === 'skin') amount = PROMO_TYPES[c.type] + ': ' + promoEsc(c.value);
+      else if(c.type === 'skin') amount = PROMO_TYPES[c.type] + ': ' + promoEsc((SKINS.filter(s => s.id === c.value)[0] || {}).name || c.value);
       else if(c.type === 'pet') amount = PROMO_TYPES[c.type] + ': ' + promoEsc((petById(c.value) || {}).name || c.value);
       else amount = PROMO_TYPES[c.type] || '—';
       const info = promoEsc(promoLabel(c.label || c.code)) + ' · ' + amount + ' · ' + used + '/' + max +
@@ -6002,9 +6053,9 @@
     else if(type === 'coinmult') value = intVal(el.admPromoValue.value,2,5,2);
     else if(type === 'campaign') value = intVal(el.admPromoValue.value,1,CAMPAIGN.length,1);
     else if(type === 'skin'){
-      value = String(el.admPromoValue.value || '').trim();
-      const s = skinById(value);
-      if(!value || value === 'default' || !s || s.id !== value){ showToast('Админ','Неизвестный скин'); return; }
+      value = String(el.admPromoSkin.value || '').trim();
+      const s = SKINS.filter(x => x.id === value && x.id !== 'default')[0];
+      if(!s){ showToast('Админ','Выберите скин из списка'); return; }
     } else if(type === 'pet'){
       value = String(el.admPromoPet.value || '').trim();
       if(!petById(value)){ showToast('Админ','Выберите питомца из списка'); return; }
@@ -6029,6 +6080,7 @@
     el.admPromoCode.value = '';
     el.admPromoValue.value = '';
     el.admPromoPet.value = '';
+    el.admPromoSkin.value = '';
     el.admPromoUses.value = '';
     el.admPromoDate.value = '';
     el.admPromoLevel.value = '';
@@ -6072,6 +6124,15 @@
     el.promoFlash.hidden = false;
     clearTimeout(promoFlashTimer);
     promoFlashTimer = setTimeout(() => { el.promoFlash.hidden = true; }, 5000);
+  }
+  function updatePromoSteps(stage){
+    const n = Math.max(1, Math.min(3, stage || 1));
+    for(let i = 1; i <= 3; i++){
+      const step = el['promoStep' + i];
+      if(!step) continue;
+      step.classList.toggle('active', i === n);
+      step.classList.toggle('done', i < n);
+    }
   }
   function setPromoMsg(text, err){
     el.promoMsg.textContent = text || '';
@@ -6155,6 +6216,7 @@
     el.promoInput.value = '';
     saveProfile();
     setPromoMsg('Активировано: ' + shown, false);
+    updatePromoSteps(3);
     showPromoFlash(shown);
     renderPromo(); updateHUD(); updateMenuBadges(); refreshMenuStats();
     tone(700,.1,'triangle',.05); tone(1050,.14,'triangle',.045,.08);
@@ -6164,6 +6226,7 @@
     if(S.running) return;
     hideAllScreens();
     renderPromo();
+    updatePromoSteps(1);
     el.promoScreen.classList.remove('hidden');
   }
   function claimTask(id){
@@ -6790,13 +6853,13 @@
     S.score += gain;
     S.earned += tip;
     profile.coins += tip;
-    profile.burgers++;
     S.served++;
     S.combo++;
     S.maxCombo = Math.max(S.maxCombo, S.combo);
-    profile.bestCombo = Math.max(profile.bestCombo || 0, S.combo);
     if(perfect) S.perfs++;
     if(!isTraining()){
+      profile.burgers++;
+      profile.bestCombo = Math.max(profile.bestCombo || 0, S.combo);
       dailyAdd('served', 1);
       dailyAdd('coins', tip);
       dailyAdd('tips', tip);
@@ -6983,14 +7046,17 @@
 
     try{
       const prevBest = best;
-      const isRecord = S.score > 0 && S.score > prevBest;
+      const trainingRun = isTraining();
+      const isRecord = !trainingRun && S.score > 0 && S.score > prevBest;
       el.overScore.textContent = S.score.toLocaleString('ru-RU');
       el.overServed.textContent = S.served;
       el.overLevel.textContent = S.level;
       el.overCombo.textContent = S.maxCombo;
       el.overCoins.textContent = S.earned.toLocaleString('ru-RU');
       el.overAcc.textContent = Math.round(S.good / Math.max(1, S.taps) * 100) + '%';
-      el.recordSlot.innerHTML = isRecord ? '<span class="recordTag">Новый рекорд</span>' : '';
+      el.recordSlot.innerHTML = trainingRun
+        ? '<span class="recordTag muted">Тренировка · не в зачёт</span>'
+        : (isRecord ? '<span class="recordTag">Новый рекорд</span>' : '');
 
       finalizeRun();
       renderScores(el.overScores, loadScores());
@@ -7287,6 +7353,7 @@
   el.promoBtn.addEventListener('click', openPromo);
   el.promoBackBtn.addEventListener('click', showMenu);
   el.promoApply.addEventListener('click', redeemPromo);
+  el.promoInput.addEventListener('input', () => { if(el.promoInput.value.trim()) updatePromoSteps(2); });
   el.promoInput.addEventListener('keydown', e => { if(e.key === 'Enter'){ e.preventDefault(); redeemPromo(); } });
   el.admPromoCreate.addEventListener('click', createPromo);
   el.admPromoType.addEventListener('change', updatePromoFields);
